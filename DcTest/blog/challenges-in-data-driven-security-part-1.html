@@ -1,0 +1,164 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/challenges-in-data-driven-security-part-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:37:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">Challenges in Data-Driven Security (Part 1) | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>Challenges in Data-Driven Security (Part 1)</h1>
+        
+<h3 id="by_phil_roth">by <a href="../archives/index.html">Phil Roth</a></h3>
+
+<p>DEFCON 22 was a great learning experience for me. My goal was to soak up as much information security knowledge as possible to complement my existing data science experience. I grew more and more excited as each new talk taught me more and more security domain knowledge. But as Alex Pinto began his <a href="https://www.youtube.com/watch?v=TYVCVzEJhhQ#t=8m21s">talk</a>, this excitement turned to terror.</p>
+
+<p>I knew exactly where he was going with this. And I also knew that any of those marketing blurbs about behavioral analysis, mathematical models, and anomalous activity could have easily been from Endgame. I had visions of being named, pointed out, and subsequently laughed out of the room. None of that happened of course. Between Alex’s talk and a quick Google search I determined that none of those blurbs were from my company. But that wasn’t really the point. They could have been.</p>
+
+<p>That’s because we at Endgame are facing the same challenges that Alex describes in that talk. We are building products that use machine learning and statistical models to help solve security problems. Anyone doing that is entering a field littered with past failures. To try and avoid the same fate, we’ve made sure to educate ourselves about what’s worked and what hasn’t in the past.</p>
+
+<p>Alex’s talk at DEFCON was part of that education. He talked about the curse of dimensionality, adversaries gaming any statistical solution, and algorithms detecting operational rather than security concerns. <a href="http://www.icir.org/robin/papers/oakland10-ml.pdf">This paper</a> by Robin Sommer and Vern Paxson is another great resource that enumerates the problems that past attempts have run up against. It talks about general challenges facing unsupervised anomaly detection, the high cost of false-positive and false-negative misclassifications, the extreme diversity of network traffic data, and the lack of open and complete data sets to train on. <a href="https://www.cs.nmt.edu/~infosec/Critique on Testing IDS.pdf">Another paper</a> critiques the frequent use of an old DARPA dataset for testing intrusion detection systems, and by doing that reveals a lot of the challenges facing machine learning researchers looking for data to train on.</p>
+
+<p>Despite all that pessimism, there have been successes using data science techniques to solve security problems. For years here at Endgame, we’ve successfully clustered content found on the web, provided data exploration tools for vulnerability researchers, and used large scale computing resources to analyze malware. We’ve been able to do this by engaging our customers in a conversation about the opportunities—and the limitations—presented by data science for security. The customers tell us what problems they have, and we tell them what data science techniques can and cannot do for them. This very rarely results in an algorithm that will immediately identify attackers or point out the exact anomalies you’d like it to. But it does help us create tools that enable analysts to do their jobs better.</p>
+
+<p>There is a trove of other success stories included in <a href="http://www.covert.io/security-datascience-papers/">this blog post</a> by Jason Trost. One of these <a href="http://www.cc.gatech.edu/~dchau/polonium/polonium_sdm2011.pdf">papers</a> describes Polonium, a graph algorithm that classifies files as malware or not based on the reputations of the systems they are found on. This system avoids many of the pitfalls mentioned above. Trustworthy-labeled malware data from Symantec allows the system to bootstrap its training. The large-scale reputation based algorithm makes gaming the system difficult beyond file obfuscation.</p>
+
+<p>The existence of success stories like these proves that data-driven approaches can help solve information security problems. When developing those solutions, it’s important to understand the challenges that have tested past approaches and always be cognizant of how your approach will avoid them.</p>
+
+<p>We’ll use this blog over the next few months to share some of the successes and failures we here at Endgame have had in this area. Our next post will focus on our application of unsupervised clustering for visualizing large, high dimensional data sets. Stay tuned!</p>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/challenges-in-data-driven-security-part-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:37:47 GMT -->
+</html>

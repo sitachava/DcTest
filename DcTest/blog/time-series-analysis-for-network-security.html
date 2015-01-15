@@ -1,0 +1,183 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/time-series-analysis-for-network-security.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:49:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">Time Series Analysis for Network Security | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>Time Series Analysis for Network Security</h1>
+        
+<h3 id="by_phil_roth">by <a href="../archives/index.html">Phil Roth</a></h3>
+
+<p>Last week, I had the opportunity to attend a conference that had been on my radar for a long time. I’ve been using scientific Python tools for about 10 years, so it was with great excitement that I attended <a href="https://conference.scipy.org/scipy2014/">SciPy 2014</a> in Austin. I enjoyed meeting the developers of this excellent open-source software as well as other enthusiastic users like me. I learned a great deal from talks about some Python tools I haven’t yet tried but should really already be using, like <a href="http://conda.pydata.org/docs/">conda</a>, <a href="http://bokeh.pydata.org/">bokeh</a>, and others. I also gave a talk describing how I have been using the SciPy stack of software in my work here at Endgame. In this post, I’ll summarize and expand on the first half of my presentation.</p>
+
+<p>My work at Endgame has focused on collecting and tracking metrics associated with network and device behavior. By developing a model of normal behavior on these metrics, I can find and alert users when that behavior changes. There are several examples of security threats and events that would lead to anomalies in these metrics. Finding them and alerting our users to these threats as soon as possible is critical.</p>
+
+<p>The first step in finding anomalies in network and device behavior is collecting the data and organizing it into a collection of time series. Our data pipeline here at Endgame changes rapidly as we develop tools and figure out what works and what doesn’t. For the purposes of this example, the network traffic data flows in the following way:</p>
+
+<p><img src="../uploads/dataflow.png" alt="dataflow.png" /></p>
+
+<p><a href="http://kafka.apache.org/">Apache Kafka</a> is a distributed messaging system that views messages as a log. As data comes in, Kafka takes care of receiving it and distributing it to other systems that have subscribed to it. A separate system archives this data to HDFS for later processing over historical records. Reading the data from the Kafka servers allows my database to stay as current as possible. This allows me to send alerts to users very soon after a potential problem occurs. Reading historical data from HDFS allows me to backfill metrics once I create a new one or modify an existing one. After all of this data is read and processed, I fill a Redis database with the time series of each metric I’m tracking.</p>
+
+<p>The three Python tools that I use throughout this process are <a href="https://github.com/agoragames/kairos">kairos</a> to manage the time series database, <a href="https://github.com/mumrah/kafka-python">kafka-python</a> to read from Kafka, and <a href="https://spark.apache.org/docs/0.9.0/python-programming-guide.html">pyspark</a> to read from HDFS. I chose each project for its ease of use and ability to get up to speed quickly. They all have simple interfaces that abstract away complicated behavior and allow you to focus on your own data flow. Also, by using a Python interface to old and new data, I can share the code that processes and compares data against the metrics I’ve developed.</p>
+
+<p>I gave my presentation on the third and final day of SciPy. Up until that point, I hadn’t heard <a href="http://spark.apache.org/">Apache Spark</a> or pyspark mentioned once. Because of this, I spent an extra minute or two evangelizing for the project. Later, the Blaze developers gave a similar endorsement. It’s good to know that I’m not alone in the scientific Python community in loving Spark. In fact, before using Spark, I had been running <a href="http://pig.apache.org/">Pig</a> scripts in order to collect historical data. This required a bunch of extra work to run the data through the Python processing scripts I had already developed for the real-time side of things. Using Spark definitely simplified this process.</p>
+
+<p>The end result of all this work is an easily accessible store of all the metrics. With just a couple lines of code, I can extract the metric I’m interested in and convert it to a pandas Dataframe. From there, I can simply analyze it using all of the scientific computing tools available in Python. Here’s an example:</p>
+<div class='highlight'><pre><code class='java'><span class='err'>#</span> <span class='n'>Make</span> <span class='n'>a</span> <span class='n'>connection</span> <span class='n'>to</span> <span class='n'>our</span> <span class='n'>kairos</span> <span class='n'>database</span>
+<span class='n'>from</span> <span class='n'>redis</span> <span class='kn'>import</span> <span class='nn'>Redis</span>
+<span class='n'>from</span> <span class='n'>kairos</span> <span class='kn'>import</span> <span class='nn'>Timeseries</span>
+<span class='n'>intervals</span> <span class='o'>=</span> <span class='o'>{</span><span class='s'>&quot;days&quot;</span> <span class='o'>:</span> <span class='o'>{</span><span class='s'>&quot;step&quot;</span> <span class='o'>:</span> <span class='mi'>60</span><span class='o'>,</span> <span class='s'>&quot;steps&quot;</span> <span class='o'>:</span> <span class='mi'>2880</span><span class='o'>},</span>
+             <span class='s'>&quot;months&quot;</span> <span class='o'>:</span> <span class='o'>{</span><span class='s'>&quot;step&quot;</span> <span class='o'>:</span> <span class='mi'>1800</span><span class='o'>,</span> <span class='s'>&quot;steps&quot;</span> <span class='o'>:</span> <span class='mi'>4032</span><span class='o'>}}</span>
+<span class='n'>rclient</span> <span class='o'>=</span> <span class='n'>Redis</span><span class='o'>(</span><span class='err'>“</span><span class='n'>localhost</span><span class='err'>”</span><span class='o'>,</span> <span class='mi'>6379</span><span class='o'>)</span>
+<span class='n'>ktseries</span> <span class='o'>=</span> <span class='n'>Timeseries</span><span class='o'>(</span><span class='n'>rclient</span><span class='o'>,</span> <span class='n'>type</span><span class='o'>=</span><span class='s'>&quot;histogram”, intervals=intervals)</span>
+
+<span class='s'># Read data from our kairos database</span>
+<span class='s'>from pandas import DataFrame, to_datetime</span>
+<span class='s'>series = ktseries.series(metric_name, “months”)</span>
+<span class='s'>ts, fields = zip(*series.items())</span>
+<span class='s'>df = DataFrame({&quot;</span><span class='n'>data</span><span class='err'>”</span> <span class='o'>:</span> <span class='n'>fields</span><span class='o'>},</span> <span class='n'>index</span><span class='o'>=</span><span class='n'>to_datetime</span><span class='o'>(</span><span class='n'>ts</span><span class='o'>,</span> <span class='n'>unit</span><span class='o'>=</span><span class='s'>&quot;s&quot;</span><span class='o'>))</span>
+</code></pre></div>
+<p>And here’s an example time series showing the number of times an IP has responded to connection requests:</p>
+
+<p><img src="../uploads/timeseries.png" alt="timeseries.png" /></p>
+
+<p>Thanks for reading. Next week I’ll talk about the different models I’ve built to make predictions and find anomalies in the time series that I’ve collected. If you’re interested in viewing the slides from my presentation, I’ve shared them <a href="http://www.slideshare.net/mrphilroth/scipy2014">here</a>.</p>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/time-series-analysis-for-network-security.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:50:30 GMT -->
+</html>

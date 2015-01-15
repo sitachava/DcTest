@@ -1,0 +1,192 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/how-to-get-started-in-ctf.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:54:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">How to Get Started in CTF | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>How to Get Started in CTF</h1>
+        
+<h3 id="by_steve_vittitoe">by <a href="../archives/index.html">Steve Vittitoe</a></h3>
+
+<p>Over the past two weeks, I’ve examined two different problems from the DEFCON 22 CTF Qualifications: <a href="defcon-capture-the-flag-qualification-challenge-1.html">“shitsco”</a> and <a href="defcon-capture-the-flag-qualification-challenge-2.html">“nonameyet”</a>. Thank you for all of the comments and questions. The most popular question I received was “How can I get started in CTFs?” It wasn’t so long ago that I was asking myself the same thing, so I wanted to provide some suggestions and resources for those of you interested in pursuing CTFs. The easiest way to start is to sign up for an introductory CTF like <a href="https://ctf.isis.poly.edu/">CSAW</a>, <a href="https://picoctf.com/">Pico CTF</a>, <a href="https://microcorruption.com/login">Microcorruption</a>, or any of the other <a href="http://captf.com/practice-ctf/">dozens</a> available. Through practice, patience, and dedication, your skills will improve with time.</p>
+
+<p>If you’re motivated to take a crack at some of the problems outside of the competition setting, most CTF competitions archive problems <a href="http://captf.com/">somewhere</a>. Challenges tend to have a wide range of difficulty levels as well. Be careful about just picking the easiest problems. Difficulty is subjective based on your individual skillset. If your forte is forensics but you are not skilled in crypto, the point values assigned to the forensics problems will seem inflated while the crypto challenges will seem undervalued to you. The same perception biases hold true for CTF organizers. This is one reason why assessing the difficulty of CTF problems is so challenging.</p>
+
+<p>If you’ve tried several of the basic problems on your own and are still struggling, then there are plenty of self-study opportunities. CTF competitions generally focus on the following skills: reverse engineering, cryptography, ACM style programming, web vulnerabilities, binary exercises, networking, and forensics. Pick one and focus on a single topic as you get started.</p>
+
+<p>1) Reverse Engineering. I highly suggest that you get a copy of IDA Pro. There is a free version available as well as a discounted student license. Try some <a href="http://www.crackmes.de/">crack me</a> exercises. Write your own C code and then reverse the compiled versions. Repeat this process while changing compiler options and program logic. How does an “if” statement differ from a “select” in your compiled binary? I suggest you focus on a single architecture initially: x86, x86_64, or ARM. Read the processor manual for whichever one you choose. Book recommendations include:</p>
+
+<ul>
+<li><a href="http://www.amazon.com/Practical-Reverse-Engineering-Reversing-Obfuscation/dp/1118787315/ref=sr_1_1?ie=UTF8&amp;qid=1400798103&amp;sr=8-1&amp;keywords=reverse+engineering">Practical Reverse Engineering</a></li>
+
+<li><a href="http://www.amazon.com/Reversing-Secrets-Engineering-Eldad-Eilam/dp/0764574817/ref=sr_1_2?ie=UTF8&amp;qid=1400798103&amp;sr=8-2&amp;keywords=reverse+engineering">Reversing: Secrets of Reverse Engineering</a></li>
+
+<li><a href="http://www.amazon.com/The-IDA-Pro-Book-Disassembler/dp/1593272898/ref=sr_1_7?ie=UTF8&amp;qid=1400798103&amp;sr=8-7&amp;keywords=reverse+engineering">The IDA Pro Book</a></li>
+</ul>
+
+<p>2) Cryptography. While this is not my personal strength, here are some resources to check out:</p>
+
+<ul>
+<li><a href="http://www.amazon.com/Applied-Cryptography-Protocols-Algorithms-Source/dp/0471117099/ref=sr_1_1?ie=UTF8&amp;qid=1400798247&amp;sr=8-1&amp;keywords=applied+cryptography">Applied Cryptography</a></li>
+
+<li><a href="http://www.amazon.com/Practical-Cryptography-Niels-Ferguson/dp/0471223573/ref=sr_1_1?ie=UTF8&amp;qid=1400798265&amp;sr=8-1&amp;keywords=practical+cryptography">Practical Cryptography</a></li>
+
+<li><a href="https://www.coursera.org/course/crypto">Cryptography I</a></li>
+</ul>
+
+<p>3) ACM style programming. Pick a high level language. I recommend Python or Ruby. For Python, read <a href="http://www.diveintopython.net/">Dive into Python</a> (free) and find a pet project you want to participate in. It is worth noting that Metasploit is written in Ruby. Computer science classes dealing with algorithms and data structures will go a long way in this category as well. Look at past programming challenges from CTF and other competitions – do them! Focus on creating a working solution rather than the fastest or most elegant solution, especially if you are just getting started.</p>
+
+<p>4) Web vulnerabilities. There are many web programming technologies out there. The most popular in CTF tend to be PHP and SQL. The <a href="http://php.net/">php.net</a> site is a fantastic language reference. Just search any function you are curious about. After PHP, the next most common way to see web challenges presented is with Python or Ruby scripts. Notice the overlap of skills? There is a good book on web vulnerabilities, <a href="http://www.amazon.com/The-Web-Application-Hackers-Handbook/dp/1118026470/ref=sr_1_1?ie=UTF8&amp;qid=1400799017&amp;sr=8-1&amp;keywords=web+hacking">The Web Application Hacker’s Handbook</a>. Other than that, after learning some of the basic techniques, you might also think about gaining expertise in a few of the more popular free tools available. These are occasionally useful in CTF competitions too. This category also frequently overlaps with cryptography in my experience.</p>
+
+<p>5) Binary exercises. This is my personal favorite. I recommend you go through reverse engineering before jumping into the binary exercises. There are a few common vulnerability types you can learn in isolation: <a href="https://en.wikipedia.org/wiki/Stack_buffer_overflow">stack overflows</a>, <a href="http://www.cgsecurity.org/exploit/heaptut.txt">heap overflows</a>, and <a href="https://crypto.stanford.edu/cs155/papers/formatstring-1.2.pdf">format string bugs</a> for starters. A lot of this is training your mind to recognize vulnerable patterns. Looking at past vulnerabilities is a great way to pick up these patterns. You should also read through:</p>
+
+<ul>
+<li><a href="http://www.amazon.com/Hacking-The-Art-Exploitation-Edition/dp/1593271441/ref=sr_1_2?ie=UTF8&amp;qid=1400799345&amp;sr=8-2&amp;keywords=exploitation">Hacking: The Art of Exploitation</a></li>
+
+<li><a href="http://www.amazon.com/The-Shellcoders-Handbook-Discovering-Exploiting/dp/047008023X/ref=sr_1_1?ie=UTF8&amp;qid=1400799396&amp;sr=8-1&amp;keywords=shellcoders+handbook">The Shellcoders Handbook</a></li>
+
+<li><a href="http://www.amazon.com/The-Software-Security-Assessment-Vulnerabilities/dp/0321444426">The Art of Software Security Assessment</a></li>
+</ul>
+
+<p>6) Forensics/networking. A lot of CTF teams tend to have “the” forensics guy. I am not that guy, but I suggest you learn how to use the <a href="http://www.sweetscape.com/010editor/">010 hex editor</a> and don’t be afraid to make absurd, wild, random guesses as to what could be going on in some of these problems.</p>
+
+<p>Finally, Dan Guido and company recently put out the <a href="https://trailofbits.github.io/ctf/">CTF field guide</a>, which is a great introduction to several of these topics.</p>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/how-to-get-started-in-ctf.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:54:54 GMT -->
+</html>

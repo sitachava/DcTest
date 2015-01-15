@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Endgame</title>
+		<description></description>		
+		<link></link>
+		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+		
+		  
+			<item>
+				<title>Challenges in Data-Driven Security (Part 1)</title>
+				<description>
+&lt;h3 id=&quot;by_phil_roth&quot;&gt;by &lt;a href=&quot;/archives/&quot;&gt;Phil Roth&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;DEFCON 22 was a great learning experience for me. My goal was to soak up as much information security knowledge as possible to complement my existing data science experience. I grew more and more excited as each new talk taught me more and more security domain knowledge. But as Alex Pinto began his &lt;a href=&quot;https://www.youtube.com/watch?v=TYVCVzEJhhQ#t=8m21s&quot;&gt;talk&lt;/a&gt;, this excitement turned to terror.&lt;/p&gt;
+
+&lt;p&gt;I knew exactly where he was going with this. And I also knew that any of those marketing blurbs about behavioral analysis, mathematical models, and anomalous activity could have easily been from Endgame. I had visions of being named, pointed out, and subsequently laughed out of the room. None of that happened of course. Between Alex’s talk and a quick Google search I determined that none of those blurbs were from my company. But that wasn’t really the point. They could have been.&lt;/p&gt;
+
+&lt;p&gt;That’s because we at Endgame are facing the same challenges that Alex describes in that talk. We are building products that use machine learning and statistical models to help solve security problems. Anyone doing that is entering a field littered with past failures. To try and avoid the same fate, we’ve made sure to educate ourselves about what’s worked and what hasn’t in the past.&lt;/p&gt;
+
+&lt;p&gt;Alex’s talk at DEFCON was part of that education. He talked about the curse of dimensionality, adversaries gaming any statistical solution, and algorithms detecting operational rather than security concerns. &lt;a href=&quot;http://www.icir.org/robin/papers/oakland10-ml.pdf&quot;&gt;This paper&lt;/a&gt; by Robin Sommer and Vern Paxson is another great resource that enumerates the problems that past attempts have run up against. It talks about general challenges facing unsupervised anomaly detection, the high cost of false-positive and false-negative misclassifications, the extreme diversity of network traffic data, and the lack of open and complete data sets to train on. &lt;a href=&quot;https://www.cs.nmt.edu/~infosec/Critique%20on%20Testing%20IDS.pdf&quot;&gt;Another paper&lt;/a&gt; critiques the frequent use of an old DARPA dataset for testing intrusion detection systems, and by doing that reveals a lot of the challenges facing machine learning researchers looking for data to train on.&lt;/p&gt;
+
+&lt;p&gt;Despite all that pessimism, there have been successes using data science techniques to solve security problems. For years here at Endgame, we’ve successfully clustered content found on the web, provided data exploration tools for vulnerability researchers, and used large scale computing resources to analyze malware. We’ve been able to do this by engaging our customers in a conversation about the opportunities—and the limitations—presented by data science for security. The customers tell us what problems they have, and we tell them what data science techniques can and cannot do for them. This very rarely results in an algorithm that will immediately identify attackers or point out the exact anomalies you’d like it to. But it does help us create tools that enable analysts to do their jobs better.&lt;/p&gt;
+
+&lt;p&gt;There is a trove of other success stories included in &lt;a href=&quot;http://www.covert.io/security-datascience-papers/&quot;&gt;this blog post&lt;/a&gt; by Jason Trost. One of these &lt;a href=&quot;http://www.cc.gatech.edu/~dchau/polonium/polonium_sdm2011.pdf&quot;&gt;papers&lt;/a&gt; describes Polonium, a graph algorithm that classifies files as malware or not based on the reputations of the systems they are found on. This system avoids many of the pitfalls mentioned above. Trustworthy-labeled malware data from Symantec allows the system to bootstrap its training. The large-scale reputation based algorithm makes gaming the system difficult beyond file obfuscation.&lt;/p&gt;
+
+&lt;p&gt;The existence of success stories like these proves that data-driven approaches can help solve information security problems. When developing those solutions, it’s important to understand the challenges that have tested past approaches and always be cognizant of how your approach will avoid them.&lt;/p&gt;
+
+&lt;p&gt;We’ll use this blog over the next few months to share some of the successes and failures we here at Endgame have had in this area. Our next post will focus on our application of unsupervised clustering for visualizing large, high dimensional data sets. Stay tuned!&lt;/p&gt;
+</description>
+				<pubDate>Thu, 13 Nov 2014 00:00:00 +0000</pubDate>
+				<link>/blog/challenges-in-data-driven-security-part-1.html</link>
+				<guid isPermaLink="true">/blog/challenges-in-data-driven-security-part-1.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>Back to the Future: Leveraging the Delorean to Secure the Information Superhighway</title>
+				<description>
+&lt;h3 id=&quot;by_andrea_little_limbago&quot;&gt;by &lt;a href=&quot;/archives/&quot;&gt;Andrea Little Limbago&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;In the cult classic trilogy &lt;em&gt;Back to the Future&lt;/em&gt;, Doc &lt;a href=&quot;http://www.youtube.com/watch?v=flge_rw6RG0&quot;&gt;claims&lt;/a&gt;, “Where we’re going, we don’t need roads.” He’s referencing 2015, and his assertion reminds us just how difficult it is to forecast the future of modern technology. The movies also remind us how tempting it can be to reflect on how things might have been. The current cyber security landscape is ripe for such reflection. What if you could go back in time, knowing what you know today, and alter the armed forces’ approach to cyber security? This was the focus of a dinner I recently had the privilege of attending at the United States Naval Academy Foundation (USNAF), which addressed the specific question,&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“Knowing what you know now about cyber threats, cyber espionage, etc., if you could go back to the year 1999 (15 years ago), what advice would you give the armed forces regarding what is needed to prepare for the future…which is now. And how are we doing compared to what you would have said?”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Below are some of the key themes that emerged from this lively discussion, which brought together a diverse range of military, academic and industry perspectives—though unfortunately without the assistance of a Delorean to facilitate implementation of the recommendations. But it’s never too late, and many of these themes and recommendations can help inform future capabilities and the structure of the cyber workforce:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cyber-safe as a Precondition, Not an Afterthought&lt;/strong&gt; &lt;br /&gt;For the last fifteen years, cyber security has been treated as a luxury, not a necessity. This has created a technical debt that is difficult but essential to overcome. The acquisition process and all of its warts is a critical component for implementing cyber-safe requirements and ensuring that everything is built to a pre-defined minimal requirement of cyber-safety. Cyber-safe as a precondition would have produced many unforeseen, but beneficial, externalities beyond the obvious ones of improved cyber security. For example, users who demand modern web experiences but are currently stuck using archaic web applications would have greatly benefited from this approach. Too often, analytic solutions must be compatible with a five-year old web browser (not naming names) that currently lacks available patches. A key challenge in the cyber domain – and really across the analytic spectrum – is creating modern applications for the community that are on par with their experiences in the unclassified environment. But in a world with cyber-safe as a requirement, users could benefit from modern web applications and all of the user-experience features and functionality that accompany modern web browsers. Data storage, indexing, processing, and many other areas well beyond data analysis would benefit from an a priori cyber-safe requirement for all technologies. Cyber-safe should not be viewed as an afterthought, and the armed forces must overcome significant technical debt to achieve greater cyber security.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Revolutionary, not Evolutionary, Changes to the Cyber Mindset&lt;/strong&gt; &lt;br /&gt;In addition to the technology itself, cyber practitioners are equally essential for successful cyber security. During the discussion, we debated the opportunities and challenges associated with greater inclusion of cyber experts who may follow what are currently viewed as non-traditional career tracks (i.e. little or no formal computer science experience). Including these non-traditional experts would require overcoming significant gaps in both pay and culture to attract many of the best and brightest in cyber security. While this may be a longer-term solution, several near-term and more tangible recommendations also emerged. The notion of a military version of the Black Hat conference (which I wrote about &lt;a href=&quot;http://www.endgame.com/blog/black-hat-decomposed-perspectives-from-a-social-scientist.html&quot;&gt;here&lt;/a&gt;) gained some traction within the group. This type of forum could bring together cyber practitioners across the military, academic and industry spectrum to highlight innovative research and thought leadership and ideally bridge the gap between these communities. There was also interest in formulating analogies in the cyber domain to current practices and doctrine—likely more geared toward tactical application and technical training, but pertinent at the strategic and policy level as well. Frameworks and analogies are useful heuristics, and should be emphasized to help evolve our thinking within the cyber domain.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Redefining Cyberwarriors&lt;/strong&gt; &lt;br /&gt;The US government has not been shy about its &lt;a href=&quot;http://www.businessweek.com/articles/2014-04-15/uncle-sam-wants-cyber-warriors-but-can-he-compete&quot;&gt;plans&lt;/a&gt; to dramatically expand its cadre of cyberwarriors. However, this usually entails an emphasis on STEM-centric training applied to information security. This is the bedrock of a strong cyber security foundation, but it is not enough. Everyone, regardless of discipline, must become cyber competent. The USNA has already started down this path ahead of most other academic institutions. Upon graduation, every student will have completed two core cyber courses, many take additional interdisciplinary cyber electives, and this year will be the second in which graduates can major in cyber operations. We discussed the need to further expand upon this core, especially in areas such as law that will enable graduates to navigate the complicated legal hurdles encountered within the cyber domain.&lt;/p&gt;
+
+&lt;p&gt;As expected with any paradigm shift, there has been resistance to this approach. Nevertheless, the USNA continues to push forward with dual cyber tracks – one for cyber operations majors, and another track for other majors to maintain cyber competency. This will pay great dividends in both the short and long term. Having now spent a significant amount of time with diverse groups of people from engineering, humanities and social science backgrounds, it is clear that linguistic and cultural divisions exist among these groups. Bridging this divide has longer-term implications for cyber competency both at the policy and tactical levels, and it can also spark innovation in the cyber security domain. It will ensure that cyber security technologists understand how their work fits into the larger mission, while similarly elevating technical cyber competency among military leaders and decision makers.&lt;/p&gt;
+
+&lt;p&gt;Expanding the notion of what constitutes a cyber warrior may in fact be one of the most important recommendations we discussed. Cyber can no longer be relegated to a niche competency only required for a small percentage of the workforce. The situation reminds me of quite possibly my favorite quote. When releasing the iPad a few years back, Steve Jobs &lt;a href=&quot;http://online.wsj.com/articles/SB10001424053111904875404576532342684923826&quot;&gt;noted&lt;/a&gt;, “It’s in Apple’s DNA that technology alone is not enough. It’s technology married with liberal arts, married with the humanities, that yields the results that make our hearts sing.” Knowing what we know now about the great potential for innovation in solutions that draw from technology as well as other disciplines, perhaps this same sort of cross-disciplinary competency can be applied equally to cyber challenges, which will only become more complex and post even greater challenges to our national interests.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+				<link>/blog/back-to-the-future-leveraging-the-delorean-to-secure-the-information-superhighway.html</link>
+				<guid isPermaLink="true">/blog/back-to-the-future-leveraging-the-delorean-to-secure-the-information-superhighway.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>Former Under Secretary of Defense for Policy James Miller Joins Belfer Center as Senior Fellow</title>
+				<description></description>
+				<pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
+				<link>/news/former-under-secretary-of-defense-for-policy-james-miller-joins-belfer-center-as-senior-fellow.html</link>
+				<guid isPermaLink="true">/news/former-under-secretary-of-defense-for-policy-james-miller-joins-belfer-center-as-senior-fellow.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>To Forecast Global Cyber Alliances, Just Follow the Money (Part 1: Understanding a Sino-Russian Cyber Agreement Through Economic Regionalism)</title>
+				<description>
+&lt;h3 id=&quot;by_andrea_little_limbago&quot;&gt;by &lt;a href=&quot;/archives/&quot;&gt;Andrea Little Limbago&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Former Secretary of Defense Leon Panetta called cyberspace &lt;a href=&quot;http://www.reuters.com/article/2012/10/20/us-usa-defense-cyber-idUSBRE89J00920121020&quot;&gt;“the battlefield of the future,”&lt;/a&gt; and this characterization of the cyber domain has only increased as cyber attacks grow more prevalent and disruptive. But this militarization of the cyber domain often masks an underlying cooperation that is occurring simultaneous to rising geopolitical friction. Rumors of a Sino-Russian cyber agreement have sparked alarm, and are a reminder that both cooperation and conflict are natural outcomes as states jockey for power in cyberspace.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://rbth.com/international/2014/10/21/press_digest_moscow_and_beijing_mull_agreement_on_information_s_40773.html&quot;&gt;rumored&lt;/a&gt; Sino-Russian cyber agreement is just the latest in a global trend of states signaling diplomatic preferences and commitments via formalized cooperative cyber security agreements. Cooperation in cyberspace in the modern era is reminiscent of the transition to economic cooperation in the post-World War II era and the military cooperation that dominated the earlier eras. In each case, states rely upon those distinct domains to signal affinities and exert power. Since the latter part of the 20th century, economic regionalism has become the defining mode of cooperation among states, in many instances replacing the role alliances once played. With that in mind, policymakers should look to the economic cooperative landscape as a foundation for forecasting the future of cyber security cooperation.&lt;/p&gt;
+
+&lt;p&gt;Sino-Russian collaboration across the monetary, commercial, and investment space reveals ever tighter integration among the two countries, and thus a cyber agreement should come as no surprise to those who follow global economic relations. However, the real insights may come in using economic regionalism to assess the implications of this rumored agreement. While a Sino-Russian agreement could be extraordinarily disruptive to the global order, it may have unintentional positive ramifications for the US. In fact, such an agreement may encourage other countries across the globe to ameliorate the persistent tensions with the US that have occurred since the Snowden disclosures. Given the current divergent approaches to the role of the Internet, most states are likely to find a universal approach to the Internet much more appealing than the model of censorship and control that Russia and China represent. A quick review of economic regionalism exemplifies the role of agreements, and soft power, in shaping global geopolitical partnerships.&lt;/p&gt;
+
+&lt;p&gt;Economic regionalism constitutes the range of economic relations between states, the most prevalent of which are regional trade agreements (RTAs). RTAs increased &lt;a href=&quot;http://www.voxeu.org/article/preferential-trade-agreements-and-wto&quot;&gt;exponentially&lt;/a&gt; beginning with the end of the Cold War and the subsequent global economic liberation. According to the &lt;a href=&quot;http://www.wto.org/english/tratop_e/region_e/region_e.htm&quot;&gt;World Trade Organization&lt;/a&gt;, there are currently 379 RTAs in force. In many cases, these RTAs have taken on military cooperative aspects, such as Africa’s Economic Community of West African States (ECOWAS). In fact, with the rise of globalization, RTAs often serve as the preferred mode of cooperation as formal alliances have declined. Similarly, cyber security cooperative agreements may soon become the modus operandi for power politics cooperation across the globe, superseding or augmenting the role of economic agreements.&lt;/p&gt;
+
+&lt;p&gt;While the impact of today’s RTA-influenced global economic order has been debated considerably, it is clear that cooperation in cyberspace is following a similar structure to that of cooperation in the commercial domain over the last 25 years. In a seminal overview of global political economy, &lt;a href=&quot;http://www.amazon.com/Global-Political-Economy-Understanding-International/dp/069108677X&quot;&gt;Robert Gilpin&lt;/a&gt; notes that, “Important factors in the spread of economic regionalism include the emergence of new economic powers, intensification of international economic competition, and rapid technological developments…Economic regionalism is also driven by the dynamics of an economic security dilemma.” It’s easy to foresee a future wherein “cyber” replaces “economic” in Gilpin’s analysis. In fact, it’s not a stretch to imagine a cyber security dilemma emerging in response to a Sino-Russian cyber security agreement.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.endgame.com/blog/b-to-forecast-global-cyber-alliances-just-follow-the-money-part-2-cooperation-in-the-cyber-domain-a-little-noticed-global-trend-that-is-mirroring-economic-regionalism.html&quot;&gt;Part Two: To Forecast Global Cyber Alliances, Just Follow the Money (Cooperation in the Cyber Domain: A Little Noticed Global Trend That is Mirroring Economic Regionalism)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+				<pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
+				<link>/blog/c-to-forecast-global-cyber-alliances-just-follow-the-money-part-1-understanding-a-sino-russian-cyber-agreement-through-economic-regionalism.html</link>
+				<guid isPermaLink="true">/blog/c-to-forecast-global-cyber-alliances-just-follow-the-money-part-1-understanding-a-sino-russian-cyber-agreement-through-economic-regionalism.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>To Forecast Global Cyber Alliances, Just Follow the Money (Part 2: Cooperation in the Cyber Domain: A Little Noticed Global Trend that is Mirroring Economic Regionalism)</title>
+				<description>
+&lt;h3 id=&quot;by_andrea_little_limbago&quot;&gt;by &lt;a href=&quot;/archives/&quot;&gt;Andrea Little Limbago&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This latest development in the realm of cyber cooperation is by no means unique. In fact, the US has &lt;a href=&quot;http://www.washingtonpost.com/world/national-security/us-and-russia-sign-pact-to-create-communication-link-on-cyber-security/2013/06/17/ca57ea04-d788-11e2-9df4-895344c13c30_story.html&quot;&gt;signed&lt;/a&gt; its own cyber security agreement with Russia (although it is not as &lt;a href=&quot;http://www.russia-direct.org/russian-media/russia-and-china-join-forces-cyber-superpowers&quot;&gt;comprehensive&lt;/a&gt; as the potential Sino-Russian one) – as well as with &lt;a href=&quot;http://www.dhs.gov/news/2011/07/19/united-states-and-india-sign-cybersecurity-agreement&quot;&gt;India&lt;/a&gt;, with the &lt;a href=&quot;http://www.whitehouse.gov/the-press-office/2014/03/26/fact-sheet-us-eu-cyber-cooperation&quot;&gt;EU&lt;/a&gt;, one with &lt;a href=&quot;http://www.nbcnews.com/id/44527648/ns/technology_and_science-security/t/cyber-security-added-us-australia-treaty/&quot;&gt;Australia&lt;/a&gt; as part of a defense treaty, and a cyber security action &lt;a href=&quot;http://www.publicsafety.gc.ca/cnt/rsrcs/pblctns/cybrscrt-ctn-plan/index-eng.aspx&quot;&gt;plan&lt;/a&gt; with Canada. Similarly, the EU has formal cyber agreements with &lt;a href=&quot;http://www.egmontinstitute.be/wp-content/uploads/2014/06/ESPO-WP7.pdf&quot;&gt;Japan&lt;/a&gt;, and the UK with &lt;a href=&quot;http://itrade.gov.il/uk/2014/05/14/israel-uk-set-joint-bilateral-fund-cyber-defence/&quot;&gt;Israel&lt;/a&gt;, while Japan and &lt;a href=&quot;http://osnetdaily.com/2014/05/japanese-israeli-bilateral-defense-accords-cover-cyber-cooperation-against-china-north-koreairan/&quot;&gt;Israel&lt;/a&gt; also have formed their own bilateral cyber security agreement. India has cyber security agreements with countries as diverse as &lt;a href=&quot;http://www.mea.gov.in/outoging-visit-detail.htm?4845/Bilateral+agreements+concluded+during+PMs+visit+to+Kazakhstan&quot;&gt;Kazakhstan&lt;/a&gt; and &lt;a href=&quot;http://ibnlive.in.com/news/narendra-modi-meets-brazilian-president-3-bilateral-agreements-inked/486444-7.html&quot;&gt;Brazil&lt;/a&gt;. RTAs are also being augmented with the inclusion of cyber. The &lt;a href=&quot;http://pages.au.int/sites/default/files/en_AU%20Convention%20on%20CyberSecurity%20Pers%20Data%20Protec%20AUCyC%20adopted%20Malabo.pdf&quot;&gt;African Union&lt;/a&gt;, the &lt;a href=&quot;http://media.npr.org/assets/news/2010/09/23/cyber_treaty.pdf&quot;&gt;Shanghai Cooperation Agreement&lt;/a&gt;, and the EU’s &lt;a href=&quot;http://conventions.coe.int/Treaty/Commun/QueVoulezVous.asp?CL=ENG&amp;NT=185&quot;&gt;Budapest Convention&lt;/a&gt; are all examples of this. This pattern parallels one found in the economic arena, with cooperative agreements often following closely to geopolitical affinities.&lt;/p&gt;
+
+&lt;p&gt;To better understand the impact of future cooperative cyber security agreements, policymakers should revisit the economic models and RTAs of the last quarter century – looking especially at the divergent perspectives that RTAs would either be &lt;a href=&quot;http://onlinelibrary.wiley.com/doi/10.1111/1467-9701.00214/abstract&quot;&gt;building blocs or stumbling blocs&lt;/a&gt; of a global international order. The building bloc camp believes the RTAs are merely a stepping-stone toward global integration. The stumbling bloc camp believes that RTAs are a new form of neo-mercantilism, which would lead to protectionist walls built around member-states. These camps have theoretical equivalents in today’s cyber domain. The stumbling bloc argument has profound parallels to discussions around the Balkanization of the Internet (i.e. the Splinternet), while the building bloc camp is representative of those suggesting a global diffusion of the Internet. In fact, these two perspectives greatly mirror the divergent ways in which China and Russia approach the Internet (i.e. cyber-nationalism) as opposed to the US approach (i.e. global integration).&lt;/p&gt;
+
+&lt;p&gt;While cyberspace will continue to be portrayed as a combative domain as long as attacks persist, policymakers cannot ignore the cooperative aspects of cyber, which increasingly reflect the larger geopolitical and economic landscape. Beijing and Moscow have been expanding collaboration on a range of economic issues. While it’s convenient to point to Sino-Soviet tensions during the Cold War to discount any trans-Asian partnerships by these two giants, such a heuristic not only would be erroneous but it would be detrimental to understanding global cyber trends. These two countries are increasingly &lt;a href=&quot;http://www.foreignaffairs.com/articles/142305/gilbert-rozman/asia-for-the-asians&quot;&gt;aligned&lt;/a&gt; diplomatically, and even more so economically. This past spring, Russia and China signed an &lt;a href=&quot;http://america.aljazeera.com/articles/2014/5/20/russia-china-bankdeal.html&quot;&gt;agreement&lt;/a&gt; between their largest banks to exchange in local currencies, bypassing the historic role of the dollar. This summer, the two countries signed a more comprehensive &lt;a href=&quot;http://rt.com/business/179032-currency-swap-russia-china/&quot;&gt;agreement&lt;/a&gt; to further trade in local currencies, again eliminating the need for the US dollar. If the latest rumors are correct, next week Russia and China will sign a cyber security agreement at–of all places–the Asia Pacific Economic Cooperation (APEC) summit.&lt;/p&gt;
+
+&lt;p&gt;APEC will provide a global forum for China to assert an agenda of greater economic integration in the region, including a push for the Asian Infrastructure Investment Bank (AIIB). This AIIB is &lt;a href=&quot;http://www.ibtimes.com/asian-infrastructure-investment-bank-opposed-us-seen-attempt-boost-chinese-influence-1702665&quot;&gt;viewed&lt;/a&gt; as a Chinese attempt at restructuring the post-World War II economic order established by the US and Europe. The US has openly challenged the creation of the AIIB exactly for this reason, and the possibility that it would emerge as a competitor to the World Bank (which was created at the Bretton Woods conference as one of the three pillars of the new Western-dominated global order). While China pushes forth with the AIIB, the US continues to press for the Trans-Pacific Partnership (TPP), a proposed free-trade agreement among a dozen states in the Asian region, and currently excludes China. China claims the TPP is a US attempt to contain China in the region and has been pushing forth with its own alternatives in the region such as the AIIB as well as the Shanghai Cooperation Organization. Now with a potential cyber agreement between Russian and China, it’s likely that this tit-for-tat behavior will overtly manifest in the cyber domain.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.endgame.com/blog/a-to-forecast-global-cyber-alliances-just-follow-the-money-part-3-moving-toward-a-cyber-curtain-apec-and-the-implications-of-a-potential-sino-russian-cyber-agreement.html&quot;&gt;Part Three: To Forecast Global Cyber Alliances, Just Follow the Money (Moving Toward a “Cyber Curtain”: APEC and the Implications of a Potential Sino-Russian Cyber Agreement)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+				<pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
+				<link>/blog/b-to-forecast-global-cyber-alliances-just-follow-the-money-part-2-cooperation-in-the-cyber-domain-a-little-noticed-global-trend-that-is-mirroring-economic-regionalism.html</link>
+				<guid isPermaLink="true">/blog/b-to-forecast-global-cyber-alliances-just-follow-the-money-part-2-cooperation-in-the-cyber-domain-a-little-noticed-global-trend-that-is-mirroring-economic-regionalism.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>To Forecast Global Cyber Alliances, Just Follow the Money (Part 3: Moving Toward a “Cyber Curtain”: APEC and the Implications of a Potential Sino-Russian Cyber Agreement)</title>
+				<description>
+&lt;h3 id=&quot;by_andrea_little_limbago&quot;&gt;by &lt;a href=&quot;/archives/&quot;&gt;Andrea Little Limbago&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Next week’s APEC summit may, in addition to providing great insight into economic collaborative trends, serve as a harbinger to subsequent cyber collaboration. If the economic trends carry over, it’s likely that a Sino-Russian cyber agreement just may provide the impetus that pushes many countries toward closer relations with the US, especially if it addresses joint cyber operations. The Sino-Russian cyber agreement plausibly can be viewed as part of a &lt;a href=&quot;http://www.computing.co.uk/ctg/news/2377766/russia-and-china-to-sign-cyber-security-treaty-in-november&quot;&gt;response&lt;/a&gt; to the Snowden disclosures of last year. The disclosures similarly strained relations between the US and its partners across the globe. However, in light of a Sino-Russian cyber accord, these strained relations could dissipate when states are left choosing between two greatly distinct approaches to the Internet. On the one hand, although the US certainly must continue to mend global relations, it nevertheless still promotes an open, transparent, and universal approach to the Internet. From the beginning, the US has encouraged Internet expansion and integration, providing economies of scale for access to information across the globe.&lt;/p&gt;
+
+&lt;p&gt;In contrast, between the Great Firewall of China and Russia’s increased censorship, a Sino-Russian pact symbolizes in many ways the modern version of the Iron Curtain. Just as the Iron Curtain epitomized the sharp divide between closed and open societies, a Sino-Russian accord could signify the start of a ‘Cyber Curtain’, reflecting a sharp divide between two very different approaches to Internet freedoms, access to information, and even the role of the government. Despite all of the past year’s controversy over the Snowden disclosures, the US still has soft power on its side as a key proponent of universal Internet expansion and information access. This soft power will likely be much more attractive than the censored and disconnected approach offered by China and Russia.&lt;/p&gt;
+
+&lt;p&gt;China will certainly continue to flex its economic muscles during the APEC summit. However, keep an eye out for a Sino-Russian cyber agreement that may sneak under the radar due to the summit’s focus on economic issues. China’s ongoing provocations across the South China Sea, coupled with Russia’s cyber and military expansion into Eastern Europe, have already induced uncertainty and concern among the other players in each region. This uncertainty has already begun to push neighbors and rivals &lt;a href=&quot;http://www.businessinsider.com/vietnam-proxy-against-chinese-influence-2014-10&quot;&gt;together&lt;/a&gt; to counter the provocations. Similarly, a Sino-Russian cyber agreement may inadvertently cause many countries in both Europe and Asia to rethink their stance and push them toward greater cyber collaboration with the US. This would create a cyber curtain reflecting two very distinct approaches to the cyber landscape – one championed by the US and one by Russia and China. Just as the pre-World War I Gold Standard and the Cold War Iron Curtain signified a sharp contrast between global integration and nationalistic isolation, the current global structure may soon reflect a cyber divide between cyber-nationalism and cyber-integration, reflecting the patterns of cyber cooperation.&lt;/p&gt;
+
+&lt;p&gt;To get a head start on understanding this emergent cyber security cooperation, policymakers would do well to look at how economic regionalism might help them better forecast the cyber future. If the economic cooperative landscape is any indicator, the US may finally move beyond the tensions sparked by the Snowden revelations and amend cyber relations with the rest of the global community. It’s ironic that Russia and China may play the determining hand in creating that outcome.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
+				<link>/blog/a-to-forecast-global-cyber-alliances-just-follow-the-money-part-3-moving-toward-a-cyber-curtain-apec-and-the-implications-of-a-potential-sino-russian-cyber-agreement.html</link>
+				<guid isPermaLink="true">/blog/a-to-forecast-global-cyber-alliances-just-follow-the-money-part-3-moving-toward-a-cyber-curtain-apec-and-the-implications-of-a-potential-sino-russian-cyber-agreement.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>Great Time to Be a Cybersec Startup</title>
+				<description></description>
+				<pubDate>Fri, 31 Oct 2014 00:00:00 +0000</pubDate>
+				<link>/news/great-time-to-be-a-cybersec-startup.html</link>
+				<guid isPermaLink="true">/news/great-time-to-be-a-cybersec-startup.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>Bestiary of Cyber Intelligence</title>
+				<description>
+&lt;h3 id=&quot;by_andrea_little_limbago_illustrations_by_anne_harper&quot;&gt;by &lt;a href=&quot;/archives/&quot;&gt;Andrea Little Limbago&lt;/a&gt;, Illustrations by &lt;a href=&quot;/archives/&quot;&gt;Anne Harper&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Welcome to the First Annual Endgame Halloween Blog! Inspired by the recently released &lt;a href=&quot;http://www.foia.cia.gov/sites/default/files/DOC_0000619161.pdf&quot;&gt;Bestiary of Intelligence&lt;/a&gt; masterpiece, we have built upon this model with a Bestiary of Cyber Intelligence 2014: Top 10 Creatures. These beasts represent common clichés, terms, or phrases that get over-used, misused, or simply abused through the course of cyber intelligence writings. As you read it, we’re certain other specimens will come to mind. Start keeping track of them now for potential inclusion into our bestiary collection for 2015!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Viral meme&lt;/strong&gt;: Viral memes are self-replicating, cacophonous creatures that can diffuse globally in the blink of an eye. No one knows how they emerge or why they so abruptly disappear. Viral memes rarely stand up well to historical scrutiny, and analysts have yet to clearly identify why some viral memes endure so long even after all normal rationality would predict their demise.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/ViralMeme.png&quot; alt=&quot;ViralMeme.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Low-hanging fruit&lt;/strong&gt;: Contrary to conventional wisdom, this animal is not edible. In fact, it can be quite poisonous, lulling analysts into complacency, and forcing them to gravitate toward the easiest, simplest solution achieved with minimal effort exerted. The low-hanging fruit has a very short life span, rotting quickly and is readily replaced once another low-hanging fruit is discovered.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/LowHangingFruit.png&quot; alt=&quot;LowHangingFruit.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hacking back&lt;/strong&gt;: Once thought to be a thing of fantasy, there have been increased sightings of the hacking back over the last few years. Most describe it similarly to a triceratops, with a shielded head to protect itself and large teeth and horns to attack. Many in the scientific community deny its existence, and there are divergent descriptions by those who have seen it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/HackingBack.png&quot; alt=&quot;HackingBack.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Malicious attack&lt;/strong&gt;: Distant cousin and foe of the heartwarming smiley emoticon, malicious attacks are moody creatures that often can hide for days or weeks unbeknownst to their owners, only to emerge once discovered by adept inspection by a cyber analyst. These dark, slimy creatures have elongated, strong appendages, enabling them to surmount any defense. Because of their notorious reputation, when any data is breached, a malicious attack is the first to get blamed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/MaliciousAttack.png&quot; alt=&quot;MaliciousAttack.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Compromised systems&lt;/strong&gt;: These unfortunate beasts are quite fragile, often come in groups and are easily swayed by external forces. However, they camouflage easily into the vast IT infrastructure and thus are quite difficult to see with the naked eye. Similar to the golden snitch in Quidditch, analysts compete with each other in an attempt to be the first to discover a compromised system.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/CompromisedSystems.png&quot; alt=&quot;CompromisedSystems.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Big data&lt;/strong&gt;: This aquatic creature prefers extreme weather situations - floods, deluges, storms. Big data exhibit long mandibles and a broad head, steam rolling everything in their path. Analysts must be very careful with big data, as it is impossible for them to comprehend yet simultaneously holds the solution to every plausible analytic question ever pondered.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/BigData.png&quot; alt=&quot;BigData.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Trolls&lt;/strong&gt;: It wouldn’t be Halloween without a troll, but this isn’t just any grumpy old troll. These trolls are quick, dark creatures, slithering quickly and quietly in and out of forums. Trolls sow discord wherever they go, popping in and out of conversations. At times confused with a devil’s advocate, trolls don’t generally start arguments to help improve decision-making, but instead seek to create disputes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/Trolls.png&quot; alt=&quot;Trolls.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TLDR&lt;/strong&gt;: The TLDR is every analyst’s worst nightmare. A very complex, multi-faceted beast, the TLDR requires constant nurturing and support to help it grow to adulthood. Analysts spend significant amounts of time growing the TLDR. This unusual beast, however, has the ability to dismember itself upon reaching adulthood, and can divide and metamorphose into creatures that sadly become unrecognizable to analysts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/TLDR.png&quot; alt=&quot;TLDR.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The Cloud&lt;/strong&gt;: The cyber holy grail, digital heaven, and the closest thing to cyber religion. The cloud is a loyal, fix-all beast that is everything and nothing at once. More importantly, if an analyst can’t find the data, they just need to look in the cloud. If there’s a problem, the cloud can fix it. The one technology that will never fail, and similar to choosing C in multiple choice exams, if a cyber practitioner doesn’t know the technical solution to a problem, just recommend the cloud.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/TheCloud.png&quot; alt=&quot;TheCloud.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Attribution problem&lt;/strong&gt;: A close companion of the Cloud, the attribution problem is an analyst’s go-to friend if they come across inconclusive findings. The attribution problem gets blamed for many analytic hurdles, which makes it one of the most melancholy beasts. Seriously, if the data fails to yield interesting insights, it’s generally because of the attribution problem. If an analyst can’t find the root cause of malicious attacks or compromised systems, the attribution problem quickly becomes the scapegoat.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/uploads/AttributionProblem.png&quot; alt=&quot;AttributionProblem.png&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Thu, 30 Oct 2014 00:00:00 +0000</pubDate>
+				<link>/blog/bestiary-of-cyber-intelligence.html</link>
+				<guid isPermaLink="true">/blog/bestiary-of-cyber-intelligence.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>Endgame Reports Record Growth for 2014; Adds Two New Executives </title>
+				<description>
+&lt;h2 id=&quot;endgame_reports_record_growth_for_2014_adds_two_new_executives&quot;&gt;Endgame Reports Record Growth for 2014; Adds Two New Executives&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Arlington, VA&lt;/em&gt; – October 29, 2014 – Endgame, Inc., a leading provider of security intelligence and analytics solutions that give enterprises real-time visibility and actionable insight across their digital domains, today announced record growth for 2014. In the first three quarters of 2014, Endgame has tripled sales over 2013. Over the same time frame, the company has added 39 new employees, augmenting its expertise in data science, malware analysis, and cloud security. Endgame’s two most recent hires include Senior Vice President of Marketing Jon Brody and Vice President of Engineering Jim Tosh. Mr. Brody will lead Endgame’s marketing strategy while Mr. Tosh will lead development of Endgame’s security technology products.&lt;/p&gt;
+
+&lt;p&gt;“Both Jon and Jim have a depth of expertise in enterprise security that will be instrumental to Endgame’s growth,” said Endgame CEO Nate Fick. “By continuing to add top-tier security product and market expertise to our ranks, expanding our product offerings in the federal market, and delivering battle-tested enterprise solutions that help safeguard businesses, Endgame will continue the record growth trajectory it has demonstrated in 2014.”&lt;/p&gt;
+
+&lt;p&gt;For the past 16 years, Mr. Brody has established marketplace leaders in enterprise software, IT security and compliance; developed new growth areas in commercial technology markets; and increased revenue by as much as 400 percent. He was most recently the Vice President of Marketing at Tenable Network Security, leading the rebranding and repositioning of the company. He also held executive marketing roles at TriCipher (acquired by VMware) and Sygate Technologies (acquired by Symantec).&lt;/p&gt;
+
+&lt;p&gt;“I am thrilled to join Endgame at such a critical time in the enterprise security market as customers across the board seek superior solutions for defending systems and carrying out their cyber missions,” said Mr. Brody. “Endgame will continue to lead in this space as we expand our federal offerings and deliver enterprise solutions that protect customers from advanced threats.”&lt;/p&gt;
+
+&lt;p&gt;Mr. Tosh has spent the last decade leading product engineering initiatives and successfully bringing new security products and innovative technologies to market. He was most recently Head of Engineering at Authentic8, where he drove software architecture and design and built a team that rapidly brought products to reality. He previously held senior engineering positions at Juniper Networks and Redline Networks (acquired by Juniper Networks).&lt;/p&gt;
+
+&lt;p&gt;“I’m excited to lead the engineering team at Endgame, as this is an unparalleled opportunity to drive the technology growth and success of a company at the cutting-edge of security intelligence and cyber security,” said Mr. Tosh. “Building on the company’s existing innovation, I look forward to further developing our technical vision through this next phase of the company’s expansion into the enterprise market.”&lt;/p&gt;
+
+&lt;h3 id=&quot;about_endgame&quot;&gt;About Endgame&lt;/h3&gt;
+
+&lt;p&gt;Endgame is delivering the next generation of Security Intelligence &amp;amp; Analytics (SIA). Our core capabilities use data science and cutting-edge technology to give our federal and commercial customers real-time visibility across their digital domains, and our ecosystem of applications use that insight to solve a wide array of security problems. Endgame allows you to see what others can’t, and to take control of your connected world.&lt;/p&gt;
+
+&lt;p&gt;Endgame was founded in 2008 and has offices in Washington, DC, Atlanta, GA, Melbourne, FL, San Francisco, CA, and San Antonio, TX. Endgame is backed by leading investors including Bessemer Venture Partners, Columbia Capital, Kleiner Perkins Caufield &amp;amp; Byers, Paladin Capital Group, and Mithril Capital Management.&lt;/p&gt;
+</description>
+				<pubDate>Wed, 29 Oct 2014 00:00:00 +0000</pubDate>
+				<link>/press-release/endgame-reports-record-growth-for-2014-adds-two-new-executives.html</link>
+				<guid isPermaLink="true">/press-release/endgame-reports-record-growth-for-2014-adds-two-new-executives.html</guid>
+			</item>
+                   
+		
+		  
+			<item>
+				<title>Endgame Contributes Data and Analysis to &quot;Operation SMN&quot; Report</title>
+				<description>
+&lt;p&gt;Today, Novetta and a coalition of cyber security companies released the report “Operation SMN: Axiom Threat Actor Group Report,” which details the characteristics of a threat actor group believed to act on behalf of a Chinese government intelligence apparatus. Endgame provided extensive proprietary threat data and analytical processing capabilities that allowed the coalition to gain deeper insight into compromised network footprints.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Read the full report &lt;a href=&quot;http://www.novetta.com/files/9714/1446/8199/Executive_Summary-Final_1.pdf&quot;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+</description>
+				<pubDate>Tue, 28 Oct 2014 00:00:00 +0000</pubDate>
+				<link>/blog/endgame-contributes-data-and-analysis-to-operation-smn.html</link>
+				<guid isPermaLink="true">/blog/endgame-contributes-data-and-analysis-to-operation-smn.html</guid>
+			</item>
+                   
+		
+	</channel>
+      </rss>

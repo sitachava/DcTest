@@ -1,0 +1,266 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/building-models-for-time-series-analysis.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:46:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">Building Models for Time Series Analysis | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>Building Models for Time Series Analysis</h1>
+        
+<h3 id="by_phil_roth">by <a href="../archives/index.html">Phil Roth</a></h3>
+
+<p>In <a href="time-series-analysis-for-network-security.html">my last post</a>, I talked about the different Python projects I used to put together a pipeline for network security data. In this post, I’ll talk about how I used the scientific computing software stack in Python (<a href="http://www.numpy.org/">numpy</a>, <a href="http://www.scipy.org/scipylib/index.html">scipy</a>, and <a href="http://pandas.pydata.org/">pandas</a>) to build a model around that data and detect outliers. We left off last week with a pandas DataFrame containing example data:</p>
+
+<p><img src="../uploads/SciPy2image1.png" alt="SciPy2image1.png" /></p>
+
+<p>This plot is an example taken from the database that shows the number of times an IP responds to connection requests over time. In order to find potential security threats, I’d like to find outliers in this and any other time series. In order to find outliers, I need to build a model around what I believe is normal behavior based on past data.</p>
+
+<p>The most simplistic approach to building a model is to take the mean and standard deviation of the data I’ve seen so far. I can then treat the mean as a prediction of the next value and generate an alert when the actual value exceeds a configurable number of standard deviations from that prediction. The results of that simple algorithm are shown below:</p>
+
+<p><img src="../uploads/SciPy2image2.png" alt="SciPy2image2.png" /> <img src="../uploads/SciPy2image3.png" alt="SciPy2image3.png" /></p>
+
+<p>In this plot and the ones that follow, the actual number of connections observed is in blue. The green window is centered on the prediction made for that time bin and extends one standard deviation in each direction. A red vertical line is drawn when the actual data is a configurable distance away from that prediction window.</p>
+
+<p>As you can see in this first model, the prediction window is not highly correlated with the data and the spread is very large. A better model would be to fit the data to a sine curve using the tools that scipy provides. The prediction is the fit value and the standard deviation is derived from the residuals to the fit:</p>
+
+<p><img src="../uploads/SciPy2image4.png" alt="SciPy2image4.png" /></p>
+<div class='highlight'><pre><code class='java'><span class='n'>from</span> <span class='n'>scipy</span><span class='o'>.</span><span class='na'>optimize</span> <span class='kn'>import</span> <span class='nn'>leastsq</span>
+
+<span class='n'>def</span> <span class='nf'>fitfunc</span><span class='o'>(</span><span class='n'>p</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>)</span> <span class='o'>:</span>
+  <span class='k'>return</span> <span class='o'>(</span><span class='n'>p</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span> <span class='o'>*</span> <span class='o'>(</span><span class='mi'>1</span> <span class='o'>-</span> <span class='n'>p</span><span class='o'>[</span><span class='mi'>1</span><span class='o'>]</span> <span class='o'>*</span> <span class='n'>np</span><span class='o'>.</span><span class='na'>sin</span><span class='o'>(</span><span class='mi'>2</span> <span class='o'>*</span> <span class='n'>np</span><span class='o'>.</span><span class='na'>pi</span> <span class='o'>/</span> <span class='o'>(</span><span class='mi'>24</span> <span class='o'>*</span> <span class='mi'>3600</span><span class='o'>)</span> <span class='o'>*</span> <span class='o'>(</span><span class='n'>x</span> <span class='o'>+</span> <span class='n'>p</span><span class='o'>[</span><span class='mi'>2</span><span class='o'>]))))</span>
+
+<span class='n'>def</span> <span class='nf'>residuals</span><span class='o'>(</span><span class='n'>p</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>)</span> <span class='o'>:</span>
+  <span class='k'>return</span> <span class='n'>y</span> <span class='o'>-</span> <span class='n'>fitfunc</span><span class='o'>(</span><span class='n'>p</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>)</span>
+
+<span class='n'>def</span> <span class='nf'>fit</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>)</span> <span class='o'>:</span>
+  <span class='n'>tsgb</span> <span class='o'>=</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>groupby</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>timeofday</span><span class='o'>).</span><span class='na'>mean</span><span class='o'>()</span>
+  <span class='n'>p0</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='na'>array</span><span class='o'>([</span><span class='n'>tsgb</span><span class='o'>[</span><span class='err'>“</span><span class='n'>conns</span><span class='err'>”</span><span class='o'>].</span><span class='na'>mean</span><span class='o'>(),</span> <span class='mf'>1.0</span><span class='o'>,</span> <span class='mf'>0.0</span><span class='o'>])</span>
+  <span class='n'>plsq</span><span class='o'>,</span> <span class='n'>suc</span> <span class='o'>=</span> <span class='n'>leastsq</span><span class='o'>(</span><span class='n'>residuals</span><span class='o'>,</span> <span class='n'>p0</span><span class='o'>,</span> <span class='n'>args</span><span class='o'>=(</span><span class='n'>tsgb</span><span class='o'>[</span><span class='err'>“</span><span class='n'>conns</span><span class='err'>”</span><span class='o'>],</span> <span class='n'>np</span><span class='o'>.</span><span class='na'>array</span><span class='o'>(</span><span class='n'>tsgb</span><span class='o'>.</span><span class='na'>index</span><span class='o'>)))</span>
+  <span class='k'>return</span> <span class='n'>plsq</span>
+  
+</code></pre></div>
+<p><img src="../uploads/SciPy2image5.png" alt="SciPy2image5.png" /></p>
+
+<p>At least on weekdays, the prediction mirrors the data better and the window is tighter. But we can improve these models even further. When looking through the data, it became apparent to me that different kinds of metrics required totally different models. I therefore developed a method for classifying the time series by asking two different questions:</p>
+
+<ul>
+<li>Does this metric show a weekly pattern (i.e. different behavior on weekdays and weekends?)</li>
+
+<li>Does this metric show a daily pattern?</li>
+</ul>
+
+<p>In order to answer the first question, I fit the sine curve displayed above to the data on weekdays and weekends separately and compared the overall level of the fit (the p0 parameter in the equation above). If the levels differed, then I would build a model for the weekday data separately from the weekend data. If the overall levels of those fits were similar, then I kept that time series intact.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>def</span> <span class='nf'>weekend_ratio</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>)</span> <span class='o'>:</span>
+
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>&#39;</span><span class='n'>weekday</span><span class='err'>&#39;</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>pd</span><span class='o'>.</span><span class='na'>Series</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>.</span><span class='na'>weekday</span> <span class='o'>&lt;</span> <span class='mi'>5</span><span class='o'>,</span> <span class='n'>index</span><span class='o'>=</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>)</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>&#39;</span><span class='n'>timeofday</span><span class='err'>&#39;</span><span class='o'>]</span> <span class='o'>=</span> <span class='o'>(</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>.</span><span class='na'>second</span> <span class='o'>+</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>.</span><span class='na'>minute</span> <span class='o'>*</span> <span class='mi'>60</span> <span class='o'>+</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>.</span><span class='na'>hour</span> <span class='o'>*</span> <span class='mi'>3600</span><span class='o'>)</span>
+
+  <span class='n'>wdayplsq</span> <span class='o'>=</span> <span class='n'>fit</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>weekday</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>])</span>
+  <span class='n'>wendplsq</span> <span class='o'>=</span> <span class='n'>fit</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>weekdy</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>])</span>
+  <span class='k'>return</span> <span class='n'>wendplsq</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span> <span class='o'>/</span> <span class='n'>wdayplsq</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span>
+  
+</code></pre></div>
+<p><img src="../uploads/SciPy2image6.png" alt="SciPy2image6.png" /></p>
+
+<p>In the plot above, I show the weekday and weekend fits in red. For this data, the behavior of the time series on weekdays and weekends was different enough that I decided to treat them separately.</p>
+
+<p>The next step is to determine if the time series displays daily patterns. In order to do this, I use numpy to take the Fourier transform of the time series and inspect the bins associated with a frequency of a day. I sum the three bins closest to that frequency and compare them to the first bin or the DC component. If the sum is large enough compared to that first bin, then the time series is classified as having a daily pattern.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>def</span> <span class='nf'>daily_ratio</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>)</span> <span class='o'>:</span>
+
+  <span class='n'>nbins</span> <span class='o'>=</span> <span class='n'>len</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>)</span>
+  <span class='n'>deltat</span> <span class='o'>=</span> <span class='o'>(</span><span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>[</span><span class='mi'>1</span><span class='o'>]</span> <span class='o'>-</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>index</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]).</span><span class='na'>seconds</span>
+  <span class='n'>deltaf</span> <span class='o'>=</span> <span class='mf'>1.0</span> <span class='o'>/</span> <span class='o'>(</span><span class='n'>len</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>)</span> <span class='o'>*</span> <span class='n'>deltat</span><span class='o'>)</span>
+  <span class='n'>daybin</span> <span class='o'>=</span> <span class='kt'>int</span><span class='o'>((</span><span class='mf'>1.0</span> <span class='o'>/</span> <span class='o'>(</span><span class='mi'>24</span> <span class='o'>*</span> <span class='mi'>3600</span><span class='o'>))</span> <span class='o'>/</span> <span class='n'>deltaf</span><span class='o'>)</span>
+
+  <span class='n'>rfft</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='na'>abs</span><span class='o'>(</span><span class='n'>np</span><span class='o'>.</span><span class='na'>fft</span><span class='o'>.</span><span class='na'>rfft</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>“</span><span class='n'>conns</span><span class='err'>”</span><span class='o'>]))</span>
+  <span class='n'>daily_ratio</span> <span class='o'>=</span> <span class='n'>np</span><span class='o'>.</span><span class='na'>sum</span><span class='o'>(</span><span class='n'>rfft</span><span class='o'>[</span><span class='n'>daybin</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>:</span><span class='n'>daybin</span> <span class='o'>+</span> <span class='mi'>2</span><span class='o'>])</span> <span class='o'>/</span> <span class='n'>rfft</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span>
+  
+  <span class='k'>return</span> <span class='n'>daily_ratio</span>
+  
+</code></pre></div>
+<p>Plots are sometimes the best way to explain these results, so I show two examples of the procedure below. In the first example, I show all the weekday data together in blue and the Fourier transform of that data in green. Red lines highlight the values corresponding to the frequency of a day in the Fourier transform data. The spike there is obvious and indicates a strong daily pattern.</p>
+
+<p><img src="../uploads/SciPy2image7.png" alt="SciPy2image7.png" /></p>
+
+<p>The next figure shows the second example of the daily classification procedure. Here, the weekend data is combined in blue and the Fourier transform of that is in green. The Fourier transform data is flat and tells me that there is no daily pattern in this data.</p>
+
+<p><img src="../uploads/SciPy2image8.png" alt="SciPy2image8.png" /></p>
+
+<p>The next step in the analysis is to apply a predictive model to the weekdays and weekends separately. In both cases, I apply an <a href="http://en.wikipedia.org/wiki/EWMA#Exponential_moving_average">exponentially weighted moving average</a> (EWMA). This calculation weights more recently occurring data more heavily in the calculation of an average. Trends and events in the past have less and less of an effect on future predictions. It’s a very simple calculation to do in pandas:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>def</span> <span class='nf'>ewma_outlier</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>,</span> <span class='n'>stdlimit</span><span class='o'>=</span><span class='mi'>5</span><span class='o'>,</span> <span class='n'>span</span><span class='o'>=</span><span class='mi'>15</span><span class='o'>)</span> <span class='o'>:</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>’</span><span class='n'>conns_binpred</span><span class='err'>’</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>pd</span><span class='o'>.</span><span class='na'>ewma</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns</span><span class='err'>’</span><span class='o'>],</span> <span class='n'>span</span><span class='o'>=</span><span class='n'>span</span><span class='o'>).</span><span class='na'>shift</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>’</span><span class='n'>conns_binstd</span><span class='err'>’</span><span class='o'>]</span> <span class='o'>=</span> <span class='n'>pd</span><span class='o'>.</span><span class='na'>ewmstd</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns</span><span class='err'>’</span><span class='o'>],</span> <span class='n'>span</span><span class='o'>=</span><span class='n'>span</span><span class='o'>).</span><span class='na'>shift</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_stds</span><span class='err'>’</span><span class='o'>]</span> <span class='o'>=</span> <span class='o'>((</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns</span><span class='err'>’</span><span class='o'>]</span> <span class='err'>–</span> <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>’</span><span class='n'>conns_binpred</span><span class='err'>’</span><span class='o'>])</span> <span class='o'>/</span>
+                         <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_binstd</span><span class='err'>’</span><span class='o'>])</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_outlier</span><span class='err'>’</span><span class='o'>]</span> <span class='o'>=</span> <span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_stds</span><span class='err'>’</span><span class='o'>].</span><span class='na'>abs</span><span class='o'>()</span> <span class='o'>&gt;</span> <span class='n'>stdlimit</span><span class='o'>)</span>
+  <span class='k'>return</span> <span class='n'>tsdf</span>
+  
+</code></pre></div>
+<p>For time series that show no daily pattern, such as the weekend days of the example data we’ve been working with, I calculate the moving average and standard deviation and flag outliers when the actual data is a certain number of standard deviations away from the average. This procedure works best for data that does not vary significantly over time. It does not work as well when predictable daily patterns are present. In this case, the moving average lags the actual data in a predictable way that I should be able to account for. I’ve been calling this method a “stacked EWMA” because I group the data by time of day and stack each day on top of another. The next scatter plot shows the data stacked in this way.</p>
+
+<p><img src="../uploads/SciPy2image9.png" alt="SciPy2image9.png" /></p>
+
+<p>Each vertical line corresponds to the number of connection responses occurring during a certain time of day over the span of about three weeks. Now I track the EWMA of the data in each of those vertical lines separately. This is illustrated in the next plot.</p>
+
+<p><img src="../uploads/SciPy2image10.png" alt="SciPy2image10.png" /></p>
+
+<p>Here, the number of connection responses between 8AM and 8:30AM are expanded over the range of days on which they were collected. The green solid line shows the EWMA calculated from just those points and the dashed green line shows the edges of the prediction window. The same analysis is carried out for each time of day bin. After it’s completed, I have a prediction window for each bin that’s based on what’s happened at this time of day over the previous days and weeks. Here is the code that completes this stacked analysis:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>def</span> <span class='nf'>stacked_outlier</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>,</span> <span class='n'>stdlimit</span><span class='o'>=</span><span class='mi'>4</span><span class='o'>,</span> <span class='n'>span</span><span class='o'>=</span><span class='mi'>10</span><span class='o'>)</span> <span class='o'>:</span>
+
+  <span class='n'>gbdf</span> <span class='o'>=</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>groupby</span><span class='o'>(</span><span class='err'>‘</span><span class='n'>timeofday</span><span class='err'>’</span><span class='o'>)[</span><span class='n'>colname</span><span class='o'>]</span>
+  <span class='n'>gbdf</span> <span class='o'>=</span> <span class='n'>pd</span><span class='o'>.</span><span class='na'>DataFrame</span><span class='o'>({</span><span class='err'>‘</span><span class='n'>conns_binpred</span><span class='err'>’</span> <span class='o'>:</span> <span class='n'>gbdf</span><span class='o'>.</span><span class='na'>apply</span><span class='o'>(</span><span class='n'>pd</span><span class='o'>.</span><span class='na'>ewma</span><span class='o'>,</span> <span class='n'>span</span><span class='o'>=</span><span class='n'>span</span><span class='o'>),</span>
+                       <span class='err'>‘</span><span class='n'>conns_binstd</span><span class='err'>’</span> <span class='o'>:</span> <span class='n'>gbdf</span><span class='o'>.</span><span class='na'>apply</span><span class='o'>(</span><span class='n'>pd</span><span class='o'>.</span><span class='na'>ewmstd</span><span class='o'>,</span> <span class='n'>span</span><span class='o'>=</span><span class='n'>span</span><span class='o'>)})</span>
+  <span class='n'>interval</span> <span class='o'>=</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>timeofday</span><span class='o'>[</span><span class='mi'>1</span><span class='o'>]</span> <span class='o'>-</span> <span class='n'>tsdf</span><span class='o'>.</span><span class='na'>timeofday</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span>
+  <span class='n'>nshift</span> <span class='o'>=</span> <span class='kt'>int</span><span class='o'>(</span><span class='mf'>86400.0</span> <span class='o'>/</span> <span class='n'>interval</span><span class='o'>)</span>
+  <span class='n'>gbdf</span> <span class='o'>=</span> <span class='n'>gbdf</span><span class='o'>.</span><span class='na'>shift</span><span class='o'>(</span><span class='n'>nshift</span><span class='o'>)</span>
+  <span class='n'>tsdf</span> <span class='o'>=</span> <span class='n'>gbdf</span><span class='o'>.</span><span class='na'>combine_first</span><span class='o'>(</span><span class='n'>tsdf</span><span class='o'>)</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_stds</span><span class='err'>’</span><span class='o'>]</span> <span class='o'>=</span> <span class='o'>((</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns</span><span class='err'>’</span><span class='o'>]</span> <span class='err'>–</span> <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_binpred</span><span class='err'>’</span><span class='o'>])</span> <span class='o'>/</span> <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_binstd</span><span class='err'>’</span><span class='o'>])</span>
+  <span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_outlier</span><span class='err'>’</span><span class='o'>]</span> <span class='o'>=</span> <span class='o'>(</span><span class='n'>tsdf</span><span class='o'>[</span><span class='err'>‘</span><span class='n'>conns_stds</span><span class='err'>’</span><span class='o'>].</span><span class='na'>abs</span><span class='o'>()</span> <span class='o'>&gt;</span> <span class='n'>stdlimit</span><span class='o'>)</span>
+  <span class='k'>return</span> <span class='n'>tsdf</span>
+  
+</code></pre></div>
+<p><img src="../uploads/SciPy2image11.png" alt="SciPy2image11.png" /></p>
+
+<p>This last plot shows the final result when the weekday and weekend models are executed and combined in the same figure. Daily patterns are predicted and accounted for. Flat periods during the weekends are well tracked. In further testing, this prediction model is very robust to different types of time series.</p>
+
+<p>In the future, I’d like to create some metric for judging different prediction models that adequately penalizes for false positives and false negatives. I’d also like to further experiment with ARIMA (autoregressive integrated moving average) models and automatically finding repeated patterns instead of counting on them occurring in daily and weekly time spans. Also, a different technique will probably be necessary for time series with low statistics.</p>
+
+<p>Thanks so much for reading. I hope you’ve learned a bit about the simplicity and power of working with the scientific computing stack in Python and its applications to network security data. I’ve posted the slides from which this material was taken <a href="http://www.slideshare.net/mrphilroth/scipy2014">here</a>.</p>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/building-models-for-time-series-analysis.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:49:57 GMT -->
+</html>

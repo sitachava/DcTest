@@ -1,0 +1,411 @@
+<!doctype html>
+<!--
+
+    EEEEE  N   N  DDD     GGG     A    M   M  EEEEE
+    EE     NN  N  D  D   G       A A   MM MM  EE
+    EEEE   N N N  D   D G  GGG  A A A  M M M  EEEE
+    EE     N  NN  D  D   G   G  A   A  M   M  EE     ##
+    EEEEE  N   N  DDD     GGG   A   A  M   M  EEEEE  ##
+
+    Thanks for checking out our code!
+    We are always looking for the most inquisitive and creative front-end developers.
+    Contact us at info@endgame.com or check our careers page for openings.
+
+-->
+<html lang="en-us" id='top'>
+
+<!-- Mirrored from www.endgame.com/blog/storm-metrics-how-to.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:55:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title dir="ltr">Storm Metrics How-To | Endgame.</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/6815252/750422/css/fonts.css" />
+    <link href="../css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="inner">
+    <div id='contact-us' class='js-contact-form'>
+    <h1>Sign Up for Endgame News and Communications</h1>
+    <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+	<input type=hidden name="oid" value="00Dd0000000e4Bs">
+	<input type=hidden name="retURL" value="../index.html">
+	<label for="first_name">First Name</label><input  required id="first_name" name="first_name" type="text" /><br>
+	<label for="last_name">Last Name</label><input  required id="last_name" name="last_name" type="text" /><br>
+	<label for="email">Email</label><input  required id="email" name="email" type="text" /><br>
+	<label for="company">Company</label><input  required id="company" name="company" type="text" /><br>
+	<label for="title">Title</label><input  required id="title" name="title" type="text" /><br>
+	<input type="submit" class='button--red' name="submit">
+    </form>
+    </div>
+    <header role="banner" class="cf">
+        <h2>
+            <a href="../index.html">
+                <img class='logo2' alt="Endgame logo" src="images/logo.png" />
+                <div class="period" data-url="/"></div>
+            </a>
+        </h2>
+        <span class="brgr-brdr m" id="brgr-brdr"></span>
+        <span class="brgr-menu m" id="brgr-menu"></span>
+        <nav>
+            <ul id="nav">
+                <li>
+                    <a href="../capabilities/index.html">Capabilities</a>
+                </li>
+                <li>
+                    <a href="../federal/index.html">Federal</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About</a>
+                </li>
+                <li>
+                    <a href="../news/index.html">Blog &amp; News</a>
+                </li>
+                <li>
+                    <a href="../careers/index.html">Careers</a>
+                </li>
+                <li class='contact-dropdown'>
+                    <span>
+                        <em>Contact</em>
+                    </span>
+                </li>
+                <div id="contact-wrap">
+                    <div id="contact">
+                        <p class="media">
+                            <img src="../images/contact-media.svg" />
+                            <strong>Media Inquiries:</strong><br />
+                            <a href="mailto:media@endgame.com">media@endgame.com</a>
+                        </p>
+                        <p class="general">
+                            <img src="../images/contact-general.svg">
+                            <strong>General Inquiries</strong><br />
+			    <a href="mailto:info@endgame.com">info@endgame.com</a>
+                        </p>
+                        <p class="location">
+                            <img src="../images/contact-location.svg">
+                            <a href="../careers/index.html#locations">3101 Wilson Blvd., Suite 500<br />Arlington, VA 22201</a>
+                        </p>
+			<p class='newsletter'>
+			  <img src='../images/icons/mail.svg'>
+			  <strong><a href='#' class='js-open-contact-form contact-form-icon'>Sign Up for News</a></strong>
+			</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/EndgameInc">
+                                <img src="../images/icons/facebook.svg" />
+                            </a>
+                            <a href="https://twitter.com/EndgameInc">
+                                <img src="../images/icons/twitter.svg" />
+                            </a>
+                            <a href="http://www.linkedin.com/company/endgame">
+                                <img src="../images/icons/linkedin.svg" />
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div role="main" class="boiler">
+        <h1>Storm Metrics How-To</h1>
+        
+<h3 id="by_jason_trost">by <a href="../archives/index.html">Jason Trost</a></h3>
+
+<p>If you have been following Storm’s updates over the past year, you may have noticed the metrics framework feature, added in version 0.9.0 <a href="https://github.com/nathanmarz/storm/issues/305">New Storm metrics system PR</a>. This provides nicer primitives built into Storm for collecting application specific metrics and reporting those metrics to external systems in a manageable and scalable way.</p>
+
+<p>This blog post is a brief how to on using this system since the only examples of this system I’ve seen used are in the core storm code.</p>
+
+<h3 id="concepts">Concepts</h3>
+
+<p>Storm’s metrics framework mainly consists of two API additions: 1) Metrics, 2) Metrics Consumers.</p>
+
+<h4 id="metric">Metric</h4>
+
+<p>An object initialized in a Storm bolt or spout (or Trident Function) that is used for instrumenting the respective bolt/spout for metric collection. This object must also be registered with Storm using the TopologyContext.registerMetric(…) function. Metrics must implement backtype.storm.metric.api.IMetric. Several useful Metric implementations exist. (Excerpt from the <a href="https://github.com/nathanmarz/storm/wiki/Metrics">Storm Metrics wiki page</a> with some extra notes added).</p>
+
+<p><a href="https://github.com/nathanmarz/storm/blob/moved-to-apache/storm-core/src/jvm/backtype/storm/metric/api/AssignableMetric.java">AssignableMetric</a> — set the metric to the explicit value you supply. Useful if it’s an external value or in the case that you are already calculating the summary statistic yourself. Note: Useful for <a href="https://github.com/etsy/statsd/blob/master/docs/metric_types.md#gauges">statsd Gauges</a>.</p>
+
+<p><a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/api/CombinedMetric.java">CombinedMetric</a> — generic interface for metrics that can be updated associatively.</p>
+
+<p><a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/api/CountMetric.java">CountMetric</a> — a running total of the supplied values. Call incr() to increment by one,incrBy(n) to add/subtract the given number. Note: Useful for <a href="https://github.com/etsy/statsd/blob/master/docs/metric_types.md#counting">statsd counters</a>.</p>
+
+<p><a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/api/MultiCountMetric.java">MultiCountMetric</a> — a hashmap of count metrics. Note: Useful for many Counters where you may not know the name of the metric a priori or where creating many Counters manually is burdensome.</p>
+
+<p><a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/api/MeanReducer.java">MeanReducer</a> — an implementation of <a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/api/ReducedMetric.java">ReducedMetric</a> that tracks a running average of values given to its reduce() method. (It accepts Double, Integer or Long values, and maintains the internal average as a Double.) Despite his reputation, the MeanReducer is actually a pretty nice guy in person.</p>
+
+<h4 id="metrics_consumer">Metrics Consumer</h4>
+
+<p>An object meant to process/report/log/etc output from Metric objects (represented as DataPoint objects) for all the various places these Metric objects were registered, also providing useful metadata about where the metric was collected such as worker host, worker port, componentID (bolt/spout name), taskID, timestamp, and updateInterval (all represented as TaskInfo objects). MetricConsumers are registered in the storm topology configuration (usingbacktype.storm.Config.registerMetricsConsumer(…)) or in Storm’s system config (Under the config name topology.metrics.consumer.register). Metrics Consumers must implement backtype.storm.metric.api.IMetricsConsumer.</p>
+
+<h3 id="example_usage">Example Usage</h3>
+
+<p>To demonstrate how to use the new metrics framework, I will walk through some changes I made to the <a href="https://github.com/nathanmarz/storm-starter/blob/master/src/jvm/storm/starter/ExclamationTopology.java">ExclamationTopology</a> included in <a href="https://github.com/nathanmarz/storm-starter">storm-starter</a>. These changes will allow us to collect some metrics including:</p>
+
+<ol>
+<li>A simple count of how many times the execute() method was called per time period (5 sec in this example).</li>
+
+<li>A count of how many times an individual word was encountered per time period (1 minute in this example).</li>
+
+<li>The mean length of all words encountered per time period (1 minute in this example).</li>
+</ol>
+
+<h4 id="adding_metrics_to_the_exclamationbolt">Adding Metrics to the ExclamationBolt</h4>
+
+<p>Add three new member variables to ExclamationBolt. Notice there are all declared as transient. This is needed because none of these Metrics are Serializable and all non-transient variables in Storm bolts and spouts must be Serializable.</p>
+<div class='highlight'><pre><code class='java'><span class='kd'>transient</span> <span class='n'>CountMetric</span> <span class='n'>_countMetric</span><span class='o'>;</span>
+<span class='kd'>transient</span> <span class='n'>MultiCountMetric</span> <span class='n'>_wordCountMetric</span><span class='o'>;</span>
+<span class='kd'>transient</span> <span class='n'>ReducedMetric</span> <span class='n'>_wordLengthMeanMetric</span><span class='o'>;</span>
+</code></pre></div>
+<p>Initialize and register these Metrics in the Bolt’s prepare method. Metrics can only be registered in the prepare method of bolts or the open method of spouts. Otherwise an exception is thrown. The registerMetric takes three arguments: 1) metric name, 2) metric object, and 3) time bucket size in seconds. The “time bucket size in seconds” controls how often the metrics are sent to the Metrics Consumer.</p>
+<div class='highlight'><pre><code class='java'><span class='nd'>@Override</span>
+<span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>prepare</span><span class='o'>(</span><span class='n'>Map</span> <span class='n'>conf</span><span class='o'>,</span> <span class='n'>TopologyContext</span> <span class='n'>context</span><span class='o'>,</span> <span class='n'>OutputCollector</span> <span class='n'>collector</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='n'>_collector</span> <span class='o'>=</span> <span class='n'>collector</span><span class='o'>;</span>
+  <span class='n'>initMetrics</span><span class='o'>(</span><span class='n'>context</span><span class='o'>);</span>
+<span class='o'>}</span>
+ 
+<span class='kt'>void</span> <span class='nf'>initMetrics</span><span class='o'>(</span><span class='n'>TopologyContext</span> <span class='n'>context</span><span class='o'>)</span>
+<span class='o'>{</span>
+    <span class='n'>_countMetric</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>CountMetric</span><span class='o'>();</span>
+    <span class='n'>_wordCountMetric</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>MultiCountMetric</span><span class='o'>();</span>
+    <span class='n'>_wordLengthMeanMetric</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>ReducedMetric</span><span class='o'>(</span><span class='k'>new</span> <span class='n'>MeanReducer</span><span class='o'>());</span>
+    
+    <span class='n'>context</span><span class='o'>.</span><span class='na'>registerMetric</span><span class='o'>(</span><span class='s'>&quot;execute_count&quot;</span><span class='o'>,</span> <span class='n'>_countMetric</span><span class='o'>,</span> <span class='mi'>5</span><span class='o'>);</span>
+    <span class='n'>context</span><span class='o'>.</span><span class='na'>registerMetric</span><span class='o'>(</span><span class='s'>&quot;word_count&quot;</span><span class='o'>,</span> <span class='n'>_wordCountMetric</span><span class='o'>,</span> <span class='mi'>60</span><span class='o'>);</span>
+    <span class='n'>context</span><span class='o'>.</span><span class='na'>registerMetric</span><span class='o'>(</span><span class='s'>&quot;word_length&quot;</span><span class='o'>,</span> <span class='n'>_wordLengthMeanMetric</span><span class='o'>,</span> <span class='mi'>60</span><span class='o'>);</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>Actually increment/update the metrics in the bolt’s execute method. In this example we are just:</p>
+
+<ol>
+<li>incrementing a counter every time we handle a word.</li>
+
+<li>incrementing a counter for each specific word encountered.</li>
+
+<li>updating the mean length of word we encountered.</li>
+</ol>
+<div class='highlight'><pre><code class='java'><span class='nd'>@Override</span>
+<span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>execute</span><span class='o'>(</span><span class='n'>Tuple</span> <span class='n'>tuple</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='n'>_collector</span><span class='o'>.</span><span class='na'>emit</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>Values</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>.</span><span class='na'>getString</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)</span> <span class='o'>+</span> <span class='s'>&quot;!!!&quot;</span><span class='o'>));</span>
+  <span class='n'>_collector</span><span class='o'>.</span><span class='na'>ack</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>);</span>
+  <span class='n'>updateMetrics</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>.</span><span class='na'>getString</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>));</span>
+<span class='o'>}</span>
+
+<span class='kt'>void</span> <span class='nf'>updateMetrics</span><span class='o'>(</span><span class='n'>String</span> <span class='n'>word</span><span class='o'>)</span>
+<span class='o'>{</span>
+  <span class='n'>_countMetric</span><span class='o'>.</span><span class='na'>incr</span><span class='o'>();</span>
+  <span class='n'>_wordCountMetric</span><span class='o'>.</span><span class='na'>scope</span><span class='o'>(</span><span class='n'>word</span><span class='o'>).</span><span class='na'>incr</span><span class='o'>();</span>
+  <span class='n'>_wordLengthMeanMetric</span><span class='o'>.</span><span class='na'>update</span><span class='o'>(</span><span class='n'>word</span><span class='o'>.</span><span class='na'>length</span><span class='o'>());</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p><br /><br /></p>
+
+<h4 id="collectingreporting_metrics">Collecting/Reporting Metrics</h4>
+
+<p>Lastly, we need to enable a Metric Consumer in order to collect and process these metrics. The Metric Consumer is meant to be the interface between the Storm metrics framework and some external system (such as <a href="https://github.com/etsy/statsd/">Statsd</a>, <a href="http://riemann.io/">Riemann</a>, etc). In this example, we are just going to log the metrics using Storm’s built-in <a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/LoggingMetricsConsumer.java">LoggingMetricsConsumer</a>. This is accomplished by registering the Metrics Consumer when defining the Storm topology. In this example, we are registering the metrics consumer with a parallelism hint of 2. Here is the line we need to add when defining the topology.</p>
+<div class='highlight'><pre><code class='java'><span class='n'>conf</span><span class='o'>.</span><span class='na'>registerMetricsConsumer</span><span class='o'>(</span><span class='n'>LoggingMetricsConsumer</span><span class='o'>.</span><span class='na'>class</span><span class='o'>,</span> <span class='mi'>2</span><span class='o'>);</span>
+</code></pre></div>
+<p>Here is the full code for defining the toplogy:</p>
+<div class='highlight'><pre><code class='java'><span class='n'>TopologyBuilder</span> <span class='n'>builder</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>TopologyBuilder</span><span class='o'>();</span>
+<span class='n'>builder</span><span class='o'>.</span><span class='na'>setSpout</span><span class='o'>(</span><span class='s'>&quot;word&quot;</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>TestWordSpout</span><span class='o'>(),</span> <span class='mi'>10</span><span class='o'>);</span>
+<span class='n'>builder</span><span class='o'>.</span><span class='na'>setBolt</span><span class='o'>(</span><span class='s'>&quot;exclaim1&quot;</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>ExclamationBolt</span><span class='o'>(),</span> <span class='mi'>3</span><span class='o'>)</span>
+  <span class='o'>.</span><span class='na'>shuffleGrouping</span><span class='o'>(</span><span class='s'>&quot;word&quot;</span><span class='o'>);</span>
+<span class='n'>builder</span><span class='o'>.</span><span class='na'>setBolt</span><span class='o'>(</span><span class='s'>&quot;exclaim2&quot;</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>ExclamationBolt</span><span class='o'>(),</span> <span class='mi'>2</span><span class='o'>)</span>
+  <span class='o'>.</span><span class='na'>shuffleGrouping</span><span class='o'>(</span><span class='s'>&quot;exclaim1&quot;</span><span class='o'>);</span>
+ 
+<span class='n'>Config</span> <span class='n'>conf</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>Config</span><span class='o'>();</span>
+<span class='n'>conf</span><span class='o'>.</span><span class='na'>setDebug</span><span class='o'>(</span><span class='kc'>true</span><span class='o'>);</span>
+<span class='n'>conf</span><span class='o'>.</span><span class='na'>registerMetricsConsumer</span><span class='o'>(</span><span class='n'>LoggingMetricsConsumer</span><span class='o'>.</span><span class='na'>class</span><span class='o'>,</span> <span class='mi'>2</span><span class='o'>);</span>
+ 
+<span class='k'>if</span> <span class='o'>(</span><span class='n'>args</span> <span class='o'>!=</span> <span class='kc'>null</span> <span class='o'>&amp;&amp;</span> <span class='n'>args</span><span class='o'>.</span><span class='na'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='n'>conf</span><span class='o'>.</span><span class='na'>setNumWorkers</span><span class='o'>(</span><span class='mi'>3</span><span class='o'>);</span>
+  <span class='n'>StormSubmitter</span><span class='o'>.</span><span class='na'>submitTopology</span><span class='o'>(</span><span class='n'>args</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>],</span> <span class='n'>conf</span><span class='o'>,</span> <span class='n'>builder</span><span class='o'>.</span><span class='na'>createTopology</span><span class='o'>());</span>
+<span class='o'>}</span>
+<span class='k'>else</span> <span class='o'>{</span>
+  <span class='n'>LocalCluster</span> <span class='n'>cluster</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>LocalCluster</span><span class='o'>();</span>
+  <span class='n'>cluster</span><span class='o'>.</span><span class='na'>submitTopology</span><span class='o'>(</span><span class='s'>&quot;test&quot;</span><span class='o'>,</span> <span class='n'>conf</span><span class='o'>,</span> <span class='n'>builder</span><span class='o'>.</span><span class='na'>createTopology</span><span class='o'>());</span>
+  <span class='n'>Utils</span><span class='o'>.</span><span class='na'>sleep</span><span class='o'>(</span><span class='mi'>5</span><span class='o'>*</span><span class='mi'>60</span><span class='o'>*</span><span class='mi'>1000L</span><span class='o'>);</span>
+  <span class='n'>cluster</span><span class='o'>.</span><span class='na'>killTopology</span><span class='o'>(</span><span class='s'>&quot;test&quot;</span><span class='o'>);</span>
+  <span class='n'>cluster</span><span class='o'>.</span><span class='na'>shutdown</span><span class='o'>();</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>After running this topology, you should see log entries in $STORM_HOME/logs/metrics.logthat look like this.</p>
+<div class='highlight'><pre><code class='java'><span class='o'>&lt;</span><span class='n'>pre</span><span class='o'>&gt;</span><span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>25</span><span class='o'>:</span><span class='mi'>34</span><span class='o'>,</span><span class='mi'>809</span> <span class='mi'>5479318</span>  <span class='mi'>1388931931</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>9</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>execute_count</span>           <span class='mi'>196</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>25</span><span class='o'>:</span><span class='mi'>49</span><span class='o'>,</span><span class='mi'>806</span> <span class='mi'>5494315</span>  <span class='mi'>1388931949</span>           <span class='nl'>localhost:</span><span class='mi'>6703</span>      <span class='mi'>8</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>execute_count</span>           <span class='mi'>28</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>25</span><span class='o'>:</span><span class='mi'>59</span><span class='o'>,</span><span class='mi'>812</span> <span class='mi'>5504321</span>  <span class='mi'>1388931959</span>           <span class='nl'>localhost:</span><span class='mi'>6703</span>      <span class='mi'>8</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>execute_count</span>           <span class='mi'>34</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>25</span><span class='o'>:</span><span class='mi'>59</span><span class='o'>,</span><span class='mi'>812</span> <span class='mi'>5504321</span>  <span class='mi'>1388931946</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>6</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>execute_count</span>           <span class='mi'>29</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>25</span><span class='o'>:</span><span class='mi'>59</span><span class='o'>,</span><span class='mi'>825</span> <span class='mi'>5504334</span>  <span class='mi'>1388931951</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>9</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>execute_count</span>           <span class='mi'>989</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>25</span><span class='o'>:</span><span class='mi'>59</span><span class='o'>,</span><span class='mi'>831</span> <span class='mi'>5504340</span>  <span class='mi'>1388931957</span>           <span class='nl'>localhost:</span><span class='mi'>6704</span>      <span class='mi'>7</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>execute_count</span>           <span class='mi'>656</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>29</span><span class='o'>,</span><span class='mi'>821</span> <span class='mi'>5534330</span>  <span class='mi'>1388931977</span>           <span class='nl'>localhost:</span><span class='mi'>6704</span>      <span class='mi'>7</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>word_count</span>              <span class='o'>{</span><span class='n'>bertels</span><span class='o'>=</span><span class='mi'>435</span><span class='o'>,</span> <span class='n'>jackson</span><span class='o'>=</span><span class='mi'>402</span><span class='o'>,</span> <span class='n'>nathan</span><span class='o'>=</span><span class='mi'>405</span><span class='o'>,</span> <span class='n'>mike</span><span class='o'>=</span><span class='mi'>414</span><span class='o'>,</span> <span class='n'>golda</span><span class='o'>=</span><span class='mi'>451</span><span class='o'>}</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>29</span><span class='o'>,</span><span class='mi'>821</span> <span class='mi'>5534330</span>  <span class='mi'>1388931977</span>           <span class='nl'>localhost:</span><span class='mi'>6704</span>      <span class='mi'>7</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>word_length</span>             <span class='mf'>5.790223065970574</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>29</span><span class='o'>,</span><span class='mi'>822</span> <span class='mi'>5534331</span>  <span class='mi'>1388931982</span>           <span class='nl'>localhost:</span><span class='mi'>6704</span>     <span class='mi'>10</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>word_count</span>              <span class='o'>{</span><span class='n'>bertels</span><span class='o'>!!!=</span><span class='mi'>920</span><span class='o'>,</span> <span class='n'>golda</span><span class='o'>!!!=</span><span class='mi'>919</span><span class='o'>,</span> <span class='n'>jackson</span><span class='o'>!!!=</span><span class='mi'>902</span><span class='o'>,</span> <span class='n'>nathan</span><span class='o'>!!!=</span><span class='mi'>907</span><span class='o'>,</span> <span class='n'>mike</span><span class='o'>!!!=</span><span class='mi'>921</span><span class='o'>}</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>29</span><span class='o'>,</span><span class='mi'>823</span> <span class='mi'>5534332</span>  <span class='mi'>1388931982</span>           <span class='nl'>localhost:</span><span class='mi'>6704</span>     <span class='mi'>10</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>word_length</span>             <span class='mf'>8.794484569927775</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>29</span><span class='o'>,</span><span class='mi'>823</span> <span class='mi'>5534332</span>  <span class='mi'>1388931986</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>9</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>word_count</span>              <span class='o'>{</span><span class='n'>bertels</span><span class='o'>!!!=</span><span class='mi'>737</span><span class='o'>,</span> <span class='n'>golda</span><span class='o'>!!!=</span><span class='mi'>751</span><span class='o'>,</span> <span class='n'>jackson</span><span class='o'>!!!=</span><span class='mi'>766</span><span class='o'>,</span> <span class='n'>nathan</span><span class='o'>!!!=</span><span class='mi'>763</span><span class='o'>,</span> <span class='n'>mike</span><span class='o'>!!!=</span><span class='mi'>715</span><span class='o'>}</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>29</span><span class='o'>,</span><span class='mi'>823</span> <span class='mi'>5534332</span>  <span class='mi'>1388931986</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>9</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>word_length</span>             <span class='mf'>8.818327974276528</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>31</span><span class='o'>,</span><span class='mi'>777</span> <span class='mi'>5536286</span>  <span class='mi'>1388931991</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>6</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>word_count</span>              <span class='o'>{</span><span class='n'>bertels</span><span class='o'>=</span><span class='mi'>529</span><span class='o'>,</span> <span class='n'>jackson</span><span class='o'>=</span><span class='mi'>517</span><span class='o'>,</span> <span class='n'>nathan</span><span class='o'>=</span><span class='mi'>503</span><span class='o'>,</span> <span class='n'>mike</span><span class='o'>=</span><span class='mi'>498</span><span class='o'>,</span> <span class='n'>golda</span><span class='o'>=</span><span class='mi'>511</span><span class='o'>}</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>31</span><span class='o'>,</span><span class='mi'>777</span> <span class='mi'>5536286</span>  <span class='mi'>1388931991</span>           <span class='nl'>localhost:</span><span class='mi'>6702</span>      <span class='mi'>6</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>word_length</span>             <span class='mf'>5.819781078967944</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>32</span><span class='o'>,</span><span class='mi'>454</span> <span class='mi'>5536963</span>  <span class='mi'>1388931992</span>           <span class='nl'>localhost:</span><span class='mi'>6704</span>     <span class='mi'>10</span><span class='o'>:</span><span class='n'>exclaim2</span>    <span class='n'>execute_count</span>           <span class='mi'>14</span>
+<span class='mi'>2014</span><span class='o'>-</span><span class='mi'>01</span><span class='o'>-</span><span class='mi'>05</span> <span class='mi'>09</span><span class='o'>:</span><span class='mi'>26</span><span class='o'>:</span><span class='mi'>49</span><span class='o'>,</span><span class='mi'>829</span> <span class='mi'>5554338</span>  <span class='mi'>1388932009</span>           <span class='nl'>localhost:</span><span class='mi'>6703</span>      <span class='mi'>8</span><span class='o'>:</span><span class='n'>exclaim1</span>    <span class='n'>execute_count</span>           <span class='mi'>76</span><span class='o'>&lt;/</span><span class='n'>pre</span><span class='o'>&gt;</span>
+</code></pre></div>
+<p>You should also see the LoggingMetricsConsumer show up as a Bolt in the Storm web UI, like this (After clicking the “Show System Stats” button at the bottom of the page):</p>
+
+<p><img src="../uploads/storm-metrics.png" alt="storm-metrics.png" /></p>
+
+<h3 id="summary">Summary</h3>
+
+<ol>
+<li>
+<p>We instrumented the ExclamationBolt to collect some simple metrics. We accomplished this by initializing and registering the metrics in the Bolt’s prepare method and then by incrementing/updating the metrics in the bolt’s execute method.</p>
+</li>
+
+<li>
+<p>We had the metrics framework simply log all the metrics that were gathered using the built-in <a href="https://github.com/nathanmarz/storm/blob/master/storm-core/src/jvm/backtype/storm/metric/LoggingMetricsConsumer.java">LoggingMetricsConsumer</a>. The full code is <a href="https://gist.github.com/jt6211/8267901">here</a> as well as posted below. A diff between the original ExclamationTopology and mine is <a href="https://gist.github.com/jt6211/8267918">here</a>.</p>
+</li>
+</ol>
+
+<p>In a future post I hope to present a Statsd Metrics Consumer that I am working on to allow for easy collection of metrics in <a href="https://github.com/etsy/statsd/">statsd</a> and then visualization in <a href="http://graphite.wikidot.com/">graphite</a>, like this.</p>
+
+<p><img src="../uploads/graphite-metrics.png" alt="graphite-metrics.png" /></p>
+<div class='highlight'><pre><code class='java'><span class='kn'>package</span> <span class='n'>storm</span><span class='o'>.</span><span class='na'>starter</span><span class='o'>;</span>
+ 
+<span class='kn'>import</span> <span class='nn'>backtype.storm.Config</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.LocalCluster</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.StormSubmitter</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.metric.LoggingMetricsConsumer</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.metric.api.CountMetric</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.metric.api.MeanReducer</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.metric.api.MultiCountMetric</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.metric.api.ReducedMetric</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.task.OutputCollector</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.task.TopologyContext</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.testing.TestWordSpout</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.topology.OutputFieldsDeclarer</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.topology.TopologyBuilder</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.topology.base.BaseRichBolt</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.tuple.Fields</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.tuple.Tuple</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.tuple.Values</span><span class='o'>;</span>
+<span class='kn'>import</span> <span class='nn'>backtype.storm.utils.Utils</span><span class='o'>;</span>
+ 
+<span class='kn'>import</span> <span class='nn'>java.util.Map</span><span class='o'>;</span>
+ 
+<span class='cm'>/**</span>
+<span class='cm'> * This is a basic example of a Storm topology.</span>
+<span class='cm'> */</span>
+<span class='kd'>public</span> <span class='kd'>class</span> <span class='nc'>ExclamationTopology</span> <span class='o'>{</span>
+ 
+  <span class='kd'>public</span> <span class='kd'>static</span> <span class='kd'>class</span> <span class='nc'>ExclamationBolt</span> <span class='kd'>extends</span> <span class='n'>BaseRichBolt</span> <span class='o'>{</span>
+    <span class='n'>OutputCollector</span> <span class='n'>_collector</span><span class='o'>;</span>
+    
+    <span class='c1'>// Metrics</span>
+    <span class='c1'>// Note: these must be declared as transient since they are not Serializable</span>
+    <span class='kd'>transient</span> <span class='n'>CountMetric</span> <span class='n'>_countMetric</span><span class='o'>;</span>
+    <span class='kd'>transient</span> <span class='n'>MultiCountMetric</span> <span class='n'>_wordCountMetric</span><span class='o'>;</span>
+    <span class='kd'>transient</span> <span class='n'>ReducedMetric</span> <span class='n'>_wordLengthMeanMetric</span><span class='o'>;</span>
+
+    <span class='nd'>@Override</span>
+    <span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>prepare</span><span class='o'>(</span><span class='n'>Map</span> <span class='n'>conf</span><span class='o'>,</span> <span class='n'>TopologyContext</span> <span class='n'>context</span><span class='o'>,</span> <span class='n'>OutputCollector</span> <span class='n'>collector</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>_collector</span> <span class='o'>=</span> <span class='n'>collector</span><span class='o'>;</span>
+      
+      <span class='c1'>// Metrics must be initialized and registered in the prepare() method for bolts, </span>
+      <span class='c1'>// or the open() method for spouts.  Otherwise, an Exception will be thrown</span>
+      <span class='n'>initMetrics</span><span class='o'>(</span><span class='n'>context</span><span class='o'>);</span>
+    <span class='o'>}</span>
+    
+    <span class='kt'>void</span> <span class='nf'>initMetrics</span><span class='o'>(</span><span class='n'>TopologyContext</span> <span class='n'>context</span><span class='o'>)</span>
+    <span class='o'>{</span>
+	<span class='n'>_countMetric</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>CountMetric</span><span class='o'>();</span>
+	<span class='n'>_wordCountMetric</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>MultiCountMetric</span><span class='o'>();</span>
+	<span class='n'>_wordLengthMeanMetric</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>ReducedMetric</span><span class='o'>(</span><span class='k'>new</span> <span class='n'>MeanReducer</span><span class='o'>());</span>
+	
+	<span class='n'>context</span><span class='o'>.</span><span class='na'>registerMetric</span><span class='o'>(</span><span class='s'>&quot;execute_count&quot;</span><span class='o'>,</span> <span class='n'>_countMetric</span><span class='o'>,</span> <span class='mi'>5</span><span class='o'>);</span>
+	<span class='n'>context</span><span class='o'>.</span><span class='na'>registerMetric</span><span class='o'>(</span><span class='s'>&quot;word_count&quot;</span><span class='o'>,</span> <span class='n'>_wordCountMetric</span><span class='o'>,</span> <span class='mi'>60</span><span class='o'>);</span>
+	<span class='n'>context</span><span class='o'>.</span><span class='na'>registerMetric</span><span class='o'>(</span><span class='s'>&quot;word_length&quot;</span><span class='o'>,</span> <span class='n'>_wordLengthMeanMetric</span><span class='o'>,</span> <span class='mi'>60</span><span class='o'>);</span>
+    <span class='o'>}</span>
+ 
+    <span class='nd'>@Override</span>
+    <span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>execute</span><span class='o'>(</span><span class='n'>Tuple</span> <span class='n'>tuple</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>_collector</span><span class='o'>.</span><span class='na'>emit</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>Values</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>.</span><span class='na'>getString</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)</span> <span class='o'>+</span> <span class='s'>&quot;!!!&quot;</span><span class='o'>));</span>
+      <span class='n'>_collector</span><span class='o'>.</span><span class='na'>ack</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>);</span>
+      
+      <span class='n'>updateMetrics</span><span class='o'>(</span><span class='n'>tuple</span><span class='o'>.</span><span class='na'>getString</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>));</span>
+    <span class='o'>}</span>
+    
+    <span class='kt'>void</span> <span class='nf'>updateMetrics</span><span class='o'>(</span><span class='n'>String</span> <span class='n'>word</span><span class='o'>)</span>
+    <span class='o'>{</span>
+	<span class='n'>_countMetric</span><span class='o'>.</span><span class='na'>incr</span><span class='o'>();</span>
+	<span class='n'>_wordCountMetric</span><span class='o'>.</span><span class='na'>scope</span><span class='o'>(</span><span class='n'>word</span><span class='o'>).</span><span class='na'>incr</span><span class='o'>();</span>
+	<span class='n'>_wordLengthMeanMetric</span><span class='o'>.</span><span class='na'>update</span><span class='o'>(</span><span class='n'>word</span><span class='o'>.</span><span class='na'>length</span><span class='o'>());</span>
+    <span class='o'>}</span>
+    
+    <span class='nd'>@Override</span>
+    <span class='kd'>public</span> <span class='kt'>void</span> <span class='nf'>declareOutputFields</span><span class='o'>(</span><span class='n'>OutputFieldsDeclarer</span> <span class='n'>declarer</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>declarer</span><span class='o'>.</span><span class='na'>declare</span><span class='o'>(</span><span class='k'>new</span> <span class='n'>Fields</span><span class='o'>(</span><span class='s'>&quot;word&quot;</span><span class='o'>));</span>
+    <span class='o'>}</span>
+ 
+ 
+  <span class='o'>}</span>
+
+  <span class='kd'>public</span> <span class='kd'>static</span> <span class='kt'>void</span> <span class='nf'>main</span><span class='o'>(</span><span class='n'>String</span><span class='o'>[]</span> <span class='n'>args</span><span class='o'>)</span> <span class='kd'>throws</span> <span class='n'>Exception</span> <span class='o'>{</span>
+    <span class='n'>TopologyBuilder</span> <span class='n'>builder</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>TopologyBuilder</span><span class='o'>();</span>
+ 
+    <span class='n'>builder</span><span class='o'>.</span><span class='na'>setSpout</span><span class='o'>(</span><span class='s'>&quot;word&quot;</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>TestWordSpout</span><span class='o'>(),</span> <span class='mi'>10</span><span class='o'>);</span>
+    <span class='n'>builder</span><span class='o'>.</span><span class='na'>setBolt</span><span class='o'>(</span><span class='s'>&quot;exclaim1&quot;</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>ExclamationBolt</span><span class='o'>(),</span> <span class='mi'>3</span><span class='o'>).</span><span class='na'>shuffleGrouping</span><span class='o'>(</span><span class='s'>&quot;word&quot;</span><span class='o'>);</span>
+    <span class='n'>builder</span><span class='o'>.</span><span class='na'>setBolt</span><span class='o'>(</span><span class='s'>&quot;exclaim2&quot;</span><span class='o'>,</span> <span class='k'>new</span> <span class='n'>ExclamationBolt</span><span class='o'>(),</span> <span class='mi'>2</span><span class='o'>).</span><span class='na'>shuffleGrouping</span><span class='o'>(</span><span class='s'>&quot;exclaim1&quot;</span><span class='o'>);</span>
+ 
+    <span class='n'>Config</span> <span class='n'>conf</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>Config</span><span class='o'>();</span>
+    <span class='n'>conf</span><span class='o'>.</span><span class='na'>setDebug</span><span class='o'>(</span><span class='kc'>true</span><span class='o'>);</span>
+    
+    <span class='c1'>// This will simply log all Metrics received into $STORM_HOME/logs/metrics.log on one or more worker nodes.</span>
+    <span class='n'>conf</span><span class='o'>.</span><span class='na'>registerMetricsConsumer</span><span class='o'>(</span><span class='n'>LoggingMetricsConsumer</span><span class='o'>.</span><span class='na'>class</span><span class='o'>,</span> <span class='mi'>2</span><span class='o'>);</span>
+ 
+    <span class='k'>if</span> <span class='o'>(</span><span class='n'>args</span> <span class='o'>!=</span> <span class='kc'>null</span> <span class='o'>&amp;&amp;</span> <span class='n'>args</span><span class='o'>.</span><span class='na'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>conf</span><span class='o'>.</span><span class='na'>setNumWorkers</span><span class='o'>(</span><span class='mi'>3</span><span class='o'>);</span>
+ 
+      <span class='n'>StormSubmitter</span><span class='o'>.</span><span class='na'>submitTopology</span><span class='o'>(</span><span class='n'>args</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>],</span> <span class='n'>conf</span><span class='o'>,</span> <span class='n'>builder</span><span class='o'>.</span><span class='na'>createTopology</span><span class='o'>());</span>
+    <span class='o'>}</span>
+    <span class='k'>else</span> <span class='o'>{</span>
+ 
+      <span class='n'>LocalCluster</span> <span class='n'>cluster</span> <span class='o'>=</span> <span class='k'>new</span> <span class='n'>LocalCluster</span><span class='o'>();</span>
+      <span class='n'>cluster</span><span class='o'>.</span><span class='na'>submitTopology</span><span class='o'>(</span><span class='s'>&quot;test&quot;</span><span class='o'>,</span> <span class='n'>conf</span><span class='o'>,</span> <span class='n'>builder</span><span class='o'>.</span><span class='na'>createTopology</span><span class='o'>());</span>
+      <span class='n'>Utils</span><span class='o'>.</span><span class='na'>sleep</span><span class='o'>(</span><span class='mi'>5</span><span class='o'>*</span><span class='mi'>60</span><span class='o'>*</span><span class='mi'>1000L</span><span class='o'>);</span>
+      <span class='n'>cluster</span><span class='o'>.</span><span class='na'>killTopology</span><span class='o'>(</span><span class='s'>&quot;test&quot;</span><span class='o'>);</span>
+      <span class='n'>cluster</span><span class='o'>.</span><span class='na'>shutdown</span><span class='o'>();</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+</code></pre></div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_native_toolbox"></div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c7dc1328ec3211"></script>
+
+    </div>
+
+    <footer class='site__footer cf'>
+      <div class='wrapper'>
+      <div class='f-left'>
+	<small>&copy; Endgame 2014. All Rights Reserved | Subscribe to our <a href="../feed.xml" target="_blank">RSS</a> feed</small>
+      </div>
+      <div class='f-right'>
+	<a class='logo' href="../index.html">
+	  <img alt="Endgame logo" src="../images/logo.svg">
+	</a>
+      </div>
+    </div><!--//wrapper-->
+    </footer>
+    
+    <a href='#top' class='js-top top'></a>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/waypoints.min.js"></script>
+    
+    
+    <script src="../javascripts/jquery.cycle2.min.js"></script>
+    <script src="../javascripts/app.js"></script>
+    
+</body>
+
+<!-- Mirrored from www.endgame.com/blog/storm-metrics-how-to.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Nov 2014 14:55:23 GMT -->
+</html>

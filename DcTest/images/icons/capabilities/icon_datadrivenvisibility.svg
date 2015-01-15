@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 151.833 148.5" enable-background="new 0 0 151.833 148.5" xml:space="preserve">
+<g id="Layer_1">
+	<rect x="29.525" y="42.69" fill="#67A3AB" width="7.594" height="17.329"/>
+	<rect x="41.207" y="36.46" fill="#67A3AB" width="7.594" height="23.559"/>
+	<rect x="52.89" y="23.414" fill="#ED3325" width="7.594" height="36.605"/>
+	<rect x="29.525" y="23.414" fill="none" stroke="#67A3AB" stroke-miterlimit="10" width="7.594" height="36.605"/>
+	<rect x="41.207" y="23.414" fill="none" stroke="#67A3AB" stroke-miterlimit="10" width="7.594" height="36.605"/>
+	<rect x="64.572" y="23.414" fill="none" stroke="#67A3AB" stroke-miterlimit="10" width="7.594" height="36.605"/>
+	<rect x="64.572" y="33.734" fill="#67A3AB" width="7.594" height="26.285"/>
+	<g>
+		<circle fill="none" stroke="#A6A8AB" stroke-miterlimit="10" cx="103.37" cy="42.69" r="20.266"/>
+		<path fill="#ED3325" d="M104.155,44.161l-9.585-17.036c-5.422,3.072-9.083,8.889-9.083,15.566c0,9.876,8.006,17.882,17.882,17.882
+			s17.882-8.006,17.882-17.882c0-2.592-0.556-5.054-1.548-7.277L104.155,44.161z"/>
+	</g>
+	<path fill="#67A3AB" d="M94.527,27.184c-8.563,4.852-11.573,15.726-6.722,24.29s15.725,11.573,24.289,6.722L94.527,27.184z"/>
+	<polygon fill="#A6A8AB" points="98.576,66.962 97.93,66.596 74.924,77.2 51.918,66.596 51.271,66.962 74.786,77.8 74.924,77.723 
+		75.061,77.8 	"/>
+	<g>
+		<polygon fill="none" stroke="#A6A8AB" stroke-miterlimit="10" points="85.865,115.619 85.865,115.619 64.129,115.619 
+			64.129,115.619 64.129,97.221 64.129,97.221 85.865,97.221 85.865,97.221 		"/>
+		<path fill="none" stroke="#A6A8AB" stroke-miterlimit="10" d="M74.997,86.885c-3.841,0-6.954,4.642-6.954,10.369h13.909
+			C81.951,91.528,78.838,86.885,74.997,86.885z"/>
+		<path fill="none" stroke="#A6A8AB" stroke-miterlimit="10" d="M75.006,84.152c-5.618,0-10.172,5.866-10.172,13.102h20.343
+			C85.178,90.018,80.624,84.152,75.006,84.152z"/>
+		<g>
+			<circle fill="#67A3AB" cx="75.006" cy="105.116" r="2.32"/>
+			<polygon fill="#67A3AB" points="74.974,105.304 72.974,111.074 77.022,111.074 			"/>
+		</g>
+		<rect x="81.645" y="102.74" fill="none" stroke="#A6A8AB" stroke-miterlimit="10" width="4.22" height="0.662"/>
+		<rect x="81.645" y="105.684" fill="none" stroke="#A6A8AB" stroke-miterlimit="10" width="4.22" height="0.662"/>
+		<rect x="81.645" y="108.628" fill="none" stroke="#A6A8AB" stroke-miterlimit="10" width="4.22" height="0.662"/>
+		<rect x="63.983" y="108.628" fill="none" stroke="#A6A8AB" stroke-miterlimit="10" width="4.22" height="0.662"/>
+		<rect x="63.983" y="105.684" fill="none" stroke="#A6A8AB" stroke-miterlimit="10" width="4.22" height="0.662"/>
+		<rect x="63.983" y="102.74" fill="none" stroke="#A6A8AB" stroke-miterlimit="10" width="4.22" height="0.662"/>
+	</g>
+</g>
+<g id="Layer_2">
+</g>
+</svg>
